@@ -1,0 +1,75 @@
+.login_box {
+    height: 738px;
+    width: 565px;
+    position: absolute;
+    right: 0%;
+}
+
+.login_box .rectangle_box {
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    position: absolute;
+    height: 658px;
+    left: -50px;
+    top: 30px;
+    width: 465px;
+}
+
+.login_box .h1_login {
+    font-family: 'Odor Mean Chey', serif;
+    font-size: 40px;
+    font-weight: 400px;
+    position: relative;
+    top: 50px;
+    left:180px;
+}
+
+.login_form {
+    max-width: 50%;
+    position: relative;
+    top: 100px;
+}
+
+.login_form>.input_login {
+    height: 71px;
+    width: 415px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    position: relative;
+    right: 95px
+}
+
+.submit_login {
+    height: 61px;
+    width: 292px;
+    background-color: white;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 50px;
+    position: absolute;
+    width: 292px;
+    left: -20px;
+    top: 300px;
+    font-family: 'Odor Mean Chey', serif;
+    font-size: 40px;
+    font-weight: 400px;
+    
+}
+
+.image_Login {
+    position: fixed;
+    left: 0%;
+    width: 520px;
+    height: 738px;
+    z-index: -1;
+}
+
+.login_form>a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the parent element's color */
+    cursor: pointer; /* Change cursor to pointer on hover (optional) */
+}

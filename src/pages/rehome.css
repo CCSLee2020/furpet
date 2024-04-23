@@ -1,0 +1,299 @@
+nav {
+    background-color: #393c49;
+    overflow: hidden;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+nav a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.h1_logo {
+    color: white;
+    font-size: 48px;
+    font-weight: 400;
+    font-family: 'Aclonica', sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.nav-links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.welcomeBanner {
+    width: 100%;
+    height: 567px;
+}
+
+.rehome {
+    position: relative;
+    top: 120px;
+    background-color: white;
+    width: 100%;
+    height: 500px;
+}
+
+.details_textBox {
+    position: absolute;
+    right: 500px;
+    top: 50px;
+}
+
+.rehome_h1 {
+    color: black;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: absolute;
+    top: 50px;
+    left: 180px;
+}
+
+.addnewpet   {
+    color: blue;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: absolute;
+    top: 50px;
+    right: 180px;
+}
+
+.rehome_box>.rehome_img {
+    width: 212px;
+    height: 227px;
+}
+
+.rehome_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    top: 150px;
+    left: 0px;
+}
+
+.rehome_container>.rehome_box {
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    height: 300px;
+    width: 1100px;
+    margin-top: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 0px;
+    text-align: left;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.rehome_box>h1 {
+    color: black;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: relative;
+    top: -270px;
+    left: 250px;
+}
+
+.rehome_box>h2 {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: relative;
+    top: -250px;
+    left: 270px;
+}
+
+.scheduleBox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    top: 150px;
+    left: 0px;
+}
+
+.scheduleform {
+    position: relative;
+    top: 120px;
+    background-color: white;
+    width: 25%;
+    height: 500px;
+    margin-top: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 0px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.scheduleform>.schedule_input {
+    height: 71px;
+    width: 700px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    justify-content: center;
+    position: relative;
+    right: 150px
+}
+
+.schedule_submit {
+    height: 70px;
+    width: 292px;
+    background-color: #393c49;
+    color: #ffffff;
+    border: 1px solid;
+    border-radius: 20px;
+    width: 292px;
+    left: 290px;
+    top: 600px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 400px;
+}
+
+.rehome_box>.edit {
+    position: relative;
+    left: 900px;
+    top: -330px;
+}
+
+.rehome_box>.delete {
+    position: relative;
+    left: 900px;
+    top: -320px;
+}
+
+.rehome_container>.appointment_outerbox {
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    height: 380px;
+    width: 1100px;
+    margin-top: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 0px;
+    text-align: left;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+.document_img {
+    width: 350px;
+    height: 350px;
+}
+
+.appointment_innerbox2 {
+    position: relative;
+    top: -400px;
+    right: -400px;
+}
+
+.appointment_innerbox2>h1 {
+    color: black;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: relative;
+}
+
+.appointment_innerbox2>h2 {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.appointment_outerbox>.deleteImg {
+    position: relative;
+    right: -900px;
+    top: -100px;
+}
+
+.appointment_outerbox>.deleteImg2 {
+    position: relative;
+    object-fit: none;
+    right: -900px;
+    top: -500px;
+}
+
+.appointment_innerbox {
+    position: relative;
+    top: -20px;
+    right: 0px;
+}
+
+.appointment_innerbox>h1 {
+    color: black;
+    font-family: 'Aclonica', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: relative;
+}
+
+.appointment_innerbox>h2 {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.appointment_outerbox>.deleteImg {
+    position: relative;
+    right: -900px;
+    top: -100px;
+}
+
+.appointment_innerbox {
+    position: relative;
+    top: -20px;
+    right: 0px;
+}
+
+.space3 {
+    background-color: #ffffff;
+    position: relative;
+    top: 500px;
+    width: 100%;
+    height: 50px;
+}

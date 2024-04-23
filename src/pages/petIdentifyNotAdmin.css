@@ -1,0 +1,99 @@
+nav {
+    background-color: #393c49;
+    overflow: hidden;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+nav a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.main {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.h1_logo {
+    color: white;
+    font-size: 48px;
+    font-weight: 400;
+    font-family: 'Aclonica', sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.nav-links a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.petIdentifierBody {
+    color: white;
+    background: black;
+  }
+  
+  .petIdentifierDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  .petIdentifierInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  .petIdentifierButton,
+  .petIdentifierUl {
+    width: 300px;
+    box-sizing: border-box;
+    border: solid 1px white;
+    background: black;
+    color: white;
+    font-size: 24px;
+    margin: auto;
+    padding: 10px;
+  }
+  
+  .petIdentifierImg {
+    width: 300px;
+    margin-bottom: 25px;
+  }
+  
+  .petIdentifierUl {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .petIdentifierLi:not(:last-child) {
+    padding: 10px;
+    border-bottom: solid 1px;
+  }

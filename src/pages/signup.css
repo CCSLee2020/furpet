@@ -1,0 +1,72 @@
+.signup_box {
+  height: 738px;
+  width: 565px;
+}
+
+.signup_box .rectangle_box {
+  border: 1px solid;
+  border-color: #393c49;
+  border-radius: 20px;
+  height: 658px;
+  left: 200px;
+  position: fixed;
+  top: 30px;
+  width: 465px;
+}
+
+.signup_box .h1_signUp {
+  font-family: 'Odor Mean Chey', serif;
+  font-size: 40px;
+  font-weight: 400px;
+  position: relative;
+  top: 30px;
+  left:80px;
+}
+
+.signup_form {
+  max-width: 50%;
+  position: relative;
+  top: 50px;
+}
+
+.signup_form > .input_signUp {
+  height: 71px;
+  width: 415px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid;
+  border-color: #393c49;
+  border-radius: 20px;
+  position: relative;
+  right: 95px
+}
+
+.submit_signUp {
+  height: 61px;
+  width: 292px;
+  background-color: white;
+  border: 1px solid;
+  border-color: #393c49;
+  border-radius: 20px;
+  position: fixed;
+  width: 292px;
+  left: 290px;
+  top: 600px;
+  font-family: 'Odor Mean Chey', serif;
+  font-size: 40px;
+  font-weight: 400px;
+}
+
+.image_SignUp {
+  position: absolute;
+  right: 0%;
+  width: 520px;
+  height: 738px;
+  z-index: -1;
+}
+
+.signup_form>a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the parent element's color */
+  cursor: pointer; /* Change cursor to pointer on hover (optional) */
+}

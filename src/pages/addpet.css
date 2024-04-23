@@ -1,0 +1,129 @@
+.AddPet {
+    position: relative;
+    top: 150px;
+    background-color: white;
+    width: 100%;
+    height: 1300px;
+    display: flex;
+    justify-content: center;
+}
+
+.AddPetBox {
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    width: 720px;
+    position: relative;
+    left: 0px;
+}
+
+.AddPetBox>h1 {
+    font-family: 'Aclonica', sans-serif;
+    font-size: 40px;
+    font-weight: 400px;
+    text-align: center;
+    position: relative;
+    width: 900px;
+    top: 0px;
+    left:290px;
+}
+
+.AddPetBox>img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 170px;
+    right: -175px;
+    object-fit: contain;
+}
+
+.AddPetform {
+    position: relative;
+    top: 300px;
+    right: 70px;
+}
+
+.UpdatePetform {
+    position: relative;
+    top: 300px;
+    right: -10px;
+}
+
+.AddPetForm_input {
+    height: 71px;
+    width: 415px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+}
+
+.AddPet_dropbtn {
+    background-color: #767a8e;
+    color: rgb(255, 255, 255);
+    border-radius: 50px;
+    padding: 16px;
+    font-size: 16px;
+    width: 410px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.AddPet_dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.AddPet_dropdown-content {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.AddPet_dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.AddPet_dropdown:hover .AddPet_dropdown-content {
+    display: block;
+}
+
+.AddPet_dropdown:hover .AddPet_dropbtn {
+    background-color: #888888;
+}
+
+.AddPet_submit {
+    height: 70px;
+    width: 292px;
+    background-color: #393c49;
+    color: #ffffff;
+    border: 1px solid;
+    border-radius: 20px;
+    width: 415px;
+    left: 290px;
+    top: 600px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 400px;
+}
+
+.space4 {
+    background-color: #ffffff;
+    position: relative;
+    top: 1200px;
+    width: 100%;
+    height: 50px;
+}

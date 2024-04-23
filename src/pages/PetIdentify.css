@@ -1,0 +1,57 @@
+.petIdentifierBody {
+  color: white;
+  background: black;
+}
+
+.petIdentifierBody2 {
+  color: white;
+  background: black;
+  position: relative;
+  left: 150px;
+  top: -100px;
+}
+
+.petIdentifierDiv {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.petIdentifierInput {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.petIdentifierButton,
+.petIdentifierUl {
+  width: 300px;
+  box-sizing: border-box;
+  border: solid 1px white;
+  background: black;
+  color: white;
+  font-size: 24px;
+  margin: auto;
+  padding: 10px;
+}
+
+.petIdentifierImg {
+  width: 300px;
+  margin-bottom: 25px;
+}
+
+.petIdentifierUl {
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+
+.petIdentifierLi:not(:last-child) {
+  padding: 10px;
+  border-bottom: solid 1px;
+}
