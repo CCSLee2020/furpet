@@ -7,8 +7,8 @@
   color: white;
   background: black;
   position: relative;
-  left: 150px;
-  top: -100px;
+  left: 0px;
+  top: -50px;
 }
 
 .petIdentifierDiv {
@@ -54,4 +54,14 @@
 .petIdentifierLi:not(:last-child) {
   padding: 10px;
   border-bottom: solid 1px;
+}
+
+@media only screen and (min-width: 750px) {
+  .petIdentifierBody2 {
+    color: white;
+    background: black;
+    position: relative;
+    left: 150px;
+    top: -50px;
+  }
 }

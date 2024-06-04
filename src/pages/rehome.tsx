@@ -6,6 +6,7 @@ import Delete from '../assets/material-symbols_delete-outline.png';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { Link } from 'react-router-dom';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 
 type Pet = {
@@ -86,10 +87,11 @@ const LandingPage: React.FC = () => {
         <IonPage>
             <IonContent>
                 <nav>
-                    <div className="logo">
-                        <h1 className="h1_logo">FurPet</h1>
+                    <div className="logo1">
+                        <img className='navLogo1' src={navLogo} alt="" />
+                        <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links">
+                    <div className="nav-links1">
                         <a href="/petOwnerHome">Home</a>
                         <a href="/petOwnerAdopt">Adopt</a>
                         <a href="/rehome">Rehome</a>

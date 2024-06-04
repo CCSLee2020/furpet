@@ -116,6 +116,11 @@ const PetIdentifier: React.FC = () => {
                 <i className="fas fa-users fw"></i> Users
               </li>
             </a>
+            <a href="/adminPetList">
+              <li className="aside_list-item">
+                <i className="fas fa-clipboard fw"></i> Pet List
+              </li>
+            </a>
             <a href="/adminAppointments">
               <li className="aside_list-item">
                 <i className="fas fa-clipboard fw"></i> Appointments
@@ -124,11 +129,6 @@ const PetIdentifier: React.FC = () => {
             <a href="/petIdentifier">
               <li className="aside_list-item active-list">
                 <i className="fas fa-search fw"></i> Identify Breeds
-              </li>
-            </a>
-            <a href="/adminQnA">
-              <li className="aside_list-item">
-                <i className="fas fa-clipboard fw"></i> QnA
               </li>
             </a>
           </ul>

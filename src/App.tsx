@@ -20,13 +20,12 @@ import UpdateForm from './pages/updatePet';
 import AppointmentList from './pages/appointment_list';
 import PetIdentifier from './pages/PetIdentify';
 import AdminHome from './pages/adminHome';
+import AdminPet from './pages/adminPet';
+import AdminUpdatePet from './pages/adminUpdatePet'
 import AdminAppointments from './pages/adminAppointments';
 import AdminAppointmentsUpdate from './pages/adminAppoinmentsupdate';
-import AdminQnA from './pages/adminQnA';
-import AdminQnAView from './pages/adminQnAView';
 import PetIdentifyOwner from './pages/petIdentify_petOwner';
 import PetIdentifyAdopter from './pages/petIdentify_adopter';
-import QnA from './pages/qNA';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,6 +45,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import AdminUpdatePets from './pages/adminUpdatePet';
 
 setupIonicReact();
 
@@ -99,9 +99,6 @@ const App: React.FC = () => (
         <Route exact path="/appointmentlist">
           <AppointmentList />
         </Route>
-        <Route exact path="/qna/:id">
-          <QnA />
-        </Route>
         <Route exact path="/appointment/:id">
           <Appointment />
         </Route>
@@ -123,11 +120,11 @@ const App: React.FC = () => (
         <Route exact path="/selectStatus/:id">
           <AdminAppointmentsUpdate />
         </Route>
-        <Route exact path="/adminQnA">
-          <AdminQnA />
+        <Route exact path="/adminPetList">
+          <AdminPet />
         </Route>
-        <Route exact path="/adminQnAView/:id">
-          <AdminQnAView />
+        <Route exact path="/adminUpdatePet/:id">
+          <AdminUpdatePet />
         </Route>
         <Route exact path="/">
           <Redirect to="/login" />

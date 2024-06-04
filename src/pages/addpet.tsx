@@ -6,6 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
 import { useHistory } from 'react-router-dom';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 
 type Pet = {
@@ -17,6 +18,7 @@ type Pet = {
   location: string;
   about: string;
   caretakerInfo: string;
+  caretakerNumber: string;
   weight: string;
   gender: 'male' | 'female';
   neutered: 'yes' | 'no';
@@ -47,6 +49,7 @@ const LandingPage: React.FC = () => {
     location: '',
     about: '',
     caretakerInfo: '',
+    caretakerNumber: '',
     weight: '',
     gender: 'male',
     neutered: 'yes',
@@ -97,10 +100,11 @@ const LandingPage: React.FC = () => {
     <IonPage>
       <IonContent>
         <nav>
-          <div className="logo">
-            <h1 className="h1_logo">FurPet</h1>
+          <div className="logo1">
+            <img className='navLogo1' src={navLogo} alt="" />
+            <h1 className="h1_logo1">FurPet</h1>
           </div>
-          <div className="nav-links">
+          <div className="nav-links1">
             <a href="/petOwnerHome">Home</a>
             <a href="/petOwnerAdopt">Adopt</a>
             <a href="/rehome">Rehome</a>
@@ -141,7 +145,8 @@ const LandingPage: React.FC = () => {
               <input className="AddPetForm_input" type="text" placeholder="Weight (kg)" name="weight" value={pet.weight} onChange={handleChange} />
               <input className="AddPetForm_input" type="text" placeholder="Address" name="location" value={pet.location} onChange={handleChange} />
               <input className="AddPetForm_input" type="text" placeholder="About" name="about" value={pet.about} onChange={handleChange} />
-              <input className="AddPetForm_input" type="text" placeholder="Caretaker Information" name="caretakerInfo" value={pet.caretakerInfo} onChange={handleChange} />
+              <input className="AddPetForm_input" type="text" placeholder="Caretaker Name" name="caretakerInfo" value={pet.caretakerInfo} onChange={handleChange} />
+              <input className="AddPetForm_input" type="text" placeholder="Caretaker Number" name="caretakerNumber" value={pet.caretakerNumber} onChange={handleChange} />
               <input className="AddPetForm_input" type="text" placeholder="Caretaker Location" name="address" value={pet.address} onChange={handleChange} />
               <a href="/home"><button className="AddPet_submit" type="submit">Add Pet</button></a>
             </form>

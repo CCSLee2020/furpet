@@ -9,6 +9,7 @@ import adoptionProcess from '../assets/Group 32.png';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 
 type Pet = {
@@ -73,10 +74,11 @@ const LandingPage: React.FC = () => {
         <IonPage>
             <IonContent>
                 <nav>
-                    <div className="logo">
-                        <h1 className="h1_logo">FurPet</h1>
+                    <div className="logo1">
+                        <img className='navLogo1' src={navLogo} alt="" />
+                        <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links">
+                    <div className="nav-links1">
                         <a href="/petOwnerHome">Home</a>
                         <a href="/petOwnerAdopt">Adopt</a>
                         <a href="/rehome">Rehome</a>
@@ -98,15 +100,12 @@ const LandingPage: React.FC = () => {
                     <div className="categories_container">
                         <div className="categories_box" onClick={() => setSelectedType('all')}>
                             <img src={footprint1} />
-                            <p className="categories_text">All</p>
                         </div>
                         <div className="categories_box" onClick={() => setSelectedType('Dog')}>
                             <img src={dog1} />
-                            <p className="categories_text">Dogs</p>
                         </div>
                         <div className="categories_box" onClick={() => setSelectedType('Cat')}>
                             <img src={cat1} />
-                            <p className="categories_text">Cats</p>
                         </div>
                     </div>
                 </div>

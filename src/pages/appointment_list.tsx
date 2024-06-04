@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './rehome.css';
 import { IonContent, IonPage } from '@ionic/react';
 import Delete from '../assets/material-symbols_delete-outline.png';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
@@ -16,6 +17,7 @@ type Appointment = {
     appoint_date: string;
     pet_name: string;
     pet_caretaker: string;
+    pet_number: string;
     pet_location: string;
     pet_index: string;
     imageUrl: string;
@@ -81,10 +83,11 @@ const LandingPage: React.FC = () => {
         <IonPage>
             <IonContent>
                 <nav>
-                    <div className="logo">
-                        <h1 className="h1_logo">FurPet</h1>
+                    <div className="logo1">
+                        <img className='navLogo1' src={navLogo} alt="" />
+                        <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links">
+                    <div className="nav-links1">
                         <a href="/adopterHome">Home</a>
                         <a href="/adopterAdopt">Adopt</a>
                         <a href="/appointmentlist">Appointments</a>
@@ -101,6 +104,7 @@ const LandingPage: React.FC = () => {
                                 <div className="appointment_innerbox2">
                                     <h1 className="rehome_texth1">{appointment.pet_name}</h1>
                                     <h2 className="rehome_h2">Owner Name: {appointment.pet_caretaker}</h2>
+                                    <h2 className="rehome_h2">Owner Number: {appointment.pet_number}</h2>
                                     <h2 className="rehome_h2">Owner Address: {appointment.pet_location}</h2>
                                     <h2 className="rehome_h2">Your Name: {appointment.appoint_name}</h2>
                                     <h2 className="rehome_h2">Your Number: {appointment.appoint_number}</h2>

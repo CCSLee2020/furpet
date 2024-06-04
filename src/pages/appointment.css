@@ -64,7 +64,7 @@ nav a:hover {
 .appointment_h1 {
     color: black;
     font-family: 'Aclonica', sans-serif;
-    font-size: 48px;
+    font-size: 20px;
     font-weight: 400;
     position: absolute;
     top: 50px;
@@ -74,6 +74,7 @@ nav a:hover {
 .appointment_box>img {
     width: 212px;
     height: 227px;
+    object-fit: cover;
 }
 
 .appointment_container {
@@ -124,13 +125,13 @@ nav a:hover {
     left: 270px;
 }
 
-.scheduleBox {
+.scheduleBox1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     background-color: rgb(255, 255, 255);
     position: relative;
-    top: 150px;
+    top: -76px;
     left: 0px;
 }
 
@@ -148,8 +149,9 @@ nav a:hover {
 .scheduleform {
     position: relative;
     top: 120px;
+    right: 10px;
     background-color: white;
-    width: 25%;
+    width: 100%;
     height: 500px;
     margin-top: 10px;
     margin-top: 10px;
@@ -163,8 +165,37 @@ nav a:hover {
     font-size: 30px;
 }
 
+.schedule_file {
+    height: 70px;
+    width: 325px;
+    background-color: #393c49;
+    color: #ffffff;
+    border: 1px solid;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 400px;
+    position: relative;
+}
+
+.schedule_input1 {
+    height: 71px;
+    width: 700px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    justify-content: center;
+    position: relative;
+    right: 180px;
+    padding: 20px;
+}
+
 .qnaform>p {
     font-size: medium;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .qnaform {
@@ -195,40 +226,32 @@ hr {
     width: 100%;
 }
 
-.schedule_submit {
+.schedule_submit1 {
     height: 70px;
-    width: 292px;
+    width: 100%;
     background-color: #393c49;
     color: #ffffff;
     border: 1px solid;
     border-radius: 20px;
-    width: 292px;
-    left: 290px;
-    top: 700px;
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
-    font-weight: 400px;
-  }
-  
-  .schedule_next {
-    height: 70px;
-    width: 292px;
-    background-color: #393c49;
-    color: #ffffff;
-    border: 1px solid;
-    border-radius: 20px;
-    width: 292px;
-    left: 575px;
-    top: 0px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px;
-    font-weight: 400px;
     position: relative;
-  }
+    top: 300px;
+}
 
 .hidden_input {
     display: none;
     pointer-events: none;
+}
+
+.AddPet_radio {
+    position: relative;
+    top: -50px;
+}
+
+.radioMargin {
+    margin: 10px;
+    font-size: 20px;
 }
 
 
@@ -238,4 +261,170 @@ hr {
     top: 500px;
     width: 100%;
     height: 50px;
+}
+
+@media only screen and (max-width: 1025px) {
+    .scheduleform>.schedule_input1 {
+        width: 580px;
+    }
+
+    .schedule_file {
+        position: relative;
+        right: 50px
+    }
+
+}
+
+
+@media only screen and (max-width: 769px) {
+
+    .schedule_file {
+        position: relative;
+        right: 60px
+    }
+
+    .qnaform>p {
+        display: inline-block;
+    }
+
+    .details_textBox {
+        right: 250px;
+        top: 25px;
+    }
+
+    .appointment_box>img {
+        width: 106px;
+        height: 113.5px;
+    }
+
+    .appointment_container {
+        top: 100px;
+    }
+
+    .appointment_container>.appointment_box {
+        height: 200px;
+        width: 400px;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-left: 10px;
+        line-height: 37.5px;
+        font-size: 15px;
+    }
+
+    .appointment_box>h1 {
+        font-size: 24px;
+        top: -135px;
+        left: 125px;
+    }
+
+    .appointment_box>h2 {
+        font-size: 12px;
+        top: -125px;
+        left: 135px;
+    }
+
+
+}
+
+@media only screen and (max-width: 621px) {
+
+    .AddPet_radio {
+        top: -12px;
+    }
+
+    .schedule_file {
+        height: 50px;
+        width: 200px;
+        font-size: 20px;
+        right: 0;
+    }
+
+    .scheduleform>.schedule_input1 {
+        height: 50px;
+        width: 78%;
+        margin-top: 2.5px;
+        margin-bottom: 2.5px;
+        right: 0px;
+    }
+
+    .appointment {
+        top: 150px;
+        height: 250px;
+    }
+    
+    .scheduleBox1,
+    .qnaBox {
+        top: 75px;
+    }
+
+    .scheduleform,
+    .qnaform {
+        top: 60px;
+        width: 100%;
+        height: 250px;
+        margin-left: 15px;
+        margin-right: 15px;
+        padding-left: 10px;
+        line-height: 37.5px;
+        font-size: 15px;
+    }
+
+    .schedule_submit1 {
+        top: 350px
+    }
+    .schedule_file,
+    .schedule_next {
+        height: 50px;
+        width: 200px;
+        font-size: 20px;
+    }
+
+    hr {
+        height: 2.5px;
+    }
+}
+
+@media only screen and (max-width: 597px) {
+    .schedule_submit1 {
+        top: 400px
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    .details_img {
+        width: 300px;
+        height: 300px;
+        left: 40px;
+    }
+
+    .details_appointment {
+        width: 335px;
+    }
+
+    .details_appointment2 {
+        left: 60px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+
+    .details_img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .details_appointment {
+        width: 273px;
+    }
+
+    .details_appointment2 {
+        left: 25px;
+    }
+
+    .appointment_box>h2 {
+        font-size: 9px;
+        top: -125px;
+        left: 126px;
+    }
 }

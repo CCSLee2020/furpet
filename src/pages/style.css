@@ -34,6 +34,7 @@
   position: relative;
   top: 100px;
 }
+
 .footer {
   grid-area: footer;
   background-color: whitesmoke;
@@ -104,7 +105,44 @@ a {
 
 .card {
   position: relative;
-  left: 250px;
+  left: 0px;
+}
+
+.card2 {
+  position: relative;
+  left: 0px;
+  top: -200px;
+  width: 1230px;
+}
+
+.card3 {
+  position: relative;
+  left: 0px;
+  top: -100px;
+  width: 1230px;
+}
+
+.countbox {
+  position: relative;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+}
+
+.countbox1 {
+  position: relative;
+  top: -109px;
+  left: 115px;
+  width: 100px;
+  height: 100px;
+}
+
+.countbox2 {
+  position: relative;
+  top: -218px;
+  left: 230px;
+  width: 100px;
+  height: 100px;
 }
 
 /* responsive layout */
@@ -118,6 +156,11 @@ a {
       'aside main'
       'aside footer';
     height: 100vh;
+  }
+
+  .main {
+    position: relative;
+    top: 0px
   }
 
   .aside {
@@ -137,6 +180,50 @@ a {
       'card1 card3';
     grid-gap: 10px;
   }
+
+  .countbox {
+    position: relative;
+    left: 250px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .countbox1 {
+    position: relative;
+    top: -109px;
+    left: 365px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .countbox2 {
+    position: relative;
+    top: -218px;
+    left: 480px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .card {
+    position: relative;
+    left: 250px;
+  }
+  
+  .card2 {
+    position: relative;
+    left: 250px;
+    top: -200px;
+    width: 1230px;
+  }
+  
+  .card3 {
+    position: relative;
+    left: 250px;
+    top: -100px;
+    width: 1230px;
+  }
+
+  
 }
 
 .menu-icon {

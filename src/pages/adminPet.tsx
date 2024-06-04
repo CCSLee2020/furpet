@@ -6,19 +6,18 @@ import 'firebase/compat/firestore';
 import { Link } from 'react-router-dom';
 import 'firebase/compat/storage';
 
-type Appointment = {
+type Pet = {
     id: string;
-    index: string;
-    appoint_name: string;
-    appoint_number: string;
-    appoint_email: string;
-    appoint_address: string;
-    appoint_date: string;
-    pet_name: string;
-    pet_caretaker: string;
-    pet_number: string;
-    pet_location: string;
-    pet_index: string;
+    index: string,
+    name: string;
+    age: number;
+    gender: 'male' | 'female';
+    neutered: 'yes' | 'no';
+    type: 'cat' | 'dog';
+    breed: string;
+    location: string;
+    about: string;
+    caretakerInfo: string;
     imageUrl: string;
     status: string;
 };
@@ -28,14 +27,12 @@ const AdminAppointments: React.FC = () => {
     const [isActive, setIsActive] = useState(false);
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const storageRef = firebase.storage().ref();
-    const [appointments, setAppointments] = useState<Appointment[]>([]);
-    const [pendingCount, setPendingCount] = useState<number>(0);
-    const [confirmedCount, setConfirmedCount] = useState<number>(0);
-    const [denyCount, setDenyCount] = useState<number>(0);
+    const [availableCount, setAvailableCount] = useState<number>(0);
+    const [adoptedCount, setAdoptedCount] = useState<number>(0);
 
     useEffect(() => {
         const fetchImages = async () => {
-            const result = await storageRef.child('documents').listAll();
+            const result = await storageRef.child('images').listAll();
             const urlPromises = result.items.map(imageRef => imageRef.getDownloadURL());
             return Promise.all(urlPromises);
         };
@@ -48,45 +45,45 @@ const AdminAppointments: React.FC = () => {
         loadImages();
     }, []);
 
+    const [pets, setPets] = useState<Pet[]>([]);
+
     useEffect(() => {
-        const fetchAppointment = async () => {
+        const fetchPets = async () => {
             const db = firebase.firestore();
-            const appointmentCollection = db.collection('appointment').orderBy('index');
-            const appointmentSnapshot = await appointmentCollection.get();
-            const appointmentList: Appointment[] = await Promise.all(appointmentSnapshot.docs.map(async doc => {
-                const appointmentData = doc.data() as Appointment;
-                const imageUrl = await storageRef.child(`documents/${appointmentData.index}`).getDownloadURL();
-                return { ...appointmentData, id: doc.id, imageUrl, index: appointmentData.index ?? '' } as Appointment;
-            }));
-            setAppointments(appointmentList);
+            const petCollection = db.collection('pets').orderBy('index');
+            const petSnapshot = await petCollection.get();
+            const petList: Pet[] = petSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }) as Pet);
+            setPets(petList);
         };
 
-        fetchAppointment();
-        const pending = appointments.filter(appointment => appointment.status === 'Pending');
-        const confirmed = appointments.filter(appointment => appointment.status === 'Confirmed');
-        const deny = appointments.filter(appointment => appointment.status === 'Deny');
+        fetchPets();
+        const available = pets.filter(pets => pets.status === 'Available');
+        const adopted = pets.filter(pets => pets.status === 'Adopted');
 
-        setPendingCount(pending.length);
-        setConfirmedCount(confirmed.length);
-        setDenyCount(deny.length);
-    }, [appointments]);
+        setAvailableCount(available.length);
+        setAdoptedCount(adopted.length);
+    }, [pets]);
 
-    const deleteAppoint = async (id: string, index: string) => {
+    const deletePet = async (id: string, index: string ) => {
         const db = firebase.firestore();
-        const appointmentRef = db.collection('appointment').doc(id);
+        const petRef = db.collection('pets').doc(id);
         const storage = firebase.storage();
-        const imageRef = storage.ref().child(`documents/${index}`);
+        const imageRef = storage.ref().child(`images/${index}`);
 
-        if (window.confirm('Are you sure you want to delete this appointment?')) {
+        // Show a warning before deleting the pet
+        if (window.confirm('Are you sure you want to delete this pet?')) {
+            // Delete the image from Firebase Storage
             imageRef.delete().then(() => {
                 console.log('Image deleted from Firebase Storage.');
             }).catch((error) => {
                 console.error('Error deleting image from Firebase Storage:', error);
             });
 
-            await appointmentRef.delete();
+            // Delete the pet document from Firestore
+            await petRef.delete();
 
-            setAppointments(appointments.filter(appointment => appointment.id !== id));
+            // Remove the deleted pet from the local state
+            setPets(pets.filter(pet => pet.id !== id));
         }
     };
 
@@ -104,7 +101,7 @@ const AdminAppointments: React.FC = () => {
                         </div>
                         <header className="header">
                             <div className="header_title">
-                                <h2>Appointments</h2>
+                                <h2>Pets</h2>
                             </div>
                             <div className="header_avatar"><i className="fas fa-user-circle fw fa-xl"></i></div>
                         </header>
@@ -120,12 +117,12 @@ const AdminAppointments: React.FC = () => {
                                     </li>
                                 </a>
                                 <a href="/adminPetList">
-                                    <li className="aside_list-item">
+                                    <li className="aside_list-item active-list">
                                         <i className="fas fa-clipboard fw"></i> Pet List
                                     </li>
                                 </a>
                                 <a href="/adminAppointments">
-                                    <li className="aside_list-item active-list">
+                                    <li className="aside_list-item">
                                         <i className="fas fa-clipboard fw"></i> Appointments
                                     </li>
                                 </a>
@@ -145,28 +142,22 @@ const AdminAppointments: React.FC = () => {
                         </aside>
                         <main className="main">
                             <IonCard className="countbox">
-                                <strong>Pending Appointments:</strong> {pendingCount}
+                                <strong>Available:</strong> {availableCount}
                             </IonCard>
                             <IonCard className="countbox1">
-                                <strong>Confirmed Appointments:</strong> {confirmedCount}
+                                <strong>Adopted:</strong> {adoptedCount}
                             </IonCard>
-                            <IonCard className="countbox2">
-                                <strong>Denied Appointments:</strong> {denyCount}
-                            </IonCard>
-                            {appointments.map((appointment, i) => (
-                                <IonCard className='card2'>
+                            {pets.map((pet, i) => (
+                                <IonCard className='card3'>
                                     <IonCardContent>
-                                        <img className="document_img2   " key={i} src={appointment.imageUrl} alt={appointment.index} /><br />
-                                        Pet Name: {appointment.pet_name}<br />
-                                        Owner Information: {appointment.pet_name}<br />
-                                        Owner Number: {appointment.pet_number}<br />
-                                        Address: {appointment.pet_location}<br />
-                                        Your Name: {appointment.appoint_name}<br />
-                                        Your Number: {appointment.appoint_number}<br />
-                                        Your Email: {appointment.appoint_email}<br />
-                                        Status: {appointment.status}<br />
-                                        <IonButton color="light"><Link to={`/selectStatus/${appointment.id}`}>View and Select Status</Link></IonButton>
-                                        <IonButton color="danger" onClick={() => deleteAppoint(appointment.id, appointment.index)} > Delete </IonButton>
+                                        <img className="document_img2" key={i} src={imageUrls[i]} alt={pet.name} /><br />
+                                        Pet Name: {pet.name}<br />
+                                        Owner Information: {pet.caretakerInfo}<br />
+                                        Address: {pet.location}<br />
+                                        Neutered: {pet.neutered}<br />
+                                        Pet Status: {pet.status}<br />
+                                        <IonButton color="light"><Link to={`/adminUpdatePet/${pet.id}`}>Select Status</Link></IonButton>
+                                        <IonButton color="danger" onClick={() => deletePet(pet.id, pet.index)} > Delete </IonButton>
                                     </IonCardContent>
                                 </IonCard>
                             ))}

@@ -2,6 +2,7 @@ import React, { useState, useRef, useReducer } from "react";
 import { IonContent, IonPage, } from '@ionic/react';
 import * as mobilenet from "@tensorflow-models/mobilenet";
 import './petIdentifyNotAdmin.css';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 type State = 'initial' | 'loadingModel' | 'modelReady' | 'imageReady' | 'identifying' | 'complete';
 type Event = 'next';
@@ -99,11 +100,12 @@ const PetIdentifyAdopter: React.FC = () => {
         <IonPage>
             <IonContent>
                 <nav>
-                    <div className="logo">
-                        <h1 className="h1_logo">FurPet</h1>
+                    <div className="logo1">
+                        <img className='navLogo1' src={navLogo} alt="" />
+                        <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links">
-                    <a href="/adopterHome">Home</a>
+                    <div className="nav-links1">
+                        <a href="/adopterHome">Home</a>
                         <a href="/adopterAdopt">Adopt</a>
                         <a href="/appointmentlist">Appointments</a>
                         <a href="/adopterPetIdentifier">Identify</a>

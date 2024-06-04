@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './login.css';
 import { IonContent, IonPage, IonGrid } from '@ionic/react';
-import loginImage from '../assets/5c401a7abf8b11aeed9402034d1ae693 1.png';
+import loginImage from '../assets/pexels-svetozar-milashevich-99573-1490908.jpg';
+import loginLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/auth';
@@ -45,6 +46,7 @@ const LogIn: React.FC = () => {
                 <div className="login_box">
                     <img className="image_Login" src={loginImage} />
                     <div className="rectangle_box">
+                        <img className="image_Logo" src={loginLogo} />
                         <h1 className="h1_login">Login</h1>
                         <IonGrid className="login_form">
                             <input className="input_login" type="text" placeholder="Email" onChange={(e: any) => setEmail(e.target.value)} />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './landingpage.css';
 import { IonContent, IonPage } from '@ionic/react';
 import welcomeImg from '../assets/friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white 1.png';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 import dog1 from '../assets/dog 1.png';
 import footprint1 from '../assets/footprint 1.png';
 import cat1 from '../assets/cat 1.png';
@@ -73,10 +74,11 @@ const LandingPage: React.FC = () => {
         <IonPage>
             <IonContent>
                 <nav>
-                    <div className="logo">
-                        <h1 className="h1_logo">FurPet</h1>
+                    <div className="logo1">
+                        <img className='navLogo1' src={navLogo} alt="" />
+                        <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links">
+                    <div className="nav-links1">
                         <a href="/adopterHome">Home</a>
                         <a href="/adopterAdopt">Adopt</a>
                         <a href="/appointmentlist">Appointments</a>
@@ -98,15 +100,12 @@ const LandingPage: React.FC = () => {
                     <div className="categories_container">
                         <div className="categories_box" onClick={() => setSelectedType('all')}>
                             <img src={footprint1} />
-                            <p className="categories_text">All</p>
                         </div>
                         <div className="categories_box" onClick={() => setSelectedType('Dog')}>
                             <img src={dog1} />
-                            <p className="categories_text">Dogs</p>
                         </div>
                         <div className="categories_box" onClick={() => setSelectedType('Cat')}>
                             <img src={cat1} />
-                            <p className="categories_text">Cats</p>
                         </div>
                     </div>
                 </div>

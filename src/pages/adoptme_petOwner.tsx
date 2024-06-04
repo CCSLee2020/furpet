@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './adoptme.css';
 import { IonContent, IonPage, } from '@ionic/react';
-import profile from '../assets/Profile 1.png';
 import { useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
+import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 type Pet = {
     id: string;
@@ -17,6 +17,7 @@ type Pet = {
     neutered: string;
     about: string;
     caretakerInfo: string;
+    caretakerNumber: string;
     imageUrl: string;
     location: string;
     address: string;
@@ -69,10 +70,11 @@ const LandingPage: React.FC = () => {
         <IonPage>
             <IonContent>
                 <nav>
-                    <div className="logo">
-                        <h1 className="h1_logo">FurPet</h1>
+                    <div className="logo1">
+                        <img className='navLogo1' src={navLogo} alt="" />
+                        <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links">
+                    <div className="nav-links1">
                         <a href="/petOwnerHome">Home</a>
                         <a href="/petOwnerAdopt">Adopt</a>
                         <a href="/rehome">Rehome</a>
@@ -82,7 +84,7 @@ const LandingPage: React.FC = () => {
                 </nav>
                 <div className="details">
                     <>
-                        <div className="details_textBox">
+                        <div className="details_textSquare">
                             <h1 className="details_h1">{pet.name}</h1>
                             <h2 className="details_h2"><b>Type:</b> {pet.type}</h2>
                             <h2 className="details_h2"><b>Gender:</b> {pet.gender}</h2>
@@ -97,7 +99,7 @@ const LandingPage: React.FC = () => {
                         <div className="caretaker_container">
                             <div className="caretaker_box">
                                 <h1 className="caretaker_h1">Caretaker: {pet.caretakerInfo}</h1>
-                                <h2 className="caretaker_h2">{pet.address}</h2>
+                                <h2 className="caretaker_h2">Location: {pet.address} | Contact Number: {pet.caretakerNumber}</h2>
                             </div>
                         </div>
                         <div className="space2"></div>

@@ -17,6 +17,25 @@ type Appointment = {
     pet_location: string;
     pet_index: string;
     status: 'Pending' | 'Confirmed' | 'Deny';
+    q1: string;
+    q2: string;
+    q3: string;
+    q4: string;
+    q5: string;
+    q6: string;
+    q7: string;
+    q8: string;
+    q9: string;
+    q10: string;
+    q11: string;
+    q12: string;
+    q13: string;
+    q14: string;
+    q15: string;
+    q16: string;
+    q17: string;
+    q18: string;
+    q19: string;
 };
 
 const AdminAppointmentsUpdate: React.FC = () => {
@@ -35,7 +54,26 @@ const AdminAppointmentsUpdate: React.FC = () => {
         pet_caretaker: '',
         pet_location: '',
         pet_index: '',
-        status: 'Pending'
+        status: 'Pending',
+        q1: "",
+        q2: "",
+        q3: "",
+        q4: "",
+        q5: "",
+        q6: "",
+        q7: "",
+        q8: "",
+        q9: "",
+        q10: "",
+        q11: "",
+        q12: "",
+        q13: "",
+        q14: "",
+        q15: "",
+        q16: "",
+        q17: "",
+        q18: "",
+        q19: ""
     });
 
     useEffect(() => {
@@ -94,6 +132,11 @@ const AdminAppointmentsUpdate: React.FC = () => {
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
                                 </a>
+                                <a href="/adminPetList">
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-clipboard fw"></i> Pet List
+                                    </li>
+                                </a>
                                 <a href="/adminAppointments">
                                     <li className="aside_list-item active-list">
                                         <i className="fas fa-clipboard fw"></i> Appointments
@@ -102,11 +145,6 @@ const AdminAppointmentsUpdate: React.FC = () => {
                                 <a href="/petIdentifier">
                                     <li className="aside_list-item">
                                         <i className="fas fa-search fw"></i> Identify Breeds
-                                    </li>
-                                </a>
-                                <a href="/adminQnA">
-                                    <li className="aside_list-item">
-                                        <i className="fas fa-clipboard fw"></i> QnA
                                     </li>
                                 </a>
                             </ul>
@@ -135,8 +173,30 @@ const AdminAppointmentsUpdate: React.FC = () => {
                                                 <option value="Confirmed">Confirmed</option>
                                                 <option value="Deny">Deny</option>
                                             </select>
-                                        </label><br/>
-                                        <IonButton type="submit">Update Appointment</IonButton>
+                                        </label><br />
+                                        <IonButton type="submit">Update Appointment</IonButton><br /><br />
+
+                                        <strong>Question and Answer</strong><br />
+                                        1. Do you own your home? <p style={{ color: 'blue' }}>{appointment.q1}</p><br />
+                                        2. If renting, do you have permission from your landlord to have pets? <p style={{ color: 'blue' }}>{appointment.q2}</p><br />
+                                        3. Are there children in your household? <p style={{ color: 'blue' }}>{appointment.q3}</p><br />
+                                        4. Do you have other pets at home? <p style={{ color: 'blue' }}>{appointment.q4}</p><br />
+                                        5. Do you have other pets at home? <p style={{ color: 'blue' }}>{appointment.q5}</p><br />
+                                        6. Are you familiar with the specific needs of the chosen pet type/breed? <p style={{ color: 'blue' }}>{appointment.q6}</p><br />
+                                        7. Do you have a stable daily routine? <p style={{ color: 'blue' }}>{appointment.q7}</p><br />
+                                        8. Are you away from home for long periods during the day? <p style={{ color: 'blue' }}>{appointment.q8}</p><br />
+                                        9. Can you afford the costs associated with pet ownership, including food, veterinary care, and unexpected expenses? <p style={{ color: 'blue' }}>{appointment.q9}</p><br />
+                                        10. Do you have a regular veterinarian? <p style={{ color: 'blue' }}>{appointment.q10}</p><br />
+                                        11. Are you willing to provide regular veterinary care, including vaccinations and routine check-ups? <p style={{ color: 'blue' }}>{appointment.q11}</p><br />
+                                        12. Are you willing to attend training classes if necessary? <p style={{ color: 'blue' }}>{appointment.q12}</p><br />
+                                        13. Do you have experience in training pets? <p style={{ color: 'blue' }}>{appointment.q13}</p><br />
+                                        14. Will the pet primarily be kept indoors? <p style={{ color: 'blue' }}>{appointment.q14}</p><br />
+                                        15. Do you have a secure, fenced yard? <p style={{ color: 'blue' }}>{appointment.q15}</p><br />
+                                        16. Do you have a plan for emergencies or unforeseen circumstances? <p style={{ color: 'blue' }}>{appointment.q16}</p><br />
+                                        17. Are you willing to spay/neuter your pet if it is not already done? <p style={{ color: 'blue' }}>{appointment.q17}</p><br />
+                                        18. Can you provide personal or veterinarian references? <p style={{ color: 'blue' }}>{appointment.q18}</p><br />
+                                        19. Are you willing to allow a representative from the pet owner to conduct a home visit? <p style={{ color: 'blue' }}>{appointment.q19}</p><br />
+
                                     </form>
                                 </IonCardContent>
                             </IonCard>
