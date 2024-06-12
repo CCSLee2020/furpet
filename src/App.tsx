@@ -63,7 +63,7 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/petIdentifier">
+        <Route exact path="/:id/petIdentifier">
           <PetIdentifier />
         </Route>
         <Route exact path="/petOwnerPetIdentifier">
@@ -111,16 +111,16 @@ const App: React.FC = () => (
         <Route exact path="/updatepet/:id">
           <UpdateForm />
         </Route>
-        <Route exact path="/adminHome">
+        <Route exact path="/:id/adminHome">
           <AdminHome />
         </Route>
-        <Route exact path="/adminAppointments">
+        <Route exact path="/:id/adminAppointments">
           <AdminAppointments />
         </Route>
         <Route exact path="/selectStatus/:id">
           <AdminAppointmentsUpdate />
         </Route>
-        <Route exact path="/adminPetList">
+        <Route exact path="/:id/adminPetList">
           <AdminPet />
         </Route>
         <Route exact path="/adminUpdatePet/:id">
