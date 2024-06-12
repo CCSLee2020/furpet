@@ -5,14 +5,15 @@ import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 
 type User = {
+    userID: string;
     id: string;
     email: string;
     role: string;
 };
 
 const AdminHome: React.FC = () => {
-    const [isActive, setIsActive] = useState(false); 
-    const [users, setUsers] = useState<any[]>([]);
+    const [isActive, setIsActive] = useState(false);
+    const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,18 +24,15 @@ const AdminHome: React.FC = () => {
         fetchData();
     }, []);
 
-    const deleteUser = async (id: string, email: string, role: string ) => {
+    const deleteUser = async (id: string) => {
         const db = firebase.firestore();
         const userRef = db.collection('users').doc(id);
 
         if (window.confirm('Are you sure you want to delete this user?')) {
-
             await userRef.delete();
-
             setUsers(users.filter(user => user.id !== id));
         }
     };
-
 
     const toggleActive = () => {
         setIsActive(!isActive);
@@ -60,26 +58,34 @@ const AdminHome: React.FC = () => {
                             </div>
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
-                                <a href="/adminHome">
-                                    <li className="aside_list-item active-list">
-                                        <i className="fas fa-users fw"></i> Users
-                                    </li>
-                                </a>
-                                <a href="/adminPetList">
-                                    <li className="aside_list-item">
-                                        <i className="fas fa-clipboard fw"></i> Pet List
-                                    </li>
-                                </a>
-                                <a href="/adminAppointments">
-                                    <li className="aside_list-item">
-                                        <i className="fas fa-clipboard fw"></i> Appointments
-                                    </li>
-                                </a>
-                                <a href="/petIdentifier">
+                                {users.length > 0 && (
+                                    <a href={`/${users[0].userID}/adminHome`}>
+                                        <li className="aside_list-item active-list">
+                                            <i className="fas fa-users fw"></i> Users
+                                        </li>
+                                    </a>
+                                )}
+                                {users.length > 0 && (
+                                    <a href={`/${users[0].userID}/adminPetList`}>
+                                        <li className="aside_list-item">
+                                            <i className="fas fa-clipboard fw"></i> Pet List
+                                        </li>
+                                    </a>
+                                )}
+                                {users.length > 0 && (
+                                    <a href={`/${users[0].userID}/adminAppointments`}>
+                                        <li className="aside_list-item">
+                                            <i className="fas fa-clipboard fw"></i> Appointments
+                                        </li>
+                                    </a>
+                                )}
+                                {users.length > 0 && (
+                                <a href={`/${users[0].userID}/petIdentifier`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
                                 </a>
+                                )}
                             </ul>
                             <ul className="aside_footer">
                                 <li className="aside_list-item">
@@ -93,9 +99,9 @@ const AdminHome: React.FC = () => {
                             {users.map(user => (
                                 <IonCard className='card' key={user.id}>
                                     <IonCardContent>
-                                        Email: {user.email}<br/>
-                                        Role: {user.role}<br/>
-                                        <IonButton color="danger" onClick={() => deleteUser(user.id, user.email, user.role)} >Delete</IonButton>
+                                        Email: {user.email}<br />
+                                        Role: {user.role}<br />
+                                        <IonButton color="danger" onClick={() => deleteUser(user.id)} >Delete</IonButton>
                                     </IonCardContent>
                                 </IonCard>
                             ))}

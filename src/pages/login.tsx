@@ -18,22 +18,30 @@ const LogIn: React.FC = () => {
 
     const signIn = async () => {
         try {
-            const role = await loginUser(email, password); // Fetch the role of the user
+            const result = await loginUser(email, password); // Fetch the role and user ID of the user
 
-            switch (role) {
-                case 'adopter':
-                    history.push('/adopterHome');
-                    break;
-                case 'pet owner':
-                    history.push('/petOwnerHome');
-                    break;
-                case 'admin':
-                    history.push('/adminHome');
-                    break;
-                default:
-                    if (window.confirm('Wrong Username or Password')) {
-                        history.push('/login');
-                    }
+            if (result) {
+                const { role, userId } = result;
+
+                switch (role) {
+                    case 'adopter':
+                        history.push(`/${userId}/adopterHome`);
+                        break;
+                    case 'pet owner':
+                        history.push(`/${userId}/petOwnerHome`);
+                        break;
+                    case 'admin':
+                        history.push(`/${userId}/adminHome`);
+                        break;
+                    default:
+                        if (window.confirm('Wrong Username or Password')) {
+                            history.push('/login');
+                        }
+                }
+            } else {
+                if (window.confirm('Wrong Username or Password')) {
+                    history.push('/login');
+                }
             }
         } catch (error) {
             console.error(error);
