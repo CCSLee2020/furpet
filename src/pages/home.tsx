@@ -116,7 +116,7 @@ const LandingPage: React.FC = () => {
                         difference in their <br />
                         lives
                     </p>
-                    <a href="/petOwnerAdopt"><div className="AdoptAPet"><p className="AdoptAPet2">Adopt A Pet</p></div></a>
+                    <a href="/Discover"><div className="AdoptAPet"><p className="AdoptAPet2">Adopt A Pet</p></div></a>
                     <img className="welcomeImg" src={welcomeImg} />
                 </div>
                 <div className="categories1">
@@ -151,7 +151,7 @@ const LandingPage: React.FC = () => {
                         ))}
                         <div className="adoption_box2">
                             <img src={footprint1} />
-                            <a href="/Explore"><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
+                            <a href="/Discover"><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
                         </div>
                     </div>
                 </div>
