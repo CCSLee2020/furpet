@@ -45,7 +45,34 @@ export async function loginUser(username: string, password: string) {
 }
 
 
-export async function registerUser(username: string, password: string, role: string) {
+export async function registerUser(
+    username: string,
+    name: string,
+    password: string,
+    firstname: string,
+    lastname: string,
+    address: string,
+    contactNumber: string,
+    q1: string,
+    q2: string,
+    q3: string,
+    q4: string,
+    q5: string,
+    q6: string,
+    q7: string,
+    q8: string,
+    q9: string,
+    q10: string,
+    q11: string,
+    q12: string,
+    q13: string,
+    q14: string,
+    q15: string,
+    q16: string,
+    q17: string,
+    q18: string,
+    q19: string,
+) {
     const email = `${username}`
 
     try {
@@ -58,63 +85,31 @@ export async function registerUser(username: string, password: string, role: str
             await userRef.set({
                 UserID: user.uid,
                 email: email,
-                role: role,
-            });
-
-            // Create a "pets" subcollection within the user document
-            const petRef = userRef.collection('pets').doc();
-            await petRef.set({
-                id: petRef.id,
-                index: 0,
-                name: '',
-                type: '',
-                gender: '',
-                age: 0,
-                breed: '',
-                neutered: '',
-                about: '',
-                caretakerInfo: '',
-                caretakerNumber: '',
-                imageUrl: '',
-                location: '',
-                address: ''
-            });
-
-            // Create an "appointments" subcollection within the user document
-            const appointmentRef = userRef.collection('appointments').doc();
-            await appointmentRef.set({
-                q1: '',
-                q2: '',
-                q3: '',
-                q4: '',
-                q5: '',
-                q6: '',
-                q7: '',
-                q8: '',
-                q9: '',
-                q10: '',
-                q11: '',
-                q12: '',
-                q13: '',
-                q14: '',
-                q15: '',
-                q16: '',
-                q17: '',
-                q18: '',
-                q19: '',
-                pet_index: '',
-                appoint_name: '',
-                appoint_number: '',
-                appoint_email: '',
-                appoint_address: '',
-                appoint_date: '',
-                pet_name: '',
-                pet_caretaker: '',
-                pet_number: '',
-                pet_location: '',
-                index: '',
-                status: '',
-                imageUrl: ''
+                role: 'user',
+                name: name,
+                firstname: firstname,
+                lastname: lastname,
+                address: address,
+                contactNumber: contactNumber,
+                q1: q1,
+                q2: q2,
+                q3: q3,
+                q4: q4,
+                q5: q5,
+                q6: q6,
+                q7: q7,
+                q8: q8,
+                q9: q9,
+                q10: q10,
+                q11: q11,
+                q12: q12,
+                q13: q13,
+                q14: q14,
+                q15: q15,
+                q16: q16,
+                q17: q17,
+                q18: q18,
+                q19: q19
             });
         }
     } catch (error) {

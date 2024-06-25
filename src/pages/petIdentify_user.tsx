@@ -1,8 +1,13 @@
-import React, { useState, useRef, useReducer } from "react";
+import React, { useEffect, useState, useRef, useReducer } from "react";
 import { IonContent, IonPage, } from '@ionic/react';
 import * as mobilenet from "@tensorflow-models/mobilenet";
 import './petIdentifyNotAdmin.css';
 import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
+import { useParams } from 'react-router-dom';
+
 
 type State = 'initial' | 'loadingModel' | 'modelReady' | 'imageReady' | 'identifying' | 'complete';
 type Event = 'next';
@@ -25,6 +30,14 @@ interface Machine {
     };
 }
 
+type User = {
+    userID: string;
+    id: string;
+    email: string;
+    role: string;
+    name: string;
+};
+
 const machine: Machine = {
     initial: "initial",
     states: {
@@ -37,13 +50,30 @@ const machine: Machine = {
     }
 };
 
-const PetIdentifyOwner: React.FC = () => {
+const PetIdentifyAdopter: React.FC = () => {
 
     const [results, setResults] = useState<Result[]>([]);
     const [imageURL, setImageURL] = useState<string | null>(null);
     const [model, setModel] = useState<any | null>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [users, setUsers] = useState<User | null>(null);
+    const { userID } = useParams<{ userID: string }>();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const doc = await db.collection('users').doc(userID).get();
+            const user = { id: doc.id, ...doc.data() } as User;
+            setUsers(user);
+        };
+        fetchData();
+    }, []);
 
     const reducer = (state: State, event: Event) =>
         machine.states[state].on[event] || machine.initial;
@@ -99,17 +129,28 @@ const PetIdentifyOwner: React.FC = () => {
     return (
         <IonPage>
             <IonContent>
-            <nav>
+                <nav>
                     <div className="logo1">
                         <img className='navLogo1' src={navLogo} alt="" />
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href="/petOwnerHome">Home</a>
-                        <a href="/petOwnerAdopt">Adopt</a>
-                        <a href="/rehome">Rehome</a>
-                        <a href="/petOwnerPetIdentifier">Identify</a>
-                        <a href="/login">Log Out</a>
+                        <a href={`/${userID}/Home`}>Home</a>
+                        <a href={`/${userID}/Adopt`}>Adopt</a>
+                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
+                        <a href={`/${userID}/rehome`}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <label></label>
+                        {users && (
+                            <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
+                        )}
+                        {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                     </div>
                 </nav>
                 <main className="main">
@@ -145,4 +186,4 @@ const PetIdentifyOwner: React.FC = () => {
     );
 };
 
-export default PetIdentifyOwner;
+export default PetIdentifyAdopter;

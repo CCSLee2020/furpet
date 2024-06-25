@@ -6,17 +6,26 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
 type Appointment = {
-    id: string;
-    appoint_name: string;
-    appoint_number: string;
-    appoint_email: string;
-    appoint_address: string;
     appoint_date: string;
     pet_name: string;
-    pet_caretaker: string;
-    pet_location: string;
     pet_index: string;
-    status: 'Pending' | 'Confirmed' | 'Deny';
+    status: string;
+    index: string;
+    imageUrl: string;
+    appointmentPetOwnerID: string;
+    appointmentOwnerID: string;
+};
+
+type User = {
+    userID: string;
+    id: string;
+    email: string;
+    role: string;
+    name: string;
+    firstname: string;
+    lastname: string;
+    address: string;
+    contactNumber: string;
     q1: string;
     q2: string;
     q3: string;
@@ -39,73 +48,84 @@ type Appointment = {
 };
 
 const AdminAppointmentsUpdate: React.FC = () => {
-
-    const history = useHistory();
     const [isActive, setIsActive] = useState(false);
-    const { id } = useParams<{ id: string }>();
-    const [appointment, setAppointment] = useState<Appointment>({
-        id: '',
-        appoint_name: '',
-        appoint_number: '',
-        appoint_email: '',
-        appoint_address: '',
-        appoint_date: '',
-        pet_name: '',
-        pet_caretaker: '',
-        pet_location: '',
-        pet_index: '',
-        status: 'Pending',
-        q1: "",
-        q2: "",
-        q3: "",
-        q4: "",
-        q5: "",
-        q6: "",
-        q7: "",
-        q8: "",
-        q9: "",
-        q10: "",
-        q11: "",
-        q12: "",
-        q13: "",
-        q14: "",
-        q15: "",
-        q16: "",
-        q17: "",
-        q18: "",
-        q19: ""
-    });
+    const history = useHistory();
+    const { id, userID } = useParams<{ id: string, userID: string }>();
+    const [users, setUsers] = useState<User | null>(null);
+    const [petOwnerUsers, setPetOwnerUsers] = useState<User | null>(null);
+    const [ownerUsers, setOwnerUsers] = useState<User | null>(null);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [appointment, setAppointment] = useState<Appointment | null>(null);
 
     useEffect(() => {
         const fetchAppointment = async () => {
             const db = firebase.firestore();
-            const petDoc = await db.collection('appointment').doc(id).get();
+            const petDoc = await db.collection('appointments').doc(id).get();
+            console.log('Fetched appointment data:', petDoc.data());
             setAppointment(petDoc.data() as Appointment);
         };
 
         fetchAppointment();
     }, [id]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const doc = await db.collection('users').doc(userID).get();
+            const user = { id: doc.id, ...doc.data() } as User;
+            console.log('Fetched user data:', user);
+            setUsers(user);
+        };
+        fetchData();
+    }, [userID]);
+
+    useEffect(() => {
+        if (appointment) {
+            const fetchPetOwnerData = async () => {
+                const db = firebase.firestore();
+                const doc = await db.collection('users').doc(appointment.appointmentPetOwnerID).get();
+                const petOwnerUsers = { id: doc.id, ...doc.data() } as User;
+                console.log('Fetched pet owner data:', petOwnerUsers);
+                setPetOwnerUsers(petOwnerUsers);
+            };
+            fetchPetOwnerData();
+        }
+    }, [appointment]);
+
+    useEffect(() => {
+        if (appointment) {
+            const fetchOwnerData = async () => {
+                const db = firebase.firestore();
+                const doc = await db.collection('users').doc(appointment.appointmentOwnerID).get();
+                const ownerUsers = { id: doc.id, ...doc.data() } as User;
+                console.log('Fetched owner data:', ownerUsers);
+                setOwnerUsers(ownerUsers);
+            };
+            fetchOwnerData();
+        }
+    }, [appointment]);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setAppointment({ ...appointment, [e.target.name]: e.target.value });
+        if (appointment) {
+            setAppointment({ ...appointment, [e.target.name]: e.target.value });
+        }
     };
 
     const handleUpdateAndSubmit = async (e: React.FormEvent, updatedAppointment: Appointment) => {
         e.preventDefault();
 
-        const db = firebase.firestore();
-        await db.collection('appointment').doc(id).set(updatedAppointment);
+        if (!appointment) return;  // Add this line to ensure appointment is not null
 
-        history.push('/adminAppointments');
+        const db = firebase.firestore();
+        await db.collection('appointments').doc(id).set(updatedAppointment);
+        await db.collection('users').doc(`${appointment?.appointmentOwnerID}`).collection('appointments').doc(id).set(updatedAppointment);
+
+        history.push(`${userID}/adminAppointments`);
     };
 
     const toggleActive = () => {
         setIsActive(!isActive);
     };
-
-    if (!appointment) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <IonPage>
@@ -127,22 +147,22 @@ const AdminAppointmentsUpdate: React.FC = () => {
                             </div>
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
-                                <a href="/adminHome">
-                                    <li className="aside_list-item">
+                                <a href={`/${userID}/adminHome`}>
+                                    <li className="aside_list-item active-list">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
                                 </a>
-                                <a href="/adminPetList">
+                                <a href={`/${userID}/adminPetList`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-clipboard fw"></i> Pet List
                                     </li>
                                 </a>
-                                <a href="/adminAppointments">
-                                    <li className="aside_list-item active-list">
+                                <a href={`/${userID}/adminAppointments`}>
+                                    <li className="aside_list-item">
                                         <i className="fas fa-clipboard fw"></i> Appointments
                                     </li>
                                 </a>
-                                <a href="/petIdentifier">
+                                <a href={`/${userID}/Identifier`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
@@ -159,44 +179,28 @@ const AdminAppointmentsUpdate: React.FC = () => {
                         <main className="main">
                             <IonCard>
                                 <IonCardContent className='card'>
-                                    <form onSubmit={(e) => handleUpdateAndSubmit(e, appointment)}>
-                                        Pet Name: {appointment.pet_name}<br />
-                                        Owner Information: {appointment.appoint_name}<br />
-                                        Address: {appointment.appoint_address}<br />
-                                        Your Name: {appointment.appoint_name}<br />
-                                        Your Number: {appointment.appoint_number}<br />
-                                        Your Email: {appointment.appoint_email}<br />
+                                    <form onSubmit={(e) => appointment && handleUpdateAndSubmit(e, appointment)}>
+                                        Pet Name: {appointment?.pet_name}<br />
+                                        Owner Information: {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br />
+                                        Address: {petOwnerUsers?.address}<br />
+                                        Your Name: {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br />
+                                        Your Number: {ownerUsers?.contactNumber}<br />
+                                        Your Email: {ownerUsers?.email}<br />
                                         <label>
-                                            Status:
-                                            <select name="status" value={appointment.status} onChange={handleChange}>
+                                            Status:<br />
+                                            <select name="status" value={appointment?.status} onChange={handleChange}>
                                                 <option value="Pending">Pending</option>
                                                 <option value="Confirmed">Confirmed</option>
                                                 <option value="Deny">Deny</option>
                                             </select>
-                                        </label><br />
-                                        <IonButton type="submit">Update Appointment</IonButton><br /><br />
-
-                                        <strong>Question and Answer</strong><br />
-                                        1. Do you own your home? <p style={{ color: 'blue' }}>{appointment.q1}</p><br />
-                                        2. If renting, do you have permission from your landlord to have pets? <p style={{ color: 'blue' }}>{appointment.q2}</p><br />
-                                        3. Are there children in your household? <p style={{ color: 'blue' }}>{appointment.q3}</p><br />
-                                        4. Do you have other pets at home? <p style={{ color: 'blue' }}>{appointment.q4}</p><br />
-                                        5. Do you have other pets at home? <p style={{ color: 'blue' }}>{appointment.q5}</p><br />
-                                        6. Are you familiar with the specific needs of the chosen pet type/breed? <p style={{ color: 'blue' }}>{appointment.q6}</p><br />
-                                        7. Do you have a stable daily routine? <p style={{ color: 'blue' }}>{appointment.q7}</p><br />
-                                        8. Are you away from home for long periods during the day? <p style={{ color: 'blue' }}>{appointment.q8}</p><br />
-                                        9. Can you afford the costs associated with pet ownership, including food, veterinary care, and unexpected expenses? <p style={{ color: 'blue' }}>{appointment.q9}</p><br />
-                                        10. Do you have a regular veterinarian? <p style={{ color: 'blue' }}>{appointment.q10}</p><br />
-                                        11. Are you willing to provide regular veterinary care, including vaccinations and routine check-ups? <p style={{ color: 'blue' }}>{appointment.q11}</p><br />
-                                        12. Are you willing to attend training classes if necessary? <p style={{ color: 'blue' }}>{appointment.q12}</p><br />
-                                        13. Do you have experience in training pets? <p style={{ color: 'blue' }}>{appointment.q13}</p><br />
-                                        14. Will the pet primarily be kept indoors? <p style={{ color: 'blue' }}>{appointment.q14}</p><br />
-                                        15. Do you have a secure, fenced yard? <p style={{ color: 'blue' }}>{appointment.q15}</p><br />
-                                        16. Do you have a plan for emergencies or unforeseen circumstances? <p style={{ color: 'blue' }}>{appointment.q16}</p><br />
-                                        17. Are you willing to spay/neuter your pet if it is not already done? <p style={{ color: 'blue' }}>{appointment.q17}</p><br />
-                                        18. Can you provide personal or veterinarian references? <p style={{ color: 'blue' }}>{appointment.q18}</p><br />
-                                        19. Are you willing to allow a representative from the pet owner to conduct a home visit? <p style={{ color: 'blue' }}>{appointment.q19}</p><br />
-
+                                        </label><br /><br />
+                                        <IonButton type="submit">Save Appointment</IonButton><br /><br /><br />
+                                        <h2>Question and Answer</h2><br />
+                                        {ownerUsers && Object.keys(ownerUsers).filter(key => key.startsWith('q')).map((key, index) => (
+                                            <p key={key}>
+                                                {index + 1}. {questionTexts[index]} <p style={{ color: 'blue' }}>{(ownerUsers as any)[key]}</p><br />
+                                            </p>
+                                        ))}
                                     </form>
                                 </IonCardContent>
                             </IonCard>
@@ -207,5 +211,27 @@ const AdminAppointmentsUpdate: React.FC = () => {
         </IonPage>
     );
 };
+
+const questionTexts = [
+    "Do you own your home?",
+    "If renting, do you have permission from your landlord to have pets?",
+    "Are there children in your household?",
+    "Do you have other pets at home?",
+    "Do you have other pets at home?",
+    "Are you familiar with the specific needs of the chosen pet type/breed?",
+    "Do you have a stable daily routine?",
+    "Are you away from home for long periods during the day?",
+    "Can you afford the costs associated with pet ownership, including food, veterinary care, and unexpected expenses?",
+    "Do you have a regular veterinarian?",
+    "Are you willing to provide regular veterinary care, including vaccinations and routine check-ups?",
+    "Are you willing to attend training classes if necessary?",
+    "Do you have experience in training pets?",
+    "Will the pet primarily be kept indoors?",
+    "Do you have a secure, fenced yard?",
+    "Do you have a plan for emergencies or unforeseen circumstances?",
+    "Are you willing to spay/neuter your pet if it is not already done?",
+    "Can you provide personal or veterinarian references?",
+    "Are you willing to allow a representative from the pet owner to conduct a home visit?"
+];
 
 export default AdminAppointmentsUpdate;

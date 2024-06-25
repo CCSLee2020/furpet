@@ -24,11 +24,8 @@ const LogIn: React.FC = () => {
                 const { role, userId } = result;
 
                 switch (role) {
-                    case 'adopter':
-                        history.push(`/${userId}/adopterHome`);
-                        break;
-                    case 'pet owner':
-                        history.push(`/${userId}/petOwnerHome`);
+                    case 'user':
+                        history.push(`/${userId}/home`);
                         break;
                     case 'admin':
                         history.push(`/${userId}/adminHome`);

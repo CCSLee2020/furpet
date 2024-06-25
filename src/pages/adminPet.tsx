@@ -3,7 +3,7 @@ import './style.css';
 import { IonContent, IonPage, IonCard, IonCardContent, IonButton } from '@ionic/react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import 'firebase/compat/storage';
 
 type Pet = {
@@ -22,6 +22,13 @@ type Pet = {
     status: string;
 };
 
+type User = {
+    userID: string;
+    id: string;
+    email: string;
+    role: string;
+};
+
 const AdminAppointments: React.FC = () => {
 
     const [isActive, setIsActive] = useState(false);
@@ -29,6 +36,8 @@ const AdminAppointments: React.FC = () => {
     const storageRef = firebase.storage().ref();
     const [availableCount, setAvailableCount] = useState<number>(0);
     const [adoptedCount, setAdoptedCount] = useState<number>(0);
+    const [users, setUsers] = useState<User[]>([]);
+    const { userID } = useParams<{ userID: string }>();
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -46,6 +55,15 @@ const AdminAppointments: React.FC = () => {
     }, []);
 
     const [pets, setPets] = useState<Pet[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const data = await db.collection('users').get();
+            setUsers(data.docs.map(doc => ({ ...doc.data(), id: doc.id }) as User));
+        };
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchPets = async () => {
@@ -111,22 +129,22 @@ const AdminAppointments: React.FC = () => {
                             </div>
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
-                                <a href="/adminHome">
+                                <a href={`/${userID}/adminHome`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
                                 </a>
-                                <a href="/adminPetList">
+                                <a href={`/${userID}/adminPetList`}>
                                     <li className="aside_list-item active-list">
                                         <i className="fas fa-clipboard fw"></i> Pet List
                                     </li>
                                 </a>
-                                <a href="/adminAppointments">
+                                <a href={`/${userID}/adminAppointments`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-clipboard fw"></i> Appointments
                                     </li>
                                 </a>
-                                <a href="/petIdentifier">
+                                <a href={`/${userID}/Identifier`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
@@ -152,11 +170,10 @@ const AdminAppointments: React.FC = () => {
                                     <IonCardContent>
                                         <img className="document_img2" key={i} src={imageUrls[i]} alt={pet.name} /><br />
                                         Pet Name: {pet.name}<br />
-                                        Owner Information: {pet.caretakerInfo}<br />
                                         Address: {pet.location}<br />
                                         Neutered: {pet.neutered}<br />
                                         Pet Status: {pet.status}<br />
-                                        <IonButton color="light"><Link to={`/adminUpdatePet/${pet.id}`}>Select Status</Link></IonButton>
+                                        <IonButton color="light"><Link to={`/${userID}/adminUpdatePet/${pet.id}`}>Select Status</Link></IonButton>
                                         <IonButton color="danger" onClick={() => deletePet(pet.id, pet.index)} > Delete </IonButton>
                                     </IonCardContent>
                                 </IonCard>

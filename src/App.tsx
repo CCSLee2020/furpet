@@ -1,3 +1,4 @@
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
@@ -7,13 +8,13 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import SignUp from './pages/signup';
 import Login from './pages/login';
-import AdopterHome from './pages/landingpage_adopter';
-import PetOwnerHome from './pages/landingpage_petOwner';
-import AdopterAdopt from './pages/adopt_adopter';
-import PetOwnerAdopt from './pages/adopt_petOwner';
-import AdopterAdoptMe from './pages/adoptme_adopter';
-import PetOwnerAdoptMe from './pages/adoptme_petOwner';
+import Home from './pages/landingpage';
+import Adopt from './pages/adopt';
+import AdoptMe from './pages/adoptme';
 import Appointment from './pages/appointment';
+import ViewApointment from './pages/viewAppointments';
+import UpdateAppointment from './pages/updateAppointment';
+import NotifAppointment from './pages/notifyappointment';
 import ReHome from './pages/rehome';
 import AddPet from './pages/addpet';
 import UpdateForm from './pages/updatePet';
@@ -24,8 +25,9 @@ import AdminPet from './pages/adminPet';
 import AdminUpdatePet from './pages/adminUpdatePet'
 import AdminAppointments from './pages/adminAppointments';
 import AdminAppointmentsUpdate from './pages/adminAppoinmentsupdate';
-import PetIdentifyOwner from './pages/petIdentify_petOwner';
-import PetIdentifyAdopter from './pages/petIdentify_adopter';
+import PetIdentifyUser from './pages/petIdentify_user';
+import Profile from './pages/profile';
+import UpdateProfile from './pages/edituser';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,7 +47,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import AdminUpdatePets from './pages/adminUpdatePet';
 
 setupIonicReact();
 
@@ -63,14 +64,11 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/:id/petIdentifier">
+        <Route exact path="/:userID/Identifier">
           <PetIdentifier />
         </Route>
-        <Route exact path="/petOwnerPetIdentifier">
-          <PetIdentifyOwner />
-        </Route>
-        <Route exact path="/adopterPetIdentifier">
-          <PetIdentifyAdopter />
+        <Route exact path="/:userID/PetIdentifier">
+          <PetIdentifyUser />
         </Route>
         <Route exact path="/signup">
           <SignUp />
@@ -78,56 +76,77 @@ const App: React.FC = () => (
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/adopterHome">
-          <AdopterHome />
+        <Route exact path="/:userID/Home">
+          <Home />
         </Route>
-        <Route exact path="/petOwnerHome">
-          <PetOwnerHome />
+        <Route exact path="/:userID/Adopt">
+          <Adopt />
         </Route>
-        <Route exact path="/adopterAdopt">
-          <AdopterAdopt />
+        <Route exact path="/:userID/Adoptme/:id">
+          <AdoptMe />
         </Route>
-        <Route exact path="/petOwnerAdopt">
-          <PetOwnerAdopt />
+        <Route exact path="/:userID/appointmentlist">
+          <NotifAppointment />
         </Route>
-        <Route exact path="/adopterAdoptme/:id">
-          <AdopterAdoptMe />
-        </Route>
-        <Route exact path="/petOwnerAdoptme/:id">
-          <PetOwnerAdoptMe />
-        </Route>
-        <Route exact path="/appointmentlist">
+        <Route exact path="/:userID/myAppointments">
           <AppointmentList />
         </Route>
-        <Route exact path="/appointment/:id">
+        <Route exact path="/:userID/viewAppointment/:id">
+          <ViewApointment />
+        </Route>
+        <Route exact path="/:userID/updateAppointment/:id">
+          <UpdateAppointment />
+        </Route>
+        <Route exact path="/:userID/Adoptme/:userID/appointment/:id">
           <Appointment />
         </Route>
-        <Route exact path="/rehome">
+        <Route exact path="/:userID/rehome">
           <ReHome />
         </Route>
-        <Route exact path="/addpet">
+        <Route exact path="/:userID/addpet">
           <AddPet />
         </Route>
-        <Route exact path="/updatepet/:id">
+        <Route exact path="/:userID/updatepet/:id">
           <UpdateForm />
         </Route>
-        <Route exact path="/:id/adminHome">
+        <Route exact path="/:userID/adminHome">
           <AdminHome />
         </Route>
-        <Route exact path="/:id/adminAppointments">
+        <Route exact path="/:userID/adminAppointments">
           <AdminAppointments />
         </Route>
-        <Route exact path="/selectStatus/:id">
+        <Route exact path="/:userID/selectStatus/:id">
           <AdminAppointmentsUpdate />
         </Route>
-        <Route exact path="/:id/adminPetList">
+        <Route exact path="/:userID/adminPetList">
           <AdminPet />
         </Route>
-        <Route exact path="/adminUpdatePet/:id">
+        <Route exact path="/:userID/adminUpdatePet/:id">
           <AdminUpdatePet />
+        </Route>
+        <Route exact path="/:userID/profile/:userID">
+          <Profile />
+        </Route>
+        <Route exact path="/:userID/profile/:userID/edit/:userID">
+          <UpdateProfile />
         </Route>
         <Route exact path="/">
           <Redirect to="/login" />
+        </Route>
+        <Route path="/:userID/Adoptme/:anotherUserID/appointment/:appointmentID/Home">
+          {({ match }) => (
+            match ? <Redirect to={`/${match.params.userID}/Home`} /> : null
+          )}
+        </Route>
+        <Route path="/:userID/updateAppointment/:UserID/appointmentlist">
+          {({ match }) => (
+            match ? <Redirect to={`/${match.params.userID}/appointmentlist`} /> : null
+          )}
+        </Route>
+        <Route path="/:userID/selectStatus/:UserID/adminAppointments">
+          {({ match }) => (
+            match ? <Redirect to={`/${match.params.userID}/adminAppointments`} /> : null
+          )}
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

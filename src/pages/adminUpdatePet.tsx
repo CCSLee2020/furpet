@@ -20,12 +20,31 @@ type Pet = {
     type: 'cat' | 'dog';
     status: 'adopted' | 'available';
     address: string;
+    petOwnerID: string;
+};
+
+type User = {
+    userID: string;
+    id: string;
+    email: string;
+    role: string;
+};
+
+type OwnerUser = {
+    id: string;
+    firstname: string;
+    lastname: string;
+    address: string;
+    contactNumber: string;
 };
 
 const AdminUpdatePets: React.FC = () => {
     const history = useHistory();
+    const [users, setUsers] = useState<User[]>([]);
+    const { userID } = useParams<{ userID: string }>();
     const [isActive, setIsActive] = useState(false);
     const { id } = useParams<{ id: string }>();
+    const [ownerUser, setOwnerUser] = useState<OwnerUser | null>(null);
     const [pet, setPet] = useState<Pet>({
         index: Date.now(),
         name: '',
@@ -40,7 +59,8 @@ const AdminUpdatePets: React.FC = () => {
         neutered: 'yes',
         type: 'cat',
         status: 'available',
-        address: ''
+        address: '',
+        petOwnerID: `${userID}`
     });
 
     useEffect(() => {
@@ -53,18 +73,41 @@ const AdminUpdatePets: React.FC = () => {
         fetchPet();
     }, [id]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const data = await db.collection('users').get();
+            setUsers(data.docs.map(doc => ({ ...doc.data(), id: doc.id }) as User));
+        };
+        fetchData();
+    }, []);
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setPet({ ...pet, [e.target.name]: e.target.value });
     };
 
+    useEffect(() => {
+        const fetchOwnerUser = async () => {
+            if (pet) {
+                const db = firebase.firestore();
+                const doc = await db.collection('users').doc(pet.petOwnerID).get();
+                const ownerUser = { id: doc.id, ...doc.data() } as OwnerUser;
+                setOwnerUser(ownerUser);
+            }
+        };
+
+        fetchOwnerUser();
+    }, [pet]);
+
     const handleUpdateAndSubmit = async (e: React.FormEvent, updatedPet: Pet) => {
         e.preventDefault();
-      
+
         const db = firebase.firestore();
         await db.collection('pets').doc(id).set(updatedPet);
-      
-        history.push('/adminPetList');
-      };
+        await db.collection(`/users/${pet.petOwnerID}/pets`).doc(id).set(updatedPet);
+
+        history.push(`/${userID}/adminPetList`);
+    };
 
     if (!pet) {
         return <div>Loading...</div>;
@@ -94,22 +137,22 @@ const AdminUpdatePets: React.FC = () => {
                             </div>
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
-                                <a href="/adminHome">
+                                <a href={`/${userID}/adminHome`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
                                 </a>
-                                <a href="/adminPetList">
+                                <a href={`/${userID}/adminPetList`}>
                                     <li className="aside_list-item active-list">
                                         <i className="fas fa-clipboard fw"></i> Pet List
                                     </li>
                                 </a>
-                                <a href="/adminAppointments">
+                                <a href={`/${userID}/adminAppointments`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-clipboard fw"></i> Appointments
                                     </li>
                                 </a>
-                                <a href="/petIdentifier">
+                                <a href={`/${userID}/petIdentifier`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
@@ -137,9 +180,13 @@ const AdminUpdatePets: React.FC = () => {
                                         Address: {pet.address}<br />
                                         About: {pet.about}<br />
                                         Breed: {pet.breed}<br />
-                                        Caretaker Name: {pet.caretakerInfo}<br />
-                                        Caretaker Contact Number: {pet.caretakerNumber}<br />
-                                        Caretaker Location: {pet.location}<br />
+                                        {ownerUser && (
+                                            <p>
+                                                Caretaker Name: {`${ownerUser.firstname} ${ownerUser.lastname}`}<br />
+                                                Caretaker Contact Number: {ownerUser.contactNumber}<br />
+                                                Caretaker Location: {ownerUser.address}<br />
+                                            </p>
+                                        )}
                                         <label>
                                             Status:
                                             <select name="status" value={pet.status} onChange={handleChange}>
@@ -148,7 +195,6 @@ const AdminUpdatePets: React.FC = () => {
                                             </select>
                                         </label><br />
                                         <IonButton type="submit">Update Pet</IonButton><br /><br />
-
                                     </form>
                                 </IonCardContent>
                             </IonCard>

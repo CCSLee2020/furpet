@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './addpet.css';
 import { IonImg, IonContent, IonPage, IonButton } from '@ionic/react';
 import addPet from '../assets/Group 54.png';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
 import { useHistory } from 'react-router-dom';
 import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
-
+import { useParams } from 'react-router-dom';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
 
 type Pet = {
   index: string;
@@ -17,14 +20,20 @@ type Pet = {
   breed: string;
   location: string;
   about: string;
-  caretakerInfo: string;
-  caretakerNumber: string;
   weight: string;
   gender: 'male' | 'female';
   neutered: 'yes' | 'no';
   type: 'cat' | 'dog';
   status: 'Available' | 'Adopted';
-  address: string;
+  petOwnerID: string;
+};
+
+type User = {
+  userID: string;
+  id: string;
+  email: string;
+  role: string;
+  name: string;
 };
 
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -38,6 +47,9 @@ function generateUniqueFirestoreId(): string {
 }
 
 const LandingPage: React.FC = () => {
+  const { userID } = useParams<{ userID: string }>();
+
+  console.log("Extracted userID:", userID); // Debugging line
 
   const history = useHistory();
 
@@ -48,17 +60,31 @@ const LandingPage: React.FC = () => {
     breed: '',
     location: '',
     about: '',
-    caretakerInfo: '',
-    caretakerNumber: '',
     weight: '',
     gender: 'male',
     neutered: 'yes',
     type: 'cat',
-    imageUrl: `images/${Date.now()}`,
+    imageUrl: `${userID}`,
     status: 'Available',
-    address: ''
+    petOwnerID: `${userID}`
   });
   const [image, setImage] = useState<File | null>(null);
+  const [users, setUsers] = useState<User | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const db = firebase.firestore();
+      const doc = await db.collection('users').doc(userID).get();
+      const user = { id: doc.id, ...doc.data() } as User;
+      setUsers(user);
+    };
+    fetchData();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setPet({ ...pet, [e.target.name]: e.target.value });
@@ -73,28 +99,39 @@ const LandingPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (userID) {
+      const documentId = pet.index; // Use the generated document ID
 
-    if (image) {
-      const storageRef = ref(storage, `images/${pet.index}`);
-      const uploadTask = uploadBytesResumable(storageRef, image);
+      if (image) {
+        const storageRef = ref(storage, `images/${documentId}`);
+        const uploadTask = uploadBytesResumable(storageRef, image);
 
-      uploadTask.on('state_changed',
-        (snapshot) => {
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setPet({ ...pet, imageUrl: downloadURL });
-            addDoc(collection(db, 'pets'), pet);
-          });
-        }
-      );
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            // Handle progress
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+              const petWithImageUrl = { ...pet, imageUrl: downloadURL };
+
+              await setDoc(doc(db, 'pets', documentId), petWithImageUrl); // Add to pets collection
+              await setDoc(doc(db, `users/${userID}/pets`, documentId), petWithImageUrl); // Add to user's pets subcollection
+
+              history.push(`/${userID}/rehome`);
+            });
+          }
+        );
+      } else {
+        await setDoc(doc(db, 'pets', documentId), pet); // Add to pets collection
+        await setDoc(doc(db, `users/${userID}/pets`, documentId), pet); // Add to user's pets subcollection
+
+        history.push(`/${userID}/rehome`);
+      }
     }
-    history.push('/rehome');
   };
-
 
   return (
     <IonPage>
@@ -105,11 +142,21 @@ const LandingPage: React.FC = () => {
             <h1 className="h1_logo1">FurPet</h1>
           </div>
           <div className="nav-links1">
-            <a href="/petOwnerHome">Home</a>
-            <a href="/petOwnerAdopt">Adopt</a>
-            <a href="/rehome">Rehome</a>
-            <a href="/petOwnerPetIdentifier">Identify</a>
-            <a href="/login">Log Out</a>
+            <a href={`/${userID}/Home`}>Home</a>
+            <a href={`/${userID}/Adopt`}>Adopt</a>
+            <a href={`/${userID}/appointmentlist`}>Appointments</a>
+            <a href={`/${userID}/rehome`}>Rehome</a>
+            <a href={`/${userID}/PetIdentifier`}>Identify</a>
+            {users && (
+              <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
+            )}
+            {menuOpen && (
+              <div className="nav-dropdown-menu">
+                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
+                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
+                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+              </div>
+            )}
           </div>
         </nav>
         <div className="AddPet">
@@ -143,11 +190,8 @@ const LandingPage: React.FC = () => {
               </div>
               <input className="AddPetForm_input" type="text" placeholder="Breed" name="breed" value={pet.breed} onChange={handleChange} />
               <input className="AddPetForm_input" type="text" placeholder="Weight (kg)" name="weight" value={pet.weight} onChange={handleChange} />
-              <input className="AddPetForm_input" type="text" placeholder="Address" name="location" value={pet.location} onChange={handleChange} />
+              <input className="AddPetForm_input" type="text" placeholder="Location" name="location" value={pet.location} onChange={handleChange} />
               <input className="AddPetForm_input" type="text" placeholder="About" name="about" value={pet.about} onChange={handleChange} />
-              <input className="AddPetForm_input" type="text" placeholder="Caretaker Name" name="caretakerInfo" value={pet.caretakerInfo} onChange={handleChange} />
-              <input className="AddPetForm_input" type="text" placeholder="Caretaker Number" name="caretakerNumber" value={pet.caretakerNumber} onChange={handleChange} />
-              <input className="AddPetForm_input" type="text" placeholder="Caretaker Location" name="address" value={pet.address} onChange={handleChange} />
               <a href="/home"><button className="AddPet_submit" type="submit">Add Pet</button></a>
             </form>
           </div>

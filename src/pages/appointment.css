@@ -236,7 +236,7 @@ hr {
     font-family: 'Roboto', sans-serif;
     font-size: 40px;
     position: relative;
-    top: 300px;
+    top: -100px;
 }
 
 .hidden_input {
@@ -278,6 +278,11 @@ hr {
 
 @media only screen and (max-width: 769px) {
 
+    .appointment_h1 {
+        top: -10px;
+        left: 10px;
+    }
+
     .schedule_file {
         position: relative;
         right: 60px
@@ -298,7 +303,7 @@ hr {
     }
 
     .appointment_container {
-        top: 100px;
+        top: 75px;
     }
 
     .appointment_container>.appointment_box {
@@ -351,10 +356,13 @@ hr {
         top: 150px;
         height: 250px;
     }
-    
-    .scheduleBox1,
+
     .qnaBox {
         top: 75px;
+    }
+
+    .scheduleBox1 {
+        top: 0px;
     }
 
     .scheduleform,
@@ -386,7 +394,7 @@ hr {
 
 @media only screen and (max-width: 597px) {
     .schedule_submit1 {
-        top: 400px
+        top: 140px
     }
 }
 

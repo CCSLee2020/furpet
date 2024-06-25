@@ -201,10 +201,22 @@ nav a:hover {
     top: -330px;
 }
 
+.edit1 {
+    position: relative;
+    left: 400px;
+    top: -260px;
+}
+
 .rehome_box>.delete {
     position: relative;
     left: 800px;
     top: -320px;
+}
+
+.delete1 {
+    position: relative;
+    left: 420px;
+    top: -250px;
 }
 
 .rehome_container>.appointment_outerbox {
@@ -371,6 +383,18 @@ nav a:hover {
         height: 300px;
     }
 
+    .edit1 {
+        left: 300px;
+    }
+
+    .delete1 {
+        left: 310px;
+    }
+
+    .rehome_container>.appointment_outerbox {
+        height: 338px;
+    }
+
     .appointment_outerbox>.deleteImg2 {
         top: -450px;
         left: 620px;
@@ -432,6 +456,10 @@ nav a:hover {
         position: relative;
         left: 400px;
         top: -320px;
+    }
+
+    .rehome_container>.appointment_outerbox {
+        height: 300px;
     }
 }
 
@@ -523,6 +551,7 @@ nav a:hover {
         padding-left: 10px;
         line-height: 37.5px;
         font-size: 15px;
+        height: 300px;
     }
 
     .document_img {
@@ -567,6 +596,21 @@ nav a:hover {
         top: -250px;
         left: 41px;
     }
+
+    .rehome_container>.appointment_outerbox {
+        height: 200px;
+    }
+
+    .edit1 {
+        left: 170px;
+        top: -180px;
+    }
+
+    .delete1 {
+        left: 180px;
+        top: -170px;
+    }
+    
 }
 
 @media only screen and (max-width: 426px) {
@@ -607,11 +651,25 @@ nav a:hover {
 
     .rehome_box>.edit, .rehome_box>.delete {
         left: 0px;
-        top: -190px;
+        top: -150px;
     }
 
     .appointment_outerbox>.deleteImg2 {
         top: -200px;
         left: 15px;
+    }
+
+    .rehome_container>.appointment_outerbox {
+        height: 150px;
+    }
+
+    .edit1 {
+        left: 100px;
+        top: -140px;
+    }
+
+    .delete1 {
+        left: 100px;
+        top: -130px;
     }
 }

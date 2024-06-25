@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
 import { IonContent, IonPage, IonCard, IonCardContent, IonButton } from '@ionic/react';
+import { useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 
@@ -14,6 +15,7 @@ type User = {
 const AdminHome: React.FC = () => {
     const [isActive, setIsActive] = useState(false);
     const [users, setUsers] = useState<User[]>([]);
+    const { userID } = useParams<{ userID: string }>();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -58,34 +60,26 @@ const AdminHome: React.FC = () => {
                             </div>
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
-                                {users.length > 0 && (
-                                    <a href={`/${users[0].userID}/adminHome`}>
-                                        <li className="aside_list-item active-list">
-                                            <i className="fas fa-users fw"></i> Users
-                                        </li>
-                                    </a>
-                                )}
-                                {users.length > 0 && (
-                                    <a href={`/${users[0].userID}/adminPetList`}>
-                                        <li className="aside_list-item">
-                                            <i className="fas fa-clipboard fw"></i> Pet List
-                                        </li>
-                                    </a>
-                                )}
-                                {users.length > 0 && (
-                                    <a href={`/${users[0].userID}/adminAppointments`}>
-                                        <li className="aside_list-item">
-                                            <i className="fas fa-clipboard fw"></i> Appointments
-                                        </li>
-                                    </a>
-                                )}
-                                {users.length > 0 && (
-                                <a href={`/${users[0].userID}/petIdentifier`}>
+                                <a href={`/${userID}/adminHome`}>
+                                    <li className="aside_list-item active-list">
+                                        <i className="fas fa-users fw"></i> Users
+                                    </li>
+                                </a>
+                                <a href={`/${userID}/adminPetList`}>
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-clipboard fw"></i> Pet List
+                                    </li>
+                                </a>
+                                <a href={`/${userID}/adminAppointments`}>
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-clipboard fw"></i> Appointments
+                                    </li>
+                                </a>
+                                <a href={`/${userID}/Identifier`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
                                 </a>
-                                )}
                             </ul>
                             <ul className="aside_footer">
                                 <li className="aside_list-item">

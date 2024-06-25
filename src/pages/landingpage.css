@@ -38,7 +38,44 @@ nav a:hover {
     display: flex;
     align-items: center;
     margin-right: 0px;
+    position: relative;
+    right: 10px;
 }
+
+/* Styles for the dropdown button */
+.nav-dropdown-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  
+  /* Styles for the dropdown menu */
+  .nav-dropdown-menu {
+    position: absolute;
+    top: 40px; /* Adjust based on your design */
+    right: 0;
+    background-color: #2c2c2c;
+    border: 1px solid #ccc;
+    z-index: 3;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    height: 42px;
+  }
+  
+  /* Styles for the dropdown menu items */
+  .nav-dropdowntext {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    top: -53px;
+  }
+  
 
 .nav-links1 a {
     color: rgb(255, 255, 255);
@@ -246,6 +283,8 @@ nav a:hover {
     line-height: 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
+    position: relative;
+    top: -17px;
 }
 
 .adoptMe {
@@ -255,6 +294,7 @@ nav a:hover {
     border-radius: 50px;
     position: relative;
     left: 10px;
+    top: -17px;
 }
 
 .adoptMe2 {
@@ -378,7 +418,7 @@ nav a:hover {
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 1100px) {
     nav {
         flex-direction: column;
         align-items: flex-start;
@@ -392,9 +432,35 @@ nav a:hover {
     .nav-links1 {
         flex-direction: row;
         position: relative;
-        left: 50px;
+        left: 80px;
         font-size: 2vw;
         margin-right: 100px;
+    }
+
+    .nav-dropdown-btn {
+        flex-direction: row;
+        position: relative;
+        left: 20px;
+        font-size: 2vw;
+        margin-right: 100px;
+    }
+
+    .nav-dropdown-menu {
+        height: 40px;
+        top: -35px;
+        width: 420px;
+        right: 80px;
+        display: flex;
+        font-size: 2vw;
+        align-items: center;
+    }
+
+    .nav-dropdowntext {
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+        top: 0px;
+        margin: 0px;
     }
 }
 
@@ -479,5 +545,22 @@ nav a:hover {
     .adoptionProcess {
         height: 300px;
         top: 1683px;
+    }
+
+    .nav-dropdown-menu {
+        height: 40px;
+        top: -35px;
+        font-size: 2vw;
+        width: 300px;
+    }
+
+    .nav-dropdowntext {
+        left: 0px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .nav-dropdown-menu {
+        font-size: 3vw;
     }
 }

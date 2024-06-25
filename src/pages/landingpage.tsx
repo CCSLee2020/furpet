@@ -6,15 +6,15 @@ import dog1 from '../assets/dog 1.png';
 import footprint1 from '../assets/footprint 1.png';
 import cat1 from '../assets/cat 1.png';
 import adoptionProcess from '../assets/Group 32.png';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
-
 type Pet = {
     id: string;
-    index: number,
+    index: number;
     name: string;
     age: number;
     gender: 'male' | 'female';
@@ -29,11 +29,28 @@ type Pet = {
     status: string;
 };
 
+type User = {
+    userID: string;
+    id: string;
+    email: string;
+    role: string;
+    name: string;
+};
+
 const LandingPage: React.FC = () => {
+    const { userID } = useParams<{ userID: string }>();
+
+    console.log("Extracted userID:", userID); // Debugging line
 
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const storageRef = firebase.storage().ref();
     const [selectedType, setSelectedType] = useState<'Cat' | 'Dog' | 'all'>('all');
+    const [users, setUsers] = useState<User | null>(null);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -68,7 +85,15 @@ const LandingPage: React.FC = () => {
         fetchPets();
     }, []);
 
-
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const doc = await db.collection('users').doc(userID).get();
+            const user = { id: doc.id, ...doc.data() } as User;
+            setUsers(user);
+        };
+        fetchData();
+    }, []);
 
     return (
         <IonPage>
@@ -79,11 +104,22 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href="/petOwnerHome">Home</a>
-                        <a href="/petOwnerAdopt">Adopt</a>
-                        <a href="/rehome">Rehome</a>
-                        <a href="/petOwnerPetIdentifier">Identify</a>
-                        <a href="/login">Log Out</a>
+                        <a href={`/${userID}/Home`}>Home</a>
+                        <a href={`/${userID}/Adopt`}>Adopt</a>
+                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
+                        <a href={`/${userID}/rehome`}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <label></label>
+                        {users && (
+                            <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
+                        )}
+                        {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                     </div>
                 </nav>
                 <div className="welcomeBanner">
@@ -115,18 +151,19 @@ const LandingPage: React.FC = () => {
                         {pets.filter(pet => selectedType === 'all' || pet.type.toLowerCase() === selectedType.toLowerCase()).slice(0, 3).map((pet, i) => (
                             <div className="adoption_box" key={pet.id}>
                                 <img className="adoption_image" src={pet.imageUrl} alt={pet.name} />
-                                <p className="adoption_text">{pet.breed}</p>
+                                <p className="adoption_text">{pet.name}</p>
+                                <p className="adoption_desc">{pet.breed}</p>
                                 <p className="adoption_desc">{pet.age} Years Old</p>
                                 <p className="adoption_desc">{pet.gender}</p>
                                 <p className="adoption_desc">{pet.weight} kg</p>
                                 <p className="adoption_desc">{pet.location}</p>
                                 <p className="adoption_desc">Status: {pet.status}</p>
-                                <Link to={`/petOwnerAdoptme/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
+                                <Link to={`/${userID}/Adoptme/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
                             </div>
                         ))}
                         <div className="adoption_box2">
                             <img src={footprint1} />
-                            <a href="/petOwnerAdopt"><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
+                            <a href={`${userID}/Adopt`}><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
                         </div>
                     </div>
                 </div>

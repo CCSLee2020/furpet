@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './rehome.css';
 import { IonContent, IonPage } from '@ionic/react';
 import Delete from '../assets/material-symbols_delete-outline.png';
-import view from '../assets/Vector1.png';
+import edit from '../assets/Vector.png';
 import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -12,18 +12,13 @@ import { useParams, Link } from 'react-router-dom';
 type Appointment = {
     id: string;
     index: string;
-    appoint_name: string;
-    appoint_number: string;
-    appoint_email: string;
-    appoint_address: string;
     appoint_date: string;
     pet_name: string;
-    pet_caretaker: string;
-    pet_number: string;
-    pet_location: string;
     pet_index: string;
     imageUrl: string;
     status: string;
+    appointmentPetOwnerID: string;
+    appointmentOwnerID: string;
 };
 
 type User = {
@@ -36,13 +31,10 @@ type User = {
 
 const LandingPage: React.FC = () => {
     const { userID } = useParams<{ userID: string }>();
-
-    console.log("Extracted userID:", userID); // Debugging line
-
     const [appointments, setAppointments] = useState<Appointment[]>([]);
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const storageRef = firebase.storage().ref();
-    const [users, setUsers] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -53,11 +45,11 @@ const LandingPage: React.FC = () => {
         const fetchData = async () => {
             const db = firebase.firestore();
             const doc = await db.collection('users').doc(userID).get();
-            const user = { id: doc.id, ...doc.data() } as User;
-            setUsers(user);
+            const userData = { id: doc.id, ...doc.data() } as User;
+            setUser(userData);
         };
         fetchData();
-    }, []);
+    }, [userID]);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -76,21 +68,24 @@ const LandingPage: React.FC = () => {
 
     useEffect(() => {
         const fetchPets = async () => {
-          try {
-            const db = firebase.firestore();
-            const petCollection = db.collection('users').doc(userID).collection('appointments').orderBy('index');
-            const petSnapshot = await petCollection.get();
-            const petList: Appointment[] = petSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }) as Appointment);
-            setAppointments(petList);
-          } catch (error) {
-            console.error('Error fetching pets:', error);
-          }
+            try {
+                const db = firebase.firestore();
+                const appointmentCollection = db.collection('appointments').orderBy('index');
+                const appointmentSnapshot = await appointmentCollection.get();
+                const petList: Appointment[] = appointmentSnapshot.docs
+                    .map(doc => ({ ...doc.data(), id: doc.id }) as Appointment)
+                    .filter(appointment => appointment.appointmentPetOwnerID === userID);
+                    
+                setAppointments(petList);
+            } catch (error) {
+                console.error('Error fetching pets:', error);
+            }
         };
-    
+
         if (userID) {
-          fetchPets();
+            fetchPets();
         }
-      }, [userID]);
+    }, [userID]);
 
     const deleteAppoint = async (id: string, imageUrl: string) => {
         try {
@@ -132,8 +127,8 @@ const LandingPage: React.FC = () => {
                         <a href={`/${userID}/rehome`}>Rehome</a>
                         <a href={`/${userID}/PetIdentifier`}>Identify</a>
                         <label></label>
-                        {users && (
-                            <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
+                        {user && (
+                            <button onClick={toggleMenu} className="nav-dropdown-btn">{user.name}</button>
                         )}
                         {menuOpen && (
                             <div className="nav-dropdown-menu">
@@ -145,7 +140,7 @@ const LandingPage: React.FC = () => {
                     </div>
                 </nav>
                 <div className="rehome">
-                    <h1 className="rehome_h1">My Appointments</h1>
+                    <h1 className="rehome_h1">Appointment List</h1>
                     <div className="rehome_container">
                         {appointments.map((appointment, i) => (
                             <div key={appointment.id} className="appointment_outerbox">
@@ -155,7 +150,7 @@ const LandingPage: React.FC = () => {
                                     <h2 className="rehome_h2">Appointment Date: {appointment.appoint_date}</h2>
                                     <h2 className="rehome_h2">Status: {appointment.status}</h2>
                                 </div>
-                                <Link className="edit1" to={`/${userID}/viewAppointment/${appointment.id}`}><img className="edit" src={view} alt="edit" /></Link>
+                                <Link className="edit1" to={`/${userID}/updateAppointment/${appointment.id}`}><img className="edit" src={edit} alt="edit" /></Link>
                                 <img className="delete1" src={Delete} onClick={() => deleteAppoint(appointment.id, appointment.index)} />
                             </div>
                         ))}
