@@ -104,22 +104,10 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
-                        <label></label>
-                        {users && (
-                            <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
-                        )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        <a href="/Menu">Home</a>
+                        <a href="/Discover">Explore</a>
+                        <a href="/IdentifyPets">Identify</a>
+                        <a href="/login">Login</a>
                     </div>
                 </nav>
                 <div className="welcomeBanner">
@@ -128,7 +116,7 @@ const LandingPage: React.FC = () => {
                         difference in their <br />
                         lives
                     </p>
-                    <a href={`${userID}/Explore`}><div className="AdoptAPet"><p className="AdoptAPet2">Adopt A Pet</p></div></a>
+                    <a href="/petOwnerAdopt"><div className="AdoptAPet"><p className="AdoptAPet2">Adopt A Pet</p></div></a>
                     <img className="welcomeImg" src={welcomeImg} />
                 </div>
                 <div className="categories1">
@@ -158,12 +146,12 @@ const LandingPage: React.FC = () => {
                                 <p className="adoption_desc">{pet.weight} kg</p>
                                 <p className="adoption_desc">{pet.location}</p>
                                 <p className="adoption_desc">Status: {pet.status}</p>
-                                <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
+                                <Link to={`/ViewPet/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
                             </div>
                         ))}
                         <div className="adoption_box2">
                             <img src={footprint1} />
-                            <a href={`${userID}/Adopt`}><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
+                            <a href="/Explore"><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
                         </div>
                     </div>
                 </div>

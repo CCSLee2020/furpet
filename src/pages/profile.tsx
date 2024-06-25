@@ -48,7 +48,7 @@ const LandingPage: React.FC = () => {
                     </div>
                     <div className="nav-links1">
                         <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Adopt`}>Adopt</a>
+                        <a href={`/${userID}/Explore`}>Explore</a>
                         <a href={`/${userID}/appointmentlist`}>Appointments</a>
                         <a href={`/${userID}/rehome`}>Rehome</a>
                         <a href={`/${userID}/PetIdentifier`}>Identify</a>

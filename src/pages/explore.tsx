@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './landingpage.css';
 import { IonContent, IonPage } from '@ionic/react';
-import welcomeImg from '../assets/friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white 1.png';
 import dog1 from '../assets/dog 1.png';
 import footprint1 from '../assets/footprint 1.png';
 import cat1 from '../assets/cat 1.png';
-import adoptionProcess from '../assets/Group 32.png';
 import { Link, useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
 import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
+
 type Pet = {
     id: string;
-    index: number;
+    index: number,
     name: string;
     age: number;
     gender: 'male' | 'female';
@@ -41,7 +39,7 @@ const LandingPage: React.FC = () => {
     const { userID } = useParams<{ userID: string }>();
 
     console.log("Extracted userID:", userID); // Debugging line
-
+    
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const storageRef = firebase.storage().ref();
     const [selectedType, setSelectedType] = useState<'Cat' | 'Dog' | 'all'>('all');
@@ -51,6 +49,16 @@ const LandingPage: React.FC = () => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const db = firebase.firestore();
+            const doc = await db.collection('users').doc(userID).get();
+            const user = { id: doc.id, ...doc.data() } as User;
+            setUsers(user);
+        };
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -85,15 +93,6 @@ const LandingPage: React.FC = () => {
         fetchPets();
     }, []);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const db = firebase.firestore();
-            const doc = await db.collection('users').doc(userID).get();
-            const user = { id: doc.id, ...doc.data() } as User;
-            setUsers(user);
-        };
-        fetchData();
-    }, []);
 
     return (
         <IonPage>
@@ -104,34 +103,13 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
-                        <label></label>
-                        {users && (
-                            <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
-                        )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        <a href="/Menu">Home</a>
+                        <a href="/Discover">Explore</a>
+                        <a href="/IdentifyPets">Identify</a>
+                        <a href="/login">Login</a>
                     </div>
                 </nav>
-                <div className="welcomeBanner">
-                    <p className="welcomeText">
-                        You can make a <br />
-                        difference in their <br />
-                        lives
-                    </p>
-                    <a href={`${userID}/Explore`}><div className="AdoptAPet"><p className="AdoptAPet2">Adopt A Pet</p></div></a>
-                    <img className="welcomeImg" src={welcomeImg} />
-                </div>
-                <div className="categories1">
+                <div className="categories2">
                     <h1 className="categories_h1">Categories</h1>
                     <div className="categories_container">
                         <div className="categories_box" onClick={() => setSelectedType('all')}>
@@ -145,38 +123,25 @@ const LandingPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="adoption1">
+                <div className="adoption2">
                     <h1 className="adpotion_h1">For Adoption</h1>
                     <div className="adoption_container">
-                        {pets.filter(pet => selectedType === 'all' || pet.type.toLowerCase() === selectedType.toLowerCase()).slice(0, 3).map((pet, i) => (
-                            <div className="adoption_box" key={pet.id}>
+                        {pets.filter(pet => selectedType === 'all' || pet.type.toLowerCase() === selectedType.toLowerCase()).map((pet, i) => (
+                            <div className="adoption_box">
                                 <img className="adoption_image" src={pet.imageUrl} alt={pet.name} />
                                 <p className="adoption_text">{pet.name}</p>
                                 <p className="adoption_desc">{pet.breed}</p>
-                                <p className="adoption_desc">{pet.age} Years Old</p>
-                                <p className="adoption_desc">{pet.gender}</p>
-                                <p className="adoption_desc">{pet.weight} kg</p>
-                                <p className="adoption_desc">{pet.location}</p>
+                                <p className="adoption_desc">Age: {pet.age} Years Old</p>
+                                <p className="adoption_desc">Gender: {pet.gender}</p>
+                                <p className="adoption_desc">Weight: {pet.weight} kg</p>
+                                <p className="adoption_desc">Address: {pet.location}</p>
                                 <p className="adoption_desc">Status: {pet.status}</p>
-                                <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
+                                <Link to={`/ViewPet/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
                             </div>
                         ))}
-                        <div className="adoption_box2">
-                            <img src={footprint1} />
-                            <a href={`${userID}/Adopt`}><div className="adoptMe2"><p className='adoption_button'>Meet More</p></div></a>
-                        </div>
                     </div>
                 </div>
-                <div className="adoptionProcess">
-                    <p className="adoptionProcessText">
-                        Adoption<br />
-                        Process
-                    </p>
-                    <div className="adoptionProcess_img">
-                        <img src={adoptionProcess} />
-                    </div>
-                    {/* <div className="adoptionProcessBtn"><p className="adoptionProcessBtn2">Adoption FAQs</p></div> */}
-                </div>
+                <div className="space"></div>
             </IonContent>
         </IonPage>
     );

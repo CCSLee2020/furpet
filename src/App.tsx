@@ -28,6 +28,10 @@ import AdminAppointmentsUpdate from './pages/adminAppoinmentsupdate';
 import PetIdentifyUser from './pages/petIdentify_user';
 import Profile from './pages/profile';
 import UpdateProfile from './pages/edituser';
+import LoggedOutHome from './pages/home';
+import Explore from './pages/explore';
+import LoggedOutIdentify from './pages/loggedOut_identify';
+import ViewPet from './pages/viewPet';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -70,6 +74,9 @@ const App: React.FC = () => (
         <Route exact path="/:userID/PetIdentifier">
           <PetIdentifyUser />
         </Route>
+        <Route exact path="/IdentifyPets">
+          <LoggedOutIdentify />
+        </Route>
         <Route exact path="/signup">
           <SignUp />
         </Route>
@@ -79,11 +86,20 @@ const App: React.FC = () => (
         <Route exact path="/:userID/Home">
           <Home />
         </Route>
-        <Route exact path="/:userID/Adopt">
+        <Route exact path="/Menu">
+          <LoggedOutHome />
+        </Route>
+        <Route exact path="/:userID/Explore">
           <Adopt />
         </Route>
-        <Route exact path="/:userID/Adoptme/:id">
+        <Route exact path="/Discover">
+          <Explore />
+        </Route>
+        <Route exact path="/:userID/PetView/:id">
           <AdoptMe />
+        </Route>
+        <Route exact path="/ViewPet/:id">
+          <ViewPet />
         </Route>
         <Route exact path="/:userID/appointmentlist">
           <NotifAppointment />
@@ -97,7 +113,7 @@ const App: React.FC = () => (
         <Route exact path="/:userID/updateAppointment/:id">
           <UpdateAppointment />
         </Route>
-        <Route exact path="/:userID/Adoptme/:userID/appointment/:id">
+        <Route exact path="/:userID/PetView/:userID/appointment/:id">
           <Appointment />
         </Route>
         <Route exact path="/:userID/rehome">
@@ -131,9 +147,9 @@ const App: React.FC = () => (
           <UpdateProfile />
         </Route>
         <Route exact path="/">
-          <Redirect to="/login" />
+          <Redirect to="/Menu" />
         </Route>
-        <Route path="/:userID/Adoptme/:anotherUserID/appointment/:appointmentID/Home">
+        <Route path="/:userID/PetView/:anotherUserID/appointment/:appointmentID/Home">
           {({ match }) => (
             match ? <Redirect to={`/${match.params.userID}/Home`} /> : null
           )}

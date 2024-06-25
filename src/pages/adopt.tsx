@@ -104,7 +104,7 @@ const LandingPage: React.FC = () => {
                     </div>
                     <div className="nav-links1">
                         <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Adopt`}>Adopt</a>
+                        <a href={`/${userID}/Explore`}>Explore</a>
                         <a href={`/${userID}/appointmentlist`}>Appointments</a>
                         <a href={`/${userID}/rehome`}>Rehome</a>
                         <a href={`/${userID}/PetIdentifier`}>Identify</a>
@@ -148,7 +148,7 @@ const LandingPage: React.FC = () => {
                                 <p className="adoption_desc">Weight: {pet.weight} kg</p>
                                 <p className="adoption_desc">Address: {pet.location}</p>
                                 <p className="adoption_desc">Status: {pet.status}</p>
-                                <Link to={`/${userID}/Adoptme/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
+                                <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
                             </div>
                         ))}
                     </div>

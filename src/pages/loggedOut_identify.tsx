@@ -135,22 +135,10 @@ const PetIdentifyAdopter: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
-                        <label></label>
-                        {users && (
-                            <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
-                        )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        <a href="/Menu">Home</a>
+                        <a href="/Discover">Explore</a>
+                        <a href="/IdentifyPets">Identify</a>
+                        <a href="/login">Login</a>
                     </div>
                 </nav>
                 <main className="main">
