@@ -102,7 +102,7 @@ const LandingPage: React.FC = () => {
                         <img className='navLogo1' src={navLogo} alt="" />
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
-                    <div className="nav-links1">
+                    <div className="nav-links2">
                         <a href="/Menu">Home</a>
                         <a href="/Discover">Explore</a>
                         <a href="/IdentifyPets">Identify</a>

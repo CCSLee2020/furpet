@@ -42,6 +42,14 @@ nav a:hover {
     right: 10px;
 }
 
+.nav-links2 {
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
+    position: relative;
+    right: 10px;
+}
+
 /* Styles for the dropdown button */
 .nav-dropdown-btn {
     background: none;
@@ -78,6 +86,14 @@ nav a:hover {
   
 
 .nav-links1 a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 14px 16px;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.nav-links2 a {
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 14px 16px;
@@ -433,6 +449,14 @@ nav a:hover {
         flex-direction: row;
         position: relative;
         left: 80px;
+        font-size: 2vw;
+        margin-right: 100px;
+    }
+
+    .nav-links2 {
+        flex-direction: row;
+        position: relative;
+        left: 55px;
         font-size: 2vw;
         margin-right: 100px;
     }
