@@ -7,7 +7,7 @@
   border: 1px solid;
   border-color: #393c49;
   border-radius: 20px;
-  height: 2500px;
+  height: 2700px;
   left: 200px;
   position: relative;
   top: 30px;
@@ -52,9 +52,9 @@
   border-color: #393c49;
   border-radius: 20px;
   position: relative;
-  width: 292px;
+  width: 252px;
   left: 0px;
-  top: 0px;
+  top: 100px;
   font-family: 'Odor Mean Chey', serif;
   font-size: 40px;
   font-weight: 400px;
@@ -86,13 +86,12 @@
 
 @media only screen and (max-width: 1025px) {
   .signup_box .rectangle_box {
-    height: 600px;
     left: 28px;
   }
 
   .submit_signUp {
-    left: 128px;
-    top: 542px;
+    left: 0px;
+    top: 102px;
   }
 }
 
@@ -103,7 +102,7 @@
   }
 
   .signup_box .rectangle_box {
-    height: 2100px;
+    height: 2350px;
     left: 5%;
     position: relative;
     top: 5%;

@@ -190,25 +190,25 @@ const UpdatePet: React.FC = () => {
 };
 
 const questionTexts = [
-    <>Do you own your home?<br /></>,
-    <>If renting, do you have permission from your landlord to have pets?<br /></>,
-    <>Are there children in your household?<br /></>,
-    <>Do you have other pets at home?<br /></>,
-    <>Do you have other pets at home?<br /></>,
-    <>Are you familiar with the specific needs of the chosen pet type/breed?<br /></>,
-    <>Do you have a stable daily routine?<br /></>,
-    <>Are you away from home for long periods during the day?<br /></>,
-    <>Can you afford the costs associated with pet ownership, including food, veterinary care,<br />and unexpected expenses?<br /></>,
-    <>Do you have a regular veterinarian?<br /></>,
-    <>Are you willing to provide regular veterinary care, including vaccinations<br />and routine check-ups?<br /></>,
-    <>Are you willing to attend training classes if necessary?<br /></>,
-    <>Do you have experience in training pets?<br /></>,
-    <>Will the pet primarily be kept indoors?<br /></>,
-    <>Do you have a secure, fenced yard?<br /></>,
-    <>Do you have a plan for emergencies or unforeseen circumstances?<br /></>,
-    <>Are you willing to spay/neuter your pet if it is not already done?<br /></>,
-    <>Can you provide personal or veterinarian references?<br /></>,
-    <>Are you willing to allow a representative from the pet owner to conduct a home visit?<br /></>
+    <>Have you adopted a pet within the last year?<br /></>,
+    <>Do you currently own a pet?<br /></>,
+    <>Did you adopt your pet from a local shelter or rescue organization?<br /></>,
+    <>Are you aware of the local pet adoption programs in your area?<br /></>,
+    <>Have you ever participated in a pet adoption event?<br /></>,
+    <>Do you think there are enough resources for pet owners in your community?<br /></>,
+    <>Are you satisfied with the veterinary services available in your area?<br /></>,
+    <>Do you believe adopting pets is better than buying from breeders or pet stores?<br /></>,
+    <>Have you ever considered adopting a senior pet?<br /></>,
+    <>Do you regularly take your pet to the veterinarian for check-ups?<br /></>,
+    <>Do you think there is a stray animal problem in your community?<br /></>,
+    <>Have you ever volunteered at an animal shelter or rescue organization?<br /></>,
+    <>Do you support spaying and neutering pets to control the pet population?<br /></>,
+    <>Have you ever had to rehome a pet?<br /></>,
+    <>Do you provide your pet with regular vaccinations?<br /></>,
+    <>Do you think owning a pet has improved your quality of life?<br /></>,
+    <>Have you ever donated to an animal welfare organization?<br /></>,
+    <>Do you believe pets should have access to outdoor spaces and exercise areas?<br /></>,
+    <>Have you ever fostered a pet before adopting it permanently?<br /></>
 ];
 
 export default UpdatePet;

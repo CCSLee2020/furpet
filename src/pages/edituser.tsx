@@ -116,7 +116,7 @@ const UpdatePet: React.FC = () => {
                             <input className="AddPetForm_input1" type="text" placeholder="Address" name="address" value={users.address} onChange={handleChange} />
 
                             {/* Adding the questionnaire */}
-                            <p className='QuestionUserUpdate'>1. Do you own your home?</p>
+                            <p className='QuestionUserUpdate'>1. Have you adopted a pet within the last year?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -127,7 +127,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>2. If renting, do you have permission from your landlord to have pets?</p>
+                            <p className='QuestionUserUpdate'>2. Do you currently own a pet?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -138,7 +138,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>3. Are there children in your household?</p>
+                            <p className='QuestionUserUpdate'>3. Did you adopt your pet from a local shelter or rescue organization?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -149,7 +149,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>4. Do you have other pets at home?</p>
+                            <p className='QuestionUserUpdate'>4. Are you aware of the local pet adoption programs in your area?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -160,7 +160,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>5. Have you owned a pet before?</p>
+                            <p className='QuestionUserUpdate'>5. Have you ever participated in a pet adoption event?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -171,7 +171,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>6. Are you familiar with the specific needs of the chosen pet type/breed?</p>
+                            <p className='QuestionUserUpdate'>6. Do you think there are enough resources for pet owners in your community?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -182,7 +182,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>7. Do you have a stable daily routine?</p>
+                            <p className='QuestionUserUpdate'>7. Are you satisfied with the veterinary services available in your area?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -193,7 +193,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>8. Are you financially prepared for pet ownership?</p>
+                            <p className='QuestionUserUpdate'>8. Do you believe adopting pets is better than buying from breeders or pet stores?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -204,7 +204,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>9. Do you have a fenced yard?</p>
+                            <p className='QuestionUserUpdate'>9. Have you ever considered adopting a senior pet?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input type="radio" name="q9" value="Yes" checked={users.q9 === 'Yes'} onChange={handleChange} /> Yes
@@ -226,7 +226,7 @@ const UpdatePet: React.FC = () => {
                                 </label> */}
                             </div>
 
-                            <p className='QuestionUserUpdate'>10. Are you willing to spend on pet training if needed?</p>
+                            <p className='QuestionUserUpdate'>10. Do you regularly take your pet to the veterinarian for check-ups?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -237,7 +237,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>11. Do you have any pet-related allergies?</p>
+                            <p className='QuestionUserUpdate'>11. Do you think there is a stray animal problem in your community?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -248,7 +248,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>12. Are you prepared for the long-term commitment of pet ownership?</p>
+                            <p className='QuestionUserUpdate'>12. Have you ever volunteered at an animal shelter or rescue organization?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -259,7 +259,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>13. Are you aware of the time commitment for pet grooming?</p>
+                            <p className='QuestionUserUpdate'>13. Do you support spaying and neutering pets to control the pet population?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -270,7 +270,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>14. Are you willing to provide a balanced diet for your pet?</p>
+                            <p className='QuestionUserUpdate'>14. Have you ever had to rehome a pet?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -281,7 +281,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>15. Are you aware of the importance of regular vet check-ups?</p>
+                            <p className='QuestionUserUpdate'>15. Do you provide your pet with regular vaccinations?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -292,7 +292,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>16. Are you prepared for potential behavioral issues?</p>
+                            <p className='QuestionUserUpdate'>16. Do you think owning a pet has improved your quality of life?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -303,7 +303,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>17. Are you committed to ensuring your pet gets enough exercise?</p>
+                            <p className='QuestionUserUpdate'>17. Have you ever donated to an animal welfare organization?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -314,7 +314,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>18. Are you willing to invest time in pet training?</p>
+                            <p className='QuestionUserUpdate'>18. Do you believe pets should have access to outdoor spaces and exercise areas?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
@@ -325,7 +325,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <p className='QuestionUserUpdate'>19. Do you have a plan for your pet if you travel or face an emergency?</p>
+                            <p className='QuestionUserUpdate'>19. Have you ever fostered a pet before adopting it permanently?</p>
                             <div className="AddUser_radio1">
                                 <label className="radioMargin_user1">
                                     <input
