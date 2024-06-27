@@ -104,6 +104,7 @@ nav a:hover {
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
     font-weight: 400;
+    text-align: center;
     position: relative;
     top: 20px;
 }
@@ -123,13 +124,13 @@ nav a:hover {
     background-color: #393c49;
     border-radius: 50px;
     position: absolute;
-    top: 410px;
+    top: 430px;
     left: 60px;
 }
 
 .details_appointment_1 {
     height: 82px;
-    width: 360px;
+    width: 308px;
     background-color: #393c49;
     border-radius: 50px;
     position: relative;
@@ -268,7 +269,7 @@ nav a:hover {
     }
 
     .details_appointment {
-        top: 390px;
+        top: 430px;
         left: 60px;
         z-index: 1;
     }
@@ -322,7 +323,7 @@ nav a:hover {
     }
 
     .details_appointment {
-        top: 390px;
+        top: 460px;
         left: 70px;
         z-index: 1;
     }
@@ -337,7 +338,7 @@ nav a:hover {
     }
 
     .caretaker_container>.caretaker_box {
-        height: 207px;
+        height: 335px;
         margin-bottom: 20px;
         margin-top: 20px;
     }

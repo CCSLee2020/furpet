@@ -137,7 +137,7 @@ const LandingPage: React.FC = () => {
                             <h2 className="details_h2"><b>Neutered:</b> {pet.neutered}</h2>
                             <h2 className="details_h2"><b>Location:</b> {pet.location}</h2>
                             <h2 className="details_h2"><b>Age &#40;months&#41;:</b> {pet.age}</h2>
-                            <Link to="/login"><div className="details_appointment"><p className="details_appointment2">Take a QnA & Make an &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Appointment</p></div></Link>
+                            <Link to="/login"><div className="details_appointment"><p className="details_appointment2">&nbsp;Please Log In to make<br />&nbsp;&nbsp;&nbsp;&nbsp;an Appointment</p></div></Link>
                         </div>
                         {imageUrl && <img className="details_img" src={imageUrl} />}
                         <h1 className="details_aboutme">About Me</h1>

@@ -248,6 +248,26 @@
 
 @media only screen and (max-width: 720px) {
 
+    .UpdatePetform {
+        right: -43px;
+    }
+
+    .AddPetform {
+        right: 22px;
+    }
+
+    .AddPetForm_input {
+        width: 310px;
+    }
+
+    .AddPet_dropbtn {
+        width: 310px;
+    }
+
+    .AddPet_submit {
+        width: 310px;
+    }
+
     .AddPet1 {
         height: 1400px;
     }
@@ -260,7 +280,7 @@
     }
 
     .AddPetBoxH1 {
-        left: 210px;
+        left: 150px;
         font-size: large;
     }
 
@@ -298,59 +318,4 @@
         width: 100px;
         font-size: 8px;
     }
-};
-
-@media only screen and (max-width: 620px) {
-    .UpdatePetform {
-        position: relative;
-        top: 300px;
-        left: 65px;
-    }
-
-    .AddPetform {
-        position: relative;
-        top: 300px;
-        right: 10px;
-    }
-
-    .AddPetForm_input {
-        height: 50px;
-        width: 300px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        border: 1px solid;
-        border-color: #393c49;
-        border-radius: 20px;
-    }
-
-    .AddPet_dropbtn {
-        background-color: #767a8e;
-        color: rgb(255, 255, 255);
-        border-radius: 50px;
-        padding: 16px;
-        font-size: 16px;
-        width: 300px;
-        border: none;
-        cursor: pointer;
-        position: relative;
-        left: 0px;
-        top: 0px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    .AddPet_submit {
-        height: 70px;
-        width: 300px;
-        background-color: #393c49;
-        color: #ffffff;
-        border: 1px solid;
-        border-radius: 20px;
-        left: 290px;
-        top: 600px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 40px;
-        font-weight: 400px;
-    }
-
 };

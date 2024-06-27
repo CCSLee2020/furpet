@@ -73,7 +73,7 @@ const LandingPage: React.FC = () => {
                             <h2 className="details_h2_1"><b>Nickname:</b> {users?.name}</h2>
                             <h2 className="details_h2_1"><b>Contact Number:</b> {users?.contactNumber}</h2>
                             <h2 className="details_h2_1"><b>Address:</b> {users?.address}</h2>
-                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1"><p className="details_appointment2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
+                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1"><p className="details_appointment2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
                         </div>
                         <div className="space2"></div>
                     </>

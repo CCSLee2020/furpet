@@ -540,7 +540,7 @@ nav a:hover {
     .rehome_box>.edit,
     .rehome_box>.delete {
         left: 0px;
-        top: -200px;
+        top: -164px;
     }
 
     .rehome_container>.appointment_outerbox {
@@ -665,11 +665,11 @@ nav a:hover {
 
     .edit1 {
         left: 100px;
-        top: -140px;
+        top: -160px;
     }
 
     .delete1 {
         left: 100px;
-        top: -130px;
+        top: -150px;
     }
 }
