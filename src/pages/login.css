@@ -1,162 +1,146 @@
-.login_box {
-    height: 738px;
-    width: 565px;
-    position: absolute;
-    right: 0%;
-}
-
-.login_box .rectangle_box {
-    border: 1px solid;
-    border-color: #393c49;
-    border-radius: 20px;
-    position: absolute;
-    height: 658px;
-    left: -50px;
-    top: 30px;
-    width: 465px;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.login_box .h1_login {
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
     font-family: 'Odor Mean Chey', serif;
-    font-size: 40px;
-    font-weight: 400px;
+    background: #f0f0f0;
+}
+
+.login_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
     position: relative;
-    top: 50px;
-    left:180px;
+    background: linear-gradient(45deg, #6a89cc, #b8e994);
+}
+
+.rectangle_box {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+.h1_login {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: black;
 }
 
 .image_Logo {
     width: 100px;
     height: 100px;
-    border-radius: 50px;
-    position: relative;
-    left: 177px;
-    top: 38px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
 }
 
 .login_form {
-    max-width: 50%;
-    position: relative;
-    top: 40px;
+    width: 100%;
 }
 
-.login_form>.input_login {
-    height: 71px;
-    width: 415px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border: 1px solid;
-    border-color: #393c49;
+.input_login {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
     border-radius: 20px;
-    position: relative;
-    right: 95px;
-    padding: 10px;
-    font-size: 13px;
+    border-color: #393c49;
+    font-size: 1em;
+    background-color: whitesmoke;
+    color: black;
 }
 
 .submit_login {
-    height: 61px;
-    width: 292px;
-    background-color: white;
-    border: 1px solid;
-    border-color: #393c49;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #1856dd;
     border-radius: 50px;
-    position: absolute;
-    width: 292px;
-    left: -20px;
-    top: 300px;
-    font-family: 'Odor Mean Chey', serif;
-    font-size: 40px;
-    font-weight: 400px;
-    
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit_login:hover {
+    background-color: #6a89cc;
+}
+
+.login_form > a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #393c49;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.login_form > a:hover {
+    color: #6a89cc;
 }
 
 .image_Login {
     position: fixed;
-    object-fit: cover;
-    left: 0%;
+    top: 0;
+    left: 0;
     width: 50%;
     height: 100%;
+    object-fit: cover;
     z-index: -1;
 }
-
-.login_form>a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Use the parent element's color */
-    cursor: pointer; /* Change cursor to pointer on hover (optional) */
+.welcome{
+    color:#6a89cc;
+    font-family: "Sofia", sans-serif;
+    font-size: 2rem;
+}
+.needAccount{
+    color: #393c49;
 }
 
+/* Media Queries */
 @media only screen and (max-width: 1025px) {
-    .login_box {
-        width: 438px;
-        position: fixed;
-        right: 0%;
+    .rectangle_box {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .image_Login {
+        width: 100%;
     }
 
-    .login_box .rectangle_box {
-        height: 600px;
+    .login_box {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .rectangle_box {
+        margin-top: 20px;
     }
 }
 
 @media only screen and (max-width: 516px) {
-    .image_Logo {
-        left: 30px;
+    .h1_login {
+        font-size: 1.5em;
     }
 
-
-    .login_box {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        right: 0;
-    }
-
-    .login_box .rectangle_box {
-        height: 90%;
-        left: 20px;
-        top: 5%;
-        width: 90%;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .login_box .h1_login {
-        font-size: 20px;
-        top: 25px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .login_form {
-        max-width: 100%;
-        top: 50px;
-    }
-
-    .login_form>.input_login {
-        height: 35px;
-        width: 80%;
-        margin-top: 2px;
-        margin-bottom: 2px;
-        position: relative;
-        right: 0;
+    .input_login {
+        padding: 10px;
+        font-size: 0.9em;
     }
 
     .submit_login {
-        height: 30px;
-        width: 146px;
-        position: relative;
-        left: 0;
-        top: 150px;
-        font-size: 20px;
+        font-size: 1.2em;
+        padding: 10px;
     }
 
-    .image_Login {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .login_form>a {
-        font-size: 16px;
+    .login_form > a {
+        font-size: 0.8em;
     }
 }

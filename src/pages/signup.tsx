@@ -300,7 +300,7 @@ const SignUp: React.FC = () => {
                                 <p>have a account? <a href="/login">login</a></p>
                         </IonGrid>
                     </div>
-                    <img className="image_SignUp" src={registerImage} />
+                    {/* <img className="image_SignUp" src={registerImage} /> */}
                 </div>
             </IonContent>
         </IonPage>

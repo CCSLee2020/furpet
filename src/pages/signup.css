@@ -1,155 +1,153 @@
+/* signup.css */
+
+/* General reset and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Page container styles */
 .signup_box {
-  height: 738px;
-  width: 565px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #6a89cc, #b8e994);
+  padding: 20px;
 }
 
-.signup_box .rectangle_box {
-  border: 1px solid;
-  border-color: #393c49;
-  border-radius: 20px;
-  height: 2700px;
-  left: 200px;
-  position: relative;
-  top: 30px;
-  width: 465px;
-  background-color: rgba(255, 255, 255, 0.5);
+/* Form container styles */
+.rectangle_box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
 }
 
-.signup_box .h1_signUp {
-  font-family: 'Odor Mean Chey', serif;
-  font-size: 40px;
-  font-weight: 400px;
-  position: relative;
-  top: 30px;
-  left: 80px;
+/* Header styles */
+.h1_signUp {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.signup_form {
-  max-width: 50%;
-  position: relative;
-  top: 50px;
-}
-
-.signup_form>.input_signUp {
-  height: 45px;
-  width: 415px;
-  margin-top: 5px;
+/* Input field styles */
+.signup_form label {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  color: #555;
   margin-bottom: 5px;
-  border: 1px solid;
-  border-color: #393c49;
-  border-radius: 20px;
-  position: relative;
-  right: 95px;
+}
+
+.signup_form input[type="text"],
+.signup_form input[type="email"],
+.signup_form input[type="password"] {
+  width: 100%;
   padding: 10px;
-  font-size: 13px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.survey{
+  color: black;
+  font-size: 30px;
+  font-weight: bolder;
 }
 
-.submit_signUp {
-  height: 61px;
-  width: 292px;
-  background-color: white;
-  border: 1px solid;
-  border-color: #393c49;
-  border-radius: 20px;
-  position: relative;
-  width: 252px;
-  left: 0px;
-  top: 100px;
-  font-family: 'Odor Mean Chey', serif;
-  font-size: 40px;
-  font-weight: 400px;
+/* Radio button container styles */
+.AddUser_radio {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.image_SignUp {
-  position: fixed;
-  top: 0px;
-  object-fit: cover;
-  right: 0%;
-  width: 50%;
-  height: 100%;
-  z-index: -1;
-}
-
-.signup_form>a {
-  text-decoration: none;
-  /* Remove underline */
-  color: inherit;
-  /* Use the parent element's color */
-  cursor: pointer;
-  /* Change cursor to pointer on hover (optional) */
-}
-
+/* Radio button label styles */
 .radioMargin_user {
-  margin-left: 5px;
+  margin: 0 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Radio button styles */
+.AddUser_radio input[type="radio"] {
   margin-right: 5px;
 }
 
-@media only screen and (max-width: 1025px) {
-  .signup_box .rectangle_box {
-    left: 28px;
-  }
-
-  .submit_signUp {
-    left: 0px;
-    top: 102px;
-  }
+/* Submit button styles */
+.submit_signUp {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-@media only screen and (max-width: 620px) {
-  .signup_box {
-    height: 100%;
-    width: 100%;
+.submit_signUp:hover {
+  background-color: #0056b3;
+}
+
+/* Link to login styles */
+.rectangle_box p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.rectangle_box a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.rectangle_box a:hover {
+  text-decoration: underline;
+}
+
+/* Image styles */
+.image_SignUp {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .rectangle_box {
+      padding: 20px;
   }
 
-  .signup_box .rectangle_box {
-    height: 2350px;
-    left: 5%;
-    position: relative;
-    top: 5%;
-    width: 90%;
-    background-color: rgba(255, 255, 255, 0.5);
+  .h1_signUp {
+      font-size: 20px;
   }
 
-  .signup_box .h1_signUp {
-    font-size: 20px;
-    top: 15px;
-    left: 53%;
-    transform: translateX(-50%);
+  .signup_form input[type="text"],
+  .signup_form input[type="email"],
+  .signup_form input[type="password"] {
+      font-size: 14px;
   }
 
-  .signup_form {
-    max-width: 100%;
-    top: 30px;
-  }
-
-  .signup_form>.input_signUp {
-    height: 35px;
-    width: 80%;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    position: relative;
-    right: 0;
+  .radioMargin_user {
+      font-size: 14px;
   }
 
   .submit_signUp {
-    height: 30px;
-    width: 146px;
-    position: relative;
-    left: 0;
-    top: 100px;
-    font-size: 20px;
+      font-size: 16px;
   }
 
-  .image_SignUp {
-    position: fixed;
-    right: 0;
-    top: -30px;
-    width: 100%;
-    height: 150%;
-    object-fit: cover;
-  }
-
-  .signup_form>a {
-    font-size: 16px;
+  .rectangle_box p {
+      font-size: 14px;
   }
 }

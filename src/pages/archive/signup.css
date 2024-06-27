@@ -1,0 +1,155 @@
+.signup_box {
+    height: 738px;
+    width: 565px;
+  }
+  
+  .signup_box .rectangle_box {
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    height: 2700px;
+    left: 200px;
+    position: relative;
+    top: 30px;
+    width: 465px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .signup_box .h1_signUp {
+    font-family: 'Odor Mean Chey', serif;
+    font-size: 40px;
+    font-weight: 400px;
+    position: relative;
+    top: 30px;
+    left: 80px;
+  }
+  
+  .signup_form {
+    max-width: 50%;
+    position: relative;
+    top: 50px;
+  }
+  
+  .signup_form>.input_signUp {
+    height: 45px;
+    width: 415px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    position: relative;
+    right: 95px;
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .submit_signUp {
+    height: 61px;
+    width: 292px;
+    background-color: white;
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    position: relative;
+    width: 252px;
+    left: 0px;
+    top: 100px;
+    font-family: 'Odor Mean Chey', serif;
+    font-size: 40px;
+    font-weight: 400px;
+  }
+  
+  .image_SignUp {
+    position: fixed;
+    top: 0px;
+    object-fit: cover;
+    right: 0%;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  .signup_form>a {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Use the parent element's color */
+    cursor: pointer;
+    /* Change cursor to pointer on hover (optional) */
+  }
+  
+  .radioMargin_user {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  
+  @media only screen and (max-width: 1025px) {
+    .signup_box .rectangle_box {
+      left: 28px;
+    }
+  
+    .submit_signUp {
+      left: 0px;
+      top: 102px;
+    }
+  }
+  
+  @media only screen and (max-width: 620px) {
+    .signup_box {
+      height: 100%;
+      width: 100%;
+    }
+  
+    .signup_box .rectangle_box {
+      height: 2350px;
+      left: 5%;
+      position: relative;
+      top: 5%;
+      width: 90%;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  
+    .signup_box .h1_signUp {
+      font-size: 20px;
+      top: 15px;
+      left: 53%;
+      transform: translateX(-50%);
+    }
+  
+    .signup_form {
+      max-width: 100%;
+      top: 30px;
+    }
+  
+    .signup_form>.input_signUp {
+      height: 35px;
+      width: 80%;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      position: relative;
+      right: 0;
+    }
+  
+    .submit_signUp {
+      height: 30px;
+      width: 146px;
+      position: relative;
+      left: 0;
+      top: 100px;
+      font-size: 20px;
+    }
+  
+    .image_SignUp {
+      position: fixed;
+      right: 0;
+      top: -30px;
+      width: 100%;
+      height: 150%;
+      object-fit: cover;
+    }
+  
+    .signup_form>a {
+      font-size: 16px;
+    }
+  }
