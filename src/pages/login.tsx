@@ -51,7 +51,7 @@ const LogIn: React.FC = () => {
                     <div className="rectangle_box">
                         <img className="image_Logo" src={loginLogo} />
                         <h1 className="h1_login">Login</h1>
-                        <h1 className="welcome">Welcome to Furpet</h1>
+                        <h1 className="welcome1">Welcome to Furpet</h1>
                         <IonGrid className="login_form">
                             <input
                                 className="input_login"

@@ -235,7 +235,7 @@ const LandingPage: React.FC = () => {
                     </div>
                 </nav>
                 <div className="appointment">
-                    <h1 className="appointment_h1">Question and Answer & Make An Appointment</h1>
+                    <h1 className="appointment_h1">Make An Appointment</h1>
                     <>
                         <div className="appointment_container">
                             <div className="appointment_box">

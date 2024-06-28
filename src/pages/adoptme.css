@@ -57,7 +57,7 @@ nav a:hover {
 
 .details_textSquare {
     position: relative;
-    left: 778px;
+    left: 610px;
     top: 75px;
 }
 
@@ -139,13 +139,13 @@ nav a:hover {
 
 .details_appointment2 {
     color: white;
-    font-family: 'Forum', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     font-weight: 400;
     position: absolute;
-    top: 0px;
+    top: -10px;
     left: 70px;
-}
+}   
 
 .details_aboutme {
     color: black;
@@ -238,7 +238,7 @@ nav a:hover {
     }
 
     .details_textSquare {
-        left: 520px;
+        left: 460px;
     }
 
     .details_aboutme {

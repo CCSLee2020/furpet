@@ -329,6 +329,16 @@ nav a:hover {
     font-size: 24px;
     font-weight: 400;
     position: absolute;
+    top: -12px;
+    left: 40px;
+}
+
+.adoption_button1 {
+    color: white;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
     top: -15px;
     left: 50px;
 }

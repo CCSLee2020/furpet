@@ -32,6 +32,7 @@ import LoggedOutHome from './pages/home';
 import Explore from './pages/explore';
 import LoggedOutIdentify from './pages/loggedOut_identify';
 import ViewPet from './pages/viewPet';
+import Welcome from './pages/welcome';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -88,6 +89,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/Menu">
           <LoggedOutHome />
+        </Route>
+        <Route exact path="/Welcome">
+          <Welcome />
         </Route>
         <Route exact path="/:userID/Explore">
           <Adopt />
