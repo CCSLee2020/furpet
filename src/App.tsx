@@ -151,7 +151,7 @@ const App: React.FC = () => (
           <UpdateProfile />
         </Route>
         <Route exact path="/">
-          <Redirect to="/Menu" />
+          <Redirect to="/Welcome" />
         </Route>
         <Route path="/:userID/PetView/:anotherUserID/appointment/:appointmentID/Home">
           {({ match }) => (

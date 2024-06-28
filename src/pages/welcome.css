@@ -260,3 +260,140 @@ footer>a {
 footer>a:hover {
     color: #ddd;
 }
+
+@media only screen and (max-width: 1024px) {
+    .welcome>h1 {
+        font-size: 100px;
+        position: relative;
+        top: 170px;
+    }
+    
+    .welcome>p, .avp>p, .service>h1, .info-container>h1, .team>h1, .box>h2, .box>p, .info-container>p {
+        font-size: 15px;
+    }
+
+    .welcome>p {
+        position: relative;
+        top: 170px;
+    }
+    
+    .login {
+        width: 180px;
+        height: 45px;
+        top: 200px;
+    }
+    
+    .avp>p {
+        top: 250px;
+        right: -200px;
+    }
+    
+    .avp>.avpvideo {
+        right: 200px;
+        top: -70px;
+    }
+    
+    .service, .about, .team {
+        top: 400px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .container, .container2 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .box, .box2, .image-container, .info-container {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        width: 60%;
+        
+    }
+    
+    .image-container>img {
+        width: 100%;
+        position: relative;
+        right: 170px;
+    }
+    
+    footer {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        top: 452px;
+    }
+    
+    footer>div {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .welcome>h1 {
+        font-size: 70px;
+        position: relative;
+        top: 150px;
+    }
+    
+    .welcome>p, .avp>p, .service>h1, .info-container>h1, .team>h1, .box>h2, .box>p, .info-container>p {
+        font-size: 14px;
+    }
+
+    .welcome>p {
+        position: relative;
+        top: 150px;
+    }
+    
+    .login {
+        width: 160px;
+        height: 40px;
+        top: 180px;
+    }
+    
+    .avp>p {
+        right: -20px;
+    }
+    
+    .avp>.avpvideo {
+        right: 40px;
+        top: -60px;
+    }
+    
+    .service, .about, .team {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .container, .container2 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .box, .box2, .image-container, .info-container {
+        width: 95%;
+        margin-bottom: 15px;
+    }
+
+    .image-container {
+        width: 70%;
+    }
+    
+    .image-container>img {
+        width: 100%;
+    }
+    
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    footer>div {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
