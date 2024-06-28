@@ -148,7 +148,7 @@ const LandingPage: React.FC = () => {
                                 <p className="adoption_desc">Weight: {pet.weight} kg</p>
                                 <p className="adoption_desc">Address: {pet.location}</p>
                                 <p className="adoption_desc">Status: {pet.status}</p>
-                                <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
+                                <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>View More</p></div></Link>
                             </div>
                         ))}
                     </div>

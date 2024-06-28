@@ -147,6 +147,16 @@ nav a:hover {
     left: 70px;
 }   
 
+.details_appointment3 {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    top: 0px;
+    left: 70px;
+}
+
 .details_aboutme {
     color: black;
     font-family: 'Aclonica', sans-serif;
@@ -291,12 +301,12 @@ nav a:hover {
 
     .details_aboutme {
         left: 37px;
-        top: 697px;
+        top: 777px;
     }
 
     .details_desc {
         left: 36px;
-        top: 670px;
+        top: 749px;
     }
 
     .caretaker_h1 {
@@ -345,12 +355,10 @@ nav a:hover {
 
     .details_aboutme {
         left: 37px;
-        top: 697px;
     }
 
     .details_desc {
-        left: 36px;
-        top: 670px;
+        left: 0px;
     }
 
     .caretaker_h1 {
@@ -371,6 +379,13 @@ nav a:hover {
 
     .details_appointment {
         left: 48px;
+    }
+
+    .details_appointment3 {
+        left: 19px;
+        top: 0px;
+        display: flex;
+        text-align: center;
     }
 
 }

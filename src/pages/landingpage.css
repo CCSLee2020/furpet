@@ -50,24 +50,30 @@ nav a:hover {
     right: 10px;
 }
 
+.nav-dropdown-btn:hover {
+    color: rgb(0, 0, 0);
+}
+
 /* Styles for the dropdown button */
 .nav-dropdown-btn {
+    font-family: 'Aclonica';
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     font-size: 24px;
+    margin: 0px 10px 0px 0px;
   }
   
   /* Styles for the dropdown menu */
   .nav-dropdown-menu {
     position: absolute;
-    top: 40px; /* Adjust based on your design */
+    top: 30px; /* Adjust based on your design */
     right: 0;
     background-color: #2c2c2c;
     border: 1px solid #ccc;
     z-index: 3;
-    padding: 10px;
+    padding: 24px;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     height: 42px;
@@ -86,14 +92,15 @@ nav a:hover {
   
 
 .nav-links1 a {
+    font-family: 'Aclonica';
     color: rgb(255, 255, 255);
     text-decoration: none;
-    padding: 14px 16px;
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 .nav-links2 a {
+    font-family: 'Aclonica';
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 14px 16px;
@@ -111,8 +118,9 @@ nav a:hover {
     top: 200px;
     left: 80px;
     color: black;
-    font-family: 'Forum', serif;
-    font-size: 96px;
+    /* font-family: 'Forum', serif; */
+    font-family: 'Roboto', sans-serif;
+    font-size: 70px;
     font-weight: 400;
 }
 
@@ -129,12 +137,12 @@ nav a:hover {
 
 .AdoptAPet2 {
     color: white;
-    font-family: 'Forum', serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 48px;
     font-weight: 400;
     position: absolute;
-    top: -25px;
-    left: 70px;
+    top: -30px;
+    left: 58px;
 }
 
 .welcomeBanner .welcomeImg {
@@ -223,7 +231,7 @@ nav a:hover {
 
 .adpotion_h1 {
     color: black;
-    font-family: 'Acme', sans-serif;
+    font-family: 'Aclonica';
     font-size: 48px;
     font-weight: 400;
     position: absolute;
@@ -261,7 +269,7 @@ nav a:hover {
     border: 1px solid;
     border-color: #393c49;
     border-radius: 20px;
-    height: 400px;
+    height: 420px;
     width: 250px;
     margin-top: 10px;
     margin-top: 10px;
@@ -320,27 +328,27 @@ nav a:hover {
     border-radius: 50px;
     position: relative;
     left: -30px;
-    top: 50px;
+    top: 190px;
 }
 
 .adoption_button {
     color: white;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     font-weight: 400;
     position: absolute;
-    top: -12px;
-    left: 40px;
+    top: -14px;
+    left: 44px;
 }
 
 .adoption_button1 {
     color: white;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     font-weight: 400;
     position: absolute;
     top: -15px;
-    left: 50px;
+    left: 47px;
 }
 
 .adoptionProcess {
@@ -452,7 +460,7 @@ nav a:hover {
 
     nav>.nav-links1 a {
         flex-direction: row;
-        margin: 0px 0;
+        margin: 16px 10px;
     }
 
     .nav-links1 {
@@ -585,16 +593,20 @@ nav a:hover {
         height: 40px;
         top: -35px;
         font-size: 2vw;
-        width: 300px;
+        width: 220px;
     }
 
     .nav-dropdowntext {
-        left: 0px;
+        left: -40px;
     }
 }
 
 @media only screen and (max-width: 425px) {
     .nav-dropdown-menu {
-        font-size: 3vw;
+        font-size: 2.3vw;
+    }
+
+    .nav-dropdowntext {
+        left: -30px;
     }
 }

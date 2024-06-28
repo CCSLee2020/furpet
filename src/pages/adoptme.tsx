@@ -149,12 +149,12 @@ const LandingPage: React.FC = () => {
                             <h2 className="details_h2"><b>Neutered:</b> {pet.neutered}</h2>
                             <h2 className="details_h2"><b>Location:</b> {pet.location}</h2>
                             <h2 className="details_h2"><b>Age &#40;months&#41;:</b> {pet.age}</h2>
-                            <Link to={`${userID}/appointment/${pet.id}`}><div className="details_appointment"><p className="details_appointment2">Make an Appointment</p></div></Link>
+                            <Link to={`${userID}/appointment/${pet.id}`}><div className="details_appointment"><p className="details_appointment3">Make an Appointment</p></div></Link>
                         </div>
                         {imageUrl && <img className="details_img" src={imageUrl} />}
                         <h1 className="details_aboutme">About Me</h1>
                         <p className="details_desc">{pet.about}</p>
-                        <div className="caretaker_container">
+                        {/* <div className="caretaker_container">
                             {ownerUser && (
                                 <div className="caretaker_box">
                                     <h1 className="caretaker_h1">Caretaker: {ownerUser.firstname} {ownerUser.lastname}</h1>
@@ -162,7 +162,7 @@ const LandingPage: React.FC = () => {
                                     <h2>Contact Number: {ownerUser.contactNumber}</h2>
                                 </div>
                             )}
-                        </div>
+                        </div> */}
                         <div className="space2"></div>
                     </>
                 </div>
