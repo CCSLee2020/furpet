@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './landingpage.css';
 import { IonContent, IonPage } from '@ionic/react';
-import welcomeImg from '../assets/friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white 1.png';
+import welcomeImg from '../assets/welcomeImg.jpg';
 import dog1 from '../assets/dog 1.png';
 import footprint1 from '../assets/footprint 1.png';
 import cat1 from '../assets/cat 1.png';
@@ -44,7 +44,7 @@ const LandingPage: React.FC = () => {
 
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const storageRef = firebase.storage().ref();
-    const [selectedType, setSelectedType] = useState<'Cat' | 'Dog' | 'all'>('all');
+    const [selectedType, setSelectedType] = useState<'Dog' | 'Cat' | 'all'>('all');
     const [users, setUsers] = useState<User | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
 

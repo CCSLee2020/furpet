@@ -32,10 +32,11 @@ const LandingPage: React.FC = () => {
                 </nav>
                 <div className="page_body">
                     <section className="welcome" id="welcome">
-                        <h1>FurPet</h1>
-                        <p>A Progressive Web App for Cat and Dog with Breed Identification</p>
+                        <h1>Adopt a pet today.</h1>
+                        <p>Browse our available animals and learn more about the adoption
+                        process. Together, we can rescue, rehabilitate, and rehome pets in need. Thank you for supporting
+                        our mission to bring joy to families through pet adoption.</p>
                         <a href="/Menu" className="login">Menu</a>
-                        <img src={WelcomeImg} className="welcomeImg" />
                     </section>
 
                     <section className="avp" id="promotional">
@@ -99,9 +100,9 @@ const LandingPage: React.FC = () => {
 
                     <section className="about" id="about">
                         <div className="container2">
-                            <div className="image-container">
+                            {/* <div className="image-container">
                                 <img src={Snow} alt="Two happy dogs" />
-                            </div>
+                            </div> */}
                             <div className="info-container">
                                 <h1>About FurPet</h1>
                                 <p><i>“Where Whiskers Find Warmth”</i></p>

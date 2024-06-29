@@ -139,7 +139,7 @@ const Rehome: React.FC = () => {
               <div className="nav-dropdown-menu">
                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
               </div>
             )}
           </div>
@@ -152,9 +152,9 @@ const Rehome: React.FC = () => {
               <div className="rehome_box" key={pet.id}>
                 <img className="rehome_img" src={pet.imageUrl} alt={pet.name} />
                 <h1 className="rehome_texth1">{pet.name}</h1>
-                <h2 className="rehome_h2">Address: {pet.location}</h2>
-                <h2 className="rehome_h2">Neutered: {pet.neutered}</h2>
-                <h2 className="rehome_h2">Status: {pet.status}</h2>
+                <h2 className="rehome_h2"><strong>Address:</strong> {pet.location}</h2>
+                <h2 className="rehome_h2"><strong>Neutered:</strong> {pet.neutered}</h2>
+                <h2 className="rehome_h2"><strong>Status:</strong> {pet.status}</h2>
                 <Link className="edit" to={`/${userID}/updatePet/${pet.id}`}><img className="edit" src={edit} alt="edit" /></Link>
                 <img className="delete" src={Delete} alt="delete" onClick={() => deletePet(pet.id, pet.index)} />
               </div>

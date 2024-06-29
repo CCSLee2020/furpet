@@ -106,19 +106,20 @@ a {
 .card {
   position: relative;
   left: 0px;
+  top: -320px;
 }
 
 .card2 {
   position: relative;
   left: 0px;
-  top: -200px;
+  top: -168px;
   width: 1230px;
 }
 
 .card3 {
   position: relative;
   left: 0px;
-  top: -100px;
+  top: -84px;
   width: 1230px;
 }
 
@@ -129,20 +130,51 @@ a {
   height: 100px;
 }
 
+.countbox {
+  position: relative;
+  left: 0px;
+  width: 75px;
+  height: 75px;
+}
+
 .countbox1 {
   position: relative;
-  top: -109px;
-  left: 115px;
-  width: 100px;
-  height: 100px;
+  top: -84px;
+  left: 83px;
+  width: 75px;
+  height: 75px;
 }
 
 .countbox2 {
   position: relative;
-  top: -218px;
-  left: 230px;
-  width: 100px;
-  height: 100px;
+  top: -169px;
+  left: 166px;
+  width: 75px;
+  height: 75px;
+}
+
+.countbox3 {
+  position: relative;
+  top: -170px;
+  left: 0px;
+  width: 75px;
+  height: 75px;
+}
+
+.countbox4 {
+  position: relative;
+  top: -255px;
+  left: 83px;
+  width: 75px;
+  height: 75px;
+}
+
+.countbox5 {
+  position: relative;
+  top: -340px;
+  left: 166px;
+  width: 75px;
+  height: 75px;
 }
 
 /* responsive layout */
@@ -183,43 +215,68 @@ a {
 
   .countbox {
     position: relative;
-    left: 250px;
-    width: 100px;
-    height: 100px;
+    left: 234px;
+    width: 75px;
+    height: 75px;
   }
   
   .countbox1 {
     position: relative;
-    top: -109px;
-    left: 365px;
-    width: 100px;
-    height: 100px;
+    top: -84px;
+    left: 317px;
+    width: 75px;
+    height: 75px;
   }
   
   .countbox2 {
     position: relative;
-    top: -218px;
-    left: 480px;
-    width: 100px;
-    height: 100px;
+    top: -169px;
+    left: 400px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .countbox3 {
+    position: relative;
+    top: -254px;
+    left: 482px;
+    width: 75px;
+    height: 75px;
+  }
+  
+  .countbox4 {
+    position: relative;
+    top: -339px;
+    left: 563px;
+    width: 75px;
+    height: 75px;
+  }
+  
+  .countbox5 {
+    position: relative;
+    top: -424px;
+    left: 646px;
+    width: 75px;
+    height: 75px;
   }
   
   .card {
     position: relative;
     left: 250px;
+    top: -400px;
   }
   
   .card2 {
     position: relative;
     left: 250px;
-    top: -200px;
+    top: -168px;
     width: 1230px;
   }
   
   .card3 {
     position: relative;
     left: 250px;
-    top: -100px;
+    top: -84px;
     width: 1230px;
   }
 

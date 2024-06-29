@@ -174,36 +174,36 @@ const LandingPage: React.FC = () => {
         </nav>
         <div className="AddPet">
           <div className="AddPetBox">
-            <h1 className="AddPetBoxH1">Re-Home Pet</h1>
+            <h1 className="AddPetBoxH1">Add Pet</h1>
             <img src={addPet} />
             <form onSubmit={handleSubmit} className="AddPetform">
               <input type="file" onChange={handleImageChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
-              <input type='text' className="AddPetForm_input" placeholder="Age" name="age" value={pet.age} onChange={handleChange} required />
+              <input type='text' className="AddPetForm_input" placeholder="Age (Years | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="gender" value={pet.gender} onChange={handleChange} required>
                   <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="neutered" value={pet.neutered} onChange={handleChange} required>
                   <option value="">Select Neutered</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="type" value={pet.type} onChange={handleChange} required>
                   <option value="">Select Type</option>
-                  <option value="cat">Cat</option>
-                  <option value="dog">Dog</option>
+                  <option value="Cat">Dog</option>
+                  <option value="Dog">Cat</option>
                 </select>
               </div>
               <input className="AddPetForm_input" type="text" placeholder="Breed" name="breed" value={pet.breed} onChange={handleChange} required />
-              <input className="AddPetForm_input" type="text" placeholder="Weight (kg)" name="weight" value={pet.weight} onChange={handleChange} required />
-              <input className="AddPetForm_input" type="text" placeholder="Location" name="location" value={pet.location} onChange={handleChange} required />
+              <input className="AddPetForm_input" type="text" placeholder="Weight (Kilogram [kg] | Numbers Only)" name="weight" value={pet.weight} onChange={handleChange} required />
+              <input className="AddPetForm_input" type="text" placeholder="Location (Municipality/City, Province)" name="location" value={pet.location} onChange={handleChange} required />
               <input className="AddPetForm_input" type="text" placeholder="About" name="about" value={pet.about} onChange={handleChange} required />
               <button className="AddPet_submit" type="submit">Add Pet</button>
             </form>

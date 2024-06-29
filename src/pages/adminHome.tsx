@@ -12,10 +12,51 @@ type User = {
     role: string;
 };
 
+type Pet = {
+    id: string;
+    index: string,
+    name: string;
+    age: number;
+    gender: 'male' | 'female';
+    neutered: 'yes' | 'no';
+    type: 'cat' | 'dog';
+    breed: string;
+    location: string;
+    about: string;
+    caretakerInfo: string;
+    imageUrl: string;
+    status: string;
+};
+
+type Appointment = {
+    id: string;
+    index: string;
+    appoint_name: string;
+    appoint_number: string;
+    appoint_email: string;
+    appoint_address: string;
+    appoint_date: string;
+    pet_name: string;
+    pet_caretaker: string;
+    pet_number: string;
+    pet_location: string;
+    pet_index: string;
+    imageUrl: string;
+    status: string;
+};
+
 const AdminHome: React.FC = () => {
     const [isActive, setIsActive] = useState(false);
     const [users, setUsers] = useState<User[]>([]);
+    const [userCount, setUserCount] = useState<number>(0);
     const { userID } = useParams<{ userID: string }>();
+    const [appointments, setAppointments] = useState<Appointment[]>([]);
+    const [pendingCount, setPendingCount] = useState<number>(0);
+    const [confirmedCount, setConfirmedCount] = useState<number>(0);
+    const [pets, setPets] = useState<Pet[]>([]);
+    const [denyCount, setDenyCount] = useState<number>(0);
+    const [availableCount, setAvailableCount] = useState<number>(0);
+    const [adoptedCount, setAdoptedCount] = useState<number>(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,7 +65,50 @@ const AdminHome: React.FC = () => {
             setUsers(data.docs.map(doc => ({ ...doc.data(), id: doc.id }) as User));
         };
         fetchData();
-    }, []);
+        const user = users.filter(user => user.role === 'user');
+        setUserCount(user.length);
+    }, [users]);
+
+    useEffect(() => {
+        const fetchAppointment = async () => {
+            const db = firebase.firestore();
+            const appointmentCollection = db.collection('appointments').orderBy('index');
+            const appointmentSnapshot = await appointmentCollection.get();
+
+            const appointmentList: Appointment[] = appointmentSnapshot.docs.map(doc => {
+                const appointmentData = doc.data() as Appointment;
+                return { ...appointmentData, id: doc.id } as Appointment;
+            });
+
+            setAppointments(appointmentList);
+        };
+
+        fetchAppointment();
+        const pending = appointments.filter(appointment => appointment.status === 'Pending');
+        const confirmed = appointments.filter(appointment => appointment.status === 'Confirmed');
+        const deny = appointments.filter(appointment => appointment.status === 'Deny');
+
+        setPendingCount(pending.length);
+        setConfirmedCount(confirmed.length);
+        setDenyCount(deny.length);
+    }, [appointments]);
+
+    useEffect(() => {
+        const fetchPets = async () => {
+            const db = firebase.firestore();
+            const petCollection = db.collection('pets').orderBy('index');
+            const petSnapshot = await petCollection.get();
+            const petList: Pet[] = petSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }) as Pet);
+            setPets(petList);
+        };
+
+        fetchPets();
+        const available = pets.filter(pets => pets.status === 'Available');
+        const adopted = pets.filter(pets => pets.status === 'Adopted');
+
+        setAvailableCount(available.length);
+        setAdoptedCount(adopted.length);
+    }, [pets]);
 
     const deleteUser = async (id: string) => {
         const db = firebase.firestore();
@@ -90,6 +174,24 @@ const AdminHome: React.FC = () => {
                             </ul>
                         </aside>
                         <main className="main">
+                            <IonCard className="countbox">
+                                <strong>Registered Users:</strong> {userCount}
+                            </IonCard>
+                            <IonCard className="countbox1">
+                                <strong>Available Pets:</strong> {availableCount}
+                            </IonCard>
+                            <IonCard className="countbox2">
+                                <strong>Adopted Pets:</strong> {adoptedCount}
+                            </IonCard>
+                            <IonCard className="countbox3">
+                                <strong>Pending Appointments:</strong> {pendingCount}
+                            </IonCard>
+                            <IonCard className="countbox4">
+                                <strong>Confirmed Appointments:</strong> {confirmedCount}
+                            </IonCard>
+                            <IonCard className="countbox5">
+                                <strong>Denied Appointments:</strong> {denyCount}
+                            </IonCard>
                             {users.map(user => (
                                 <IonCard className='card' key={user.id}>
                                     <IonCardContent>

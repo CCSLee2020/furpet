@@ -29,7 +29,7 @@ nav a:hover {
 
 .h1_logo1 {
     color: white;
-    font-size: 48px;
+    font-size: 30px;
     font-weight: 400;
     font-family: 'Aclonica', sans-serif;
 }
@@ -51,17 +51,17 @@ nav a:hover {
 }
 
 .nav-dropdown-btn:hover {
-    color: rgb(0, 0, 0);
+    color: rgb(0, 213, 255);
 }
 
 /* Styles for the dropdown button */
 .nav-dropdown-btn {
-    font-family: 'Aclonica';
+    font-family: 'Poppins';
     background: none;
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 16px;
     margin: 0px 10px 0px 0px;
   }
   
@@ -92,7 +92,7 @@ nav a:hover {
   
 
 .nav-links1 a {
-    font-family: 'Aclonica';
+    font-family: 'Poppins';
     color: rgb(255, 255, 255);
     text-decoration: none;
     display: inline-block;
@@ -100,7 +100,7 @@ nav a:hover {
 }
 
 .nav-links2 a {
-    font-family: 'Aclonica';
+    font-family: 'Poppins';
     color: rgb(255, 255, 255);
     text-decoration: none;
     padding: 14px 16px;
@@ -115,18 +115,18 @@ nav a:hover {
 
 .welcomeText {
     position: relative;
-    top: 200px;
-    left: 80px;
+    top: 100px;
+    left: 43px;
     color: black;
     /* font-family: 'Forum', serif; */
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 70px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .AdoptAPet {
-    height: 94px;
-    width: 360px;
+    height: 65px;
+    width: 320px;
     background-color: #393c49;
     border-radius: 50px;
     position: absolute;
@@ -137,19 +137,19 @@ nav a:hover {
 
 .AdoptAPet2 {
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
     font-weight: 400;
     position: absolute;
-    top: -30px;
-    left: 58px;
+    top: -37px;
+    left: 45px;
 }
 
 .welcomeBanner .welcomeImg {
     position: absolute;
     width: 100%;
-    height: 827px;
-    top: 108px;
+    height: 1000px;
+    top: 86px;
     object-fit: cover;
     z-index: -1;
 }
@@ -172,9 +172,9 @@ nav a:hover {
 
 .categories_h1 {
     color: black;
-    font-family: 'Aclonica', sans-serif;
-    font-size: 48px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
     position: absolute;
     top: 30px;
     left: 70px;
@@ -231,9 +231,9 @@ nav a:hover {
 
 .adpotion_h1 {
     color: black;
-    font-family: 'Aclonica';
-    font-size: 48px;
-    font-weight: 400;
+    font-family: 'Inter';
+    font-size: 40px;
+    font-weight: 700;
     position: absolute;
     top: 30px;
     left: 70px;
@@ -252,7 +252,24 @@ nav a:hover {
     border: 1px solid;
     border-color: #393c49;
     border-radius: 20px;
-    height: 420px;
+    height: 450px;
+    width: 250px;
+    margin-top: 10px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    font-size: 30px;
+}
+
+.adoption_container>.adoption_box3 {
+    border: 1px solid;
+    border-color: #393c49;
+    border-radius: 20px;
+    height: 460px;
     width: 250px;
     margin-top: 10px;
     margin-top: 10px;
@@ -269,7 +286,7 @@ nav a:hover {
     border: 1px solid;
     border-color: #393c49;
     border-radius: 20px;
-    height: 420px;
+    height: 450px;
     width: 250px;
     margin-top: 10px;
     margin-top: 10px;
@@ -298,15 +315,15 @@ nav a:hover {
 .adoption_text {
     position: relative;
     color: black;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: bold;
 }
 
 .adoption_desc {
     line-height: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     position: relative;
     top: -17px;
 }
@@ -327,28 +344,28 @@ nav a:hover {
     background-color: #393c49;
     border-radius: 50px;
     position: relative;
-    left: -30px;
-    top: 190px;
+    left: -25px;
+    top: 220px;
 }
 
 .adoption_button {
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: 400;
     position: absolute;
-    top: -14px;
-    left: 44px;
+    top: -18px;
+    left: 40px;
 }
 
 .adoption_button1 {
     color: white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: 400;
     position: absolute;
-    top: -15px;
-    left: 47px;
+    top: -18px;
+    left: 40px;
 }
 
 .adoptionProcess {
@@ -425,7 +442,7 @@ nav a:hover {
 @media only screen and (max-width: 1240px) {
     .adoptionProcess {
         height: 500px;
-        top: 750px;
+        top: 790px;
     }
 }
 
@@ -444,7 +461,7 @@ nav a:hover {
 
 @media only screen and (max-width: 930px) {
     .adoptionProcess {
-        top: 750px;
+        top: 795px;
     }
 
     .adoptionProcessText {
@@ -493,7 +510,7 @@ nav a:hover {
         width: 420px;
         right: 80px;
         display: flex;
-        font-size: 2vw;
+        font-size: 1.5vw;
         align-items: center;
     }
 
@@ -517,26 +534,27 @@ nav a:hover {
 
     .welcomeText {
         position: absolute;
-        top: 100px;
+        top: 75px;
         left: 20px;
-        font-size: 48px;
+        font-size: 30px;
     }
 
     .AdoptAPet {
         height: 47px;
         width: 180px;
-        top: 425px;
+        top: 445px;
         left: 75px;
     }
 
     .AdoptAPet2 {
         font-size: 24px;
-        top: -12px;
-        left: 35px;
+        top: -18px;
+        left: 25px;
     }
 
     .welcomeBanner .welcomeImg {
         height: 413px;
+        top: 150px;
     }
 
     .categories1{
@@ -553,7 +571,13 @@ nav a:hover {
 
     .categories_h1 {
         font-size: 36px;
-        top: 20px;
+        top: 17px;
+        left: 30px;
+    }
+
+    .adpotion_h1 {
+        font-size: 36px;
+        top: 90px;
         left: 30px;
     }
 
@@ -586,13 +610,13 @@ nav a:hover {
 
     .adoptionProcess {
         height: 300px;
-        top: 1683px;
+        top: 1820px;
     }
 
     .nav-dropdown-menu {
         height: 40px;
         top: -35px;
-        font-size: 2vw;
+        font-size: 1.8vw;
         width: 220px;
     }
 

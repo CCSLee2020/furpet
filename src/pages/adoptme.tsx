@@ -134,7 +134,7 @@ const LandingPage: React.FC = () => {
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
                     </div>

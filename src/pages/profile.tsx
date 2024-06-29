@@ -60,7 +60,7 @@ const LandingPage: React.FC = () => {
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
                     </div>
@@ -73,7 +73,7 @@ const LandingPage: React.FC = () => {
                             <h2 className="details_h2_1"><b>Nickname:</b> {users?.name}</h2>
                             <h2 className="details_h2_1"><b>Contact Number:</b> {users?.contactNumber}</h2>
                             <h2 className="details_h2_1"><b>Address:</b> {users?.address}</h2>
-                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1"><p className="details_appointment2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
+                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1"><p className="details_appointment4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
                         </div>
                         <div className="space2"></div>
                     </>

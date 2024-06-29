@@ -72,9 +72,9 @@ nav a:hover {
 
 .details_h1 {
     color: black;
-    font-family: 'Aclonica', sans-serif;
-    font-size: 48px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
     position: absolute;
     top: 30px;
     left: 70px;
@@ -82,17 +82,17 @@ nav a:hover {
 
 .details_h1_1 {
     color: black;
-    font-family: 'Aclonica', sans-serif;
-    font-size: 48px;
-    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
     position: relative;
     top: 30px;
 }
 
 .details_h2 {
     color: black;
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     font-weight: 400;
     position: relative;
     top: 150px;
@@ -101,8 +101,8 @@ nav a:hover {
 
 .details_h2_1 {
     color: black;
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     font-weight: 400;
     text-align: center;
     position: relative;
@@ -119,8 +119,8 @@ nav a:hover {
 }
 
 .details_appointment {
-    height: 82px;
-    width: 360px;
+    height: 50px;
+    width: 276px;
     background-color: #393c49;
     border-radius: 50px;
     position: absolute;
@@ -139,29 +139,39 @@ nav a:hover {
 
 .details_appointment2 {
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     font-weight: 400;
     position: absolute;
-    top: -10px;
-    left: 70px;
+    top: -17px;
+    left: 53px;
 }   
 
 .details_appointment3 {
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
     font-weight: 400;
     position: absolute;
-    top: 0px;
-    left: 70px;
+    top: -3px;
+    left: 55px;
 }
+
+.details_appointment4 {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    position: absolute;
+    top: -25px;
+    left: 0px;
+}   
 
 .details_aboutme {
     color: black;
-    font-family: 'Aclonica', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 48px;
-    font-weight: 400;
+    font-weight: 700;
     position: relative;
     top: 429px;
     left: 150px;
@@ -169,7 +179,7 @@ nav a:hover {
 
 .details_desc {
     color: black;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: 400;
     position: relative;
@@ -244,11 +254,11 @@ nav a:hover {
     .details_img {
         width: 400px;
         height: 400px;
-        left: 100px;
+        left: 30px;
     }
 
     .details_textSquare {
-        left: 460px;
+        left: 410px;
     }
 
     .details_aboutme {
@@ -328,7 +338,7 @@ nav a:hover {
 
     .details_textSquare {
         position: relative;
-        left: -40px;
+        left: -65px;
         top: 421px;
     }
 
@@ -378,12 +388,12 @@ nav a:hover {
     }
 
     .details_appointment {
-        left: 48px;
+        left: 72px;
     }
 
     .details_appointment3 {
-        left: 19px;
-        top: 0px;
+        left: 50px;
+        top: -5px;
         display: flex;
         text-align: center;
     }

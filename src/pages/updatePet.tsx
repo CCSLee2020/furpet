@@ -116,36 +116,36 @@ const UpdatePet: React.FC = () => {
               <div className="nav-dropdown-menu">
                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
               </div>
             )}
           </div>
         </nav>
-        <div className="AddPet">
+        <div className="UpdatePet1">
           <div className="AddPetBox">
-            <h1 className="AddPetBoxH1">Re-Home Pet</h1>
+            <h1 className="AddPetBoxH1">Update Pet</h1>
             <form onSubmit={handleUpdateAndSubmit} className="UpdatePetform">
               <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} />
               <input type='text' className="AddPetForm_input" placeholder="Age" name="age" value={pet.age} onChange={handleChange} />
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="gender" value={pet.gender} onChange={handleChange}>
                   <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="neutered" value={pet.neutered} onChange={handleChange}>
                   <option value="">Select Neutered</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="type" value={pet.type} onChange={handleChange}>
                   <option value="">Select Type</option>
-                  <option value="cat">Cat</option>
-                  <option value="dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Dog">Dog</option>
                 </select>
               </div>
               <input className="AddPetForm_input" type="text" placeholder="Breed" name="breed" value={pet.breed} onChange={handleChange} />

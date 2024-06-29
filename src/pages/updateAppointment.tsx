@@ -149,7 +149,7 @@ const UpdatePet: React.FC = () => {
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
                     </div>
@@ -159,14 +159,14 @@ const UpdatePet: React.FC = () => {
                         <form onSubmit={(e) => appointment && handleUpdateAndSubmit(e, appointment)}>
                             <h1 className="AppointmentDetailsH1_1">Appointment Details</h1>
                             <div className="UpdateAppointmentform1">
-                                <p className="AppointmentDetailsText1">Pet Name: {appointment?.pet_name}<br /></p>
-                                <p className="AppointmentDetailsText1">Owner Information: {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br /></p>
-                                <p className="AppointmentDetailsText1">Address: {petOwnerUsers?.address}<br /></p>
-                                <p className="AppointmentDetailsText1">Your Name: {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>
-                                <p className="AppointmentDetailsText1">Your Number: {ownerUsers?.contactNumber}<br /></p>
-                                <p className="AppointmentDetailsText1">Your Email: {ownerUsers?.email}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Pet Name:</strong> {appointment?.pet_name}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Owner:</strong> {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Address:</strong> {petOwnerUsers?.address}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Your Name:</strong> {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Your Number:</strong> {ownerUsers?.contactNumber}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Your Email:</strong> {ownerUsers?.email}<br /></p>
                                 <label>
-                                    <p className="AppointmentDetailsText1">Status:<br /></p>
+                                    <p className="AppointmentDetailsText1"><strong>Status:</strong></p>
                                     <select name="status" value={appointment?.status} onChange={handleChange}>
                                         <option value="Pending">Pending</option>
                                         <option value="Confirmed">Confirmed</option>

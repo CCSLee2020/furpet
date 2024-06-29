@@ -12,18 +12,13 @@ import { useParams, Link } from 'react-router-dom';
 type Appointment = {
     id: string;
     index: string;
-    appoint_name: string;
-    appoint_number: string;
-    appoint_email: string;
-    appoint_address: string;
     appoint_date: string;
     pet_name: string;
-    pet_caretaker: string;
-    pet_number: string;
-    pet_location: string;
     pet_index: string;
     imageUrl: string;
     status: string;
+    appointmentPetOwnerID: string;
+    appointmentOwnerID: string;
 };
 
 type User = {
@@ -76,45 +71,50 @@ const LandingPage: React.FC = () => {
 
     useEffect(() => {
         const fetchPets = async () => {
-          try {
-            const db = firebase.firestore();
-            const petCollection = db.collection('users').doc(userID).collection('appointments').orderBy('index');
-            const petSnapshot = await petCollection.get();
-            const petList: Appointment[] = petSnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }) as Appointment);
-            setAppointments(petList);
-          } catch (error) {
-            console.error('Error fetching pets:', error);
-          }
+            try {
+                const db = firebase.firestore();
+                const appointmentCollection = db.collection('appointments').orderBy('index');
+                const appointmentSnapshot = await appointmentCollection.get();
+                const petList: Appointment[] = appointmentSnapshot.docs
+                    .map(doc => ({ ...doc.data(), id: doc.id }) as Appointment)
+                    .filter(appointment => appointment.appointmentOwnerID === userID);
+                    
+                setAppointments(petList);
+            } catch (error) {
+                console.error('Error fetching pets:', error);
+            }
         };
-    
+
         if (userID) {
-          fetchPets();
+            fetchPets();
         }
-      }, [userID]);
+    }, [userID]);
 
     const deleteAppoint = async (id: string, imageUrl: string) => {
         try {
             const db = firebase.firestore();
-            const appointmentRef = db.collection('appointments').doc(id); // Main collection reference
-            const subAppointmentRef = db.collection('users').doc(userID).collection('appointments').doc(id); // Subcollection reference
-            const imageRef = storageRef.child(`documents/${imageUrl}`);
-          
-            if (window.confirm('Are you sure you want to delete this appointment?')) {
-              // Delete the image from Firebase Storage
-              await imageRef.delete();
-        
-              // Delete the pet document from the subcollection
-              await subAppointmentRef.delete();
-        
-              // Delete the pet document from the main collection
-              await appointmentRef.delete();
-        
-              // Update the local state to remove the pet
-              setAppointments(appointments.filter(appointments => appointments.id !== id));
+            const appointment = appointments.find(appointment => appointment.id === id);
+            
+            if (!appointment) {
+                throw new Error("Appointment not found");
             }
-          } catch (error) {
-            console.error('Error deleting pet:', error);
-          }
+    
+            const appointmentRef = db.collection('appointments').doc(id); // Main collection reference
+            const imageRef = storageRef.child(`documents/${imageUrl}`);
+            
+            if (window.confirm('Are you sure you want to delete this appointment?')) {
+                // Delete the image from Firebase Storage
+                await imageRef.delete();
+            
+                // Delete the pet document from the main collection
+                await appointmentRef.delete();
+            
+                // Update the local state to remove the pet
+                setAppointments(appointments.filter(appointment => appointment.id !== id));
+            }
+        } catch (error) {
+            console.error('Error deleting appointment:', error);
+        }
     };
 
     return (
@@ -139,7 +139,7 @@ const LandingPage: React.FC = () => {
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
                     </div>

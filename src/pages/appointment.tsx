@@ -186,7 +186,6 @@ const LandingPage: React.FC = () => {
                             const appointmentWithImageUrl = { ...appointment, imageUrl: downloadURL };
 
                             await setDoc(doc(db, 'appointments', documentId), appointmentWithImageUrl); // Add to appointments collection
-                            await setDoc(doc(db, `users/${userID}/appointments`, documentId), appointmentWithImageUrl); // Add to user's appointments subcollection
 
                             history.push(`${userID}/Home`);
                         });
@@ -194,7 +193,6 @@ const LandingPage: React.FC = () => {
                 );
             } else {
                 await setDoc(doc(db, 'appointments', documentId), appointment); // Add to appointments collection
-                await setDoc(doc(db, `users/${userID}/appointments`, documentId), appointment); // Add to user's appointments subcollection
 
                 history.push(`${userID}/Home`);
             }
@@ -229,7 +227,7 @@ const LandingPage: React.FC = () => {
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
                     </div>
@@ -242,11 +240,11 @@ const LandingPage: React.FC = () => {
                                 {imageUrl && <img src={imageUrl} />}
                                 <h1 className="appointment_texth1">{pet.name}</h1>
                                 {ownerUser && (
-                                    <h2 className="appointment_h2">Caretaker: {ownerUser.firstname} {ownerUser.lastname}</h2>
+                                    <h2 className="appointment_h2"><strong>Owner Name:</strong> {ownerUser.firstname} {ownerUser.lastname}</h2>
                                 )}
-                                <h2 className="appointment_h2">{pet.location}</h2>
+                                <h2 className="appointment_h2"><strong>Location:</strong> {pet.location}</h2>
                                 {ownerUser && (
-                                    <h2 className="appointment_h2">{ownerUser.contactNumber}</h2>
+                                    <h2 className="appointment_h2"><strong>Contact Number:</strong> {ownerUser.contactNumber}</h2>
                                 )}
                             </div>
                         </div>
@@ -258,11 +256,11 @@ const LandingPage: React.FC = () => {
 
                                     <div className="scheduleBox1">
                                         <div className="scheduleform">
-                                            <h1 className="schedule_h1">Schedule Your Visit</h1>
-                                            <h3 className="schedule_h1">↓Insert ID Here↓</h3>
+                                            <h1 className="schedule_h1"><strong>Schedule Your Visit</strong></h1>
+                                            <h2 className="schedule_h1">↓Insert ID Here↓</h2>
                                             <input type="file" className="schedule_file" onChange={handleImageChange} />
+                                            {/* <label className="schedule_file" htmlFor="file_img">Upload Your ID Here</label> */}
                                             <input className="schedule_input1" type="date" name="appoint_date" value={appointment.appoint_date} onChange={handleChange} />
-                                            
                                         </div>
                                     </div>
                                     <input className="schedule_submit1" type="submit" />

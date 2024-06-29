@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './landingpage.css';
 import { IonContent, IonPage } from '@ionic/react';
-import welcomeImg from '../assets/friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white 1.png';
+import welcomeImg from '../assets/welcomeImg.jpg';
 import dog1 from '../assets/dog 1.png';
 import footprint1 from '../assets/footprint 1.png';
 import cat1 from '../assets/cat 1.png';
@@ -117,7 +117,7 @@ const LandingPage: React.FC = () => {
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
+                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
                     </div>
@@ -157,7 +157,7 @@ const LandingPage: React.FC = () => {
                                 <p className="adoption_desc">{pet.gender}</p>
                                 <p className="adoption_desc">{pet.weight} kg</p>
                                 <p className="adoption_desc">{pet.location}</p>
-                                <p className="adoption_desc">Status: {pet.status}</p>
+                                <p className="adoption_desc">{pet.status}</p>
                                 <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>View More</p></div></Link>
                             </div>
                         ))}
