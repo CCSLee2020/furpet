@@ -148,7 +148,7 @@ const AdminAppointmentsUpdate: React.FC = () => {
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
                                 <a href={`/${userID}/adminHome`}>
-                                    <li className="aside_list-item active-list">
+                                    <li className="aside_list-item">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
                                 </a>
@@ -158,7 +158,7 @@ const AdminAppointmentsUpdate: React.FC = () => {
                                     </li>
                                 </a>
                                 <a href={`/${userID}/adminAppointments`}>
-                                    <li className="aside_list-item">
+                                    <li className="aside_list-item active-list">
                                         <i className="fas fa-clipboard fw"></i> Appointments
                                     </li>
                                 </a>
@@ -178,7 +178,7 @@ const AdminAppointmentsUpdate: React.FC = () => {
                         </aside>
                         <main className="main">
                             <IonCard>
-                                <IonCardContent className='card'>
+                                <IonCardContent className='card_appointment'>
                                     <form onSubmit={(e) => appointment && handleUpdateAndSubmit(e, appointment)}>
                                         Pet Name: {appointment?.pet_name}<br />
                                         Owner Information: {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br />

@@ -168,7 +168,7 @@ const AdminUpdatePets: React.FC = () => {
                         </aside>
                         <main className="main">
                             <IonCard>
-                                <IonCardContent className='card'>
+                                <IonCardContent className='card_pet'>
                                     <form onSubmit={(e) => handleUpdateAndSubmit(e, pet)}>
                                         Pet Name: {pet.name}<br />
                                         Age: {pet.age}<br />
@@ -177,7 +177,7 @@ const AdminUpdatePets: React.FC = () => {
                                         Type: {pet.type}<br />
                                         Breed: {pet.breed}<br />
                                         Weight: {pet.weight}<br />
-                                        Address: {pet.address}<br />
+                                        Location: {pet.location}<br />
                                         About: {pet.about}<br />
                                         Breed: {pet.breed}<br />
                                         {ownerUser && (

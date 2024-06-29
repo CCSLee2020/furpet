@@ -43,6 +43,7 @@
 .document_img2 {
   width: 100px;
   height: 100px;
+  object-fit: cover;
 }
 
 
@@ -101,6 +102,18 @@
 a {
   color: unset;
   text-decoration: none;
+}
+
+.card_pet {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+.card_appointment {
+  position: relative;
+  left: 0px;
+  top: 0px;
 }
 
 .card {
@@ -258,6 +271,16 @@ a {
     left: 646px;
     width: 75px;
     height: 75px;
+  }
+
+  .card_pet {
+    top: 0px;
+    left: 250px;
+  }
+
+  .card_appointment {
+    top: 0px;
+    left: 250px;
   }
   
   .card {

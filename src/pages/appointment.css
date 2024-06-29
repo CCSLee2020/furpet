@@ -131,8 +131,15 @@ nav a:hover {
     flex-wrap: wrap;
     background-color: rgb(255, 255, 255);
     position: relative;
-    top: -76px;
+    top: 200px;
     left: 0px;
+}
+
+.scheduleform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .qnaBox {
@@ -154,10 +161,6 @@ nav a:hover {
     display: none;
 }
 
-.scheduleform {
-    width: 25%;
-}
-
 .schedule_file {
     display: inline-block;
     height: 70px;
@@ -170,6 +173,7 @@ nav a:hover {
     font-size: 25px;
     font-weight: 400px;
     position: relative;
+    padding-top: 15px;
 }
 
 .schedule_input1 {
@@ -182,7 +186,6 @@ nav a:hover {
     border-radius: 20px;
     justify-content: center;
     position: relative;
-    right: 220px;
     font-family: 'Poppins';
     padding: 20px;
 }
@@ -232,7 +235,7 @@ hr {
     font-size: 40px;
     font-weight: 700;
     position: relative;
-    top: -70px;
+    top: 0px;
 }
 
 .hidden_input {
@@ -260,13 +263,10 @@ hr {
 }
 
 @media only screen and (max-width: 1025px) {
-    .scheduleform>.schedule_input1 {
-        width: 580px;
-    }
 
-    .schedule_file {
+    .scheduleform>.schedule_input1 {
+        width: 550px;
         position: relative;
-        right: 40px
     }
 
 }
@@ -279,13 +279,8 @@ hr {
     }
 
     .appointment_h1 {
-        top: -10px;
+        top: -0px;
         left: 10px;
-    }
-
-    .schedule_file {
-        position: relative;
-        right: 60px
     }
 
     .qnaform>p {
@@ -346,10 +341,11 @@ hr {
     }
 
     .schedule_file {
-        height: 50px;
+        height: 80px;
         width: 200px;
         font-size: 20px;
         right: 0;
+        padding-top: 0;
     }
 
     .scheduleform>.schedule_input1 {
@@ -370,7 +366,8 @@ hr {
     }
 
     .scheduleBox1 {
-        top: 0px;
+        position: relative;
+        top: 85px;
     }
 
     .scheduleform,

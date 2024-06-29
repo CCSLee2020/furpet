@@ -93,15 +93,11 @@ const AdminAppointments: React.FC = () => {
         try {
             const db = firebase.firestore();
             const appointmentRef = db.collection('appointments').doc(id); // Main collection reference
-            const subAppointmentRef = db.collection('users').doc(userID).collection('appointments').doc(id); // Subcollection reference
             const imageRef = storageRef.child(`documents/${imageUrl}`);
           
             if (window.confirm('Are you sure you want to delete this pet?')) {
               // Delete the image from Firebase Storage
               await imageRef.delete();
-        
-              // Delete the pet document from the subcollection
-              await subAppointmentRef.delete();
         
               // Delete the pet document from the main collection
               await appointmentRef.delete();
@@ -128,7 +124,7 @@ const AdminAppointments: React.FC = () => {
                         </div>
                         <header className="header">
                             <div className="header_title">
-                                <h2>Appointments</h2>
+                                <h2>Edit Appointment</h2>
                             </div>
                             <div className="header_avatar"><i className="fas fa-user-circle fw fa-xl"></i></div>
                         </header>
@@ -136,6 +132,7 @@ const AdminAppointments: React.FC = () => {
                             <div className="aside_close-icon">
                                 <strong>×</strong>
                             </div>
+                            <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
                                 <a href={`/${userID}/adminHome`}>
                                     <li className="aside_list-item">
@@ -181,12 +178,7 @@ const AdminAppointments: React.FC = () => {
                                     <IonCardContent>
                                         <img className="document_img2   " key={i} src={appointment.imageUrl} alt={appointment.index} /><br />
                                         Pet Name: {appointment.pet_name}<br />
-                                        Owner Information: {appointment.pet_name}<br />
-                                        Owner Number: {appointment.pet_number}<br />
-                                        Address: {appointment.pet_location}<br />
-                                        Your Name: {appointment.appoint_name}<br />
-                                        Your Number: {appointment.appoint_number}<br />
-                                        Your Email: {appointment.appoint_email}<br />
+                                        Appointed Date: {appointment.appoint_date}<br />
                                         Status: {appointment.status}<br />
                                         <IonButton color="light"><Link to={`/${userID}/selectStatus/${appointment.id}`}>View and Select Status</Link></IonButton>
                                         <IonButton color="danger" onClick={() => deleteAppoint(appointment.id, appointment.index)} > Delete </IonButton>

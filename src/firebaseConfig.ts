@@ -4,14 +4,24 @@ import 'firebase/compat/firestore';
 import 'firebase/auth';
 import 'firebase/compat/storage';
 
+// const config = {
+//     apiKey: "AIzaSyDDdSly9TG350O54D_BvtElgHZ6oxJ_CbU",
+//     authDomain: "furpet-14eea.firebaseapp.com",
+//     projectId: "furpet-14eea",
+//     storageBucket: "furpet-14eea.appspot.com",
+//     messagingSenderId: "170672929681",
+//     appId: "1:170672929681:web:219bb7ade084ec11633830",
+//     measurementId: "G-F3DBNJSXJ2"
+// }
+
 const config = {
-    apiKey: "AIzaSyDDdSly9TG350O54D_BvtElgHZ6oxJ_CbU",
-    authDomain: "furpet-14eea.firebaseapp.com",
-    projectId: "furpet-14eea",
-    storageBucket: "furpet-14eea.appspot.com",
-    messagingSenderId: "170672929681",
-    appId: "1:170672929681:web:219bb7ade084ec11633830",
-    measurementId: "G-F3DBNJSXJ2"
+    apiKey: "AIzaSyCE-HqkM6FV2g5jumlE6EWpUWp_A96ixXk",
+    authDomain: "furpet-b61f6.firebaseapp.com",
+    projectId: "furpet-b61f6",
+    storageBucket: "furpet-b61f6.appspot.com",
+    messagingSenderId: "934970732575",
+    appId: "1:934970732575:web:bdfea3c6a8cf9d19d3a52a",
+    measurementId: "G-EM19JT5HX1"
 }
 
 firebase.initializeApp(config)

@@ -87,7 +87,7 @@ const LandingPage: React.FC = () => {
         imageUrl: `documents/${generateUniqueFirestoreId()}`,
         appointmentPetOwnerID: '',
         appointmentOwnerID: `${userID}`
-        
+
     });
 
     useEffect(() => {
@@ -251,18 +251,13 @@ const LandingPage: React.FC = () => {
 
 
                         <form onSubmit={handleSubmit}>
-                            <div className="qnaBox">
-                                <div className="qnaform">
-
-                                    <div className="scheduleBox1">
-                                        <div className="scheduleform">
-                                            <h1 className="schedule_h1"><strong>Schedule Your Visit</strong></h1>
-                                            <h2 className="schedule_h1">↓Insert ID Here↓</h2>
-                                            <input type="file" className="schedule_file" onChange={handleImageChange} />
-                                            {/* <label className="schedule_file" htmlFor="file_img">Upload Your ID Here</label> */}
-                                            <input className="schedule_input1" type="date" name="appoint_date" value={appointment.appoint_date} onChange={handleChange} />
-                                        </div>
-                                    </div>
+                            <div className="scheduleBox1">
+                                <div className="scheduleform">
+                                    <h1 className="schedule_h1"><strong>Schedule Your Visit</strong></h1>
+                                    <h2 className="schedule_h1">↓Insert ID Here <strong>|</strong> Image Only↓</h2>
+                                    <input type="file" className="schedule_file" onChange={handleImageChange} required/>
+                                    {/* <label className="schedule_file" htmlFor="file_img">Upload Your ID Here</label> */}
+                                    <input className="schedule_input1" type="date" name="appoint_date" value={appointment.appoint_date} onChange={handleChange} required/>
                                     <input className="schedule_submit1" type="submit" />
                                 </div>
                             </div>

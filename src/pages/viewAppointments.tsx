@@ -142,13 +142,13 @@ const UpdatePet: React.FC = () => {
                         <form>
                             <h1 className="AppointmentDetailsH1_1">Appointment Details</h1>
                             <div className="UpdateAppointmentform1">
-                                <p className="AppointmentDetailsText1">Pet Name: {appointment?.pet_name}<br /></p>
-                                <p className="AppointmentDetailsText1">Owner Information: {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br /></p>
-                                <p className="AppointmentDetailsText1">Address: {petOwnerUsers?.address}<br /></p>
-                                <p className="AppointmentDetailsText1">Your Name: {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>
-                                <p className="AppointmentDetailsText1">Your Number: {ownerUsers?.contactNumber}<br /></p>
-                                <p className="AppointmentDetailsText1">Your Email: {ownerUsers?.email}<br /></p>
-                                <p className="AppointmentDetailsText1">Status: {appointment?.status}<br /><br /><br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Pet Name:</strong> {appointment?.pet_name}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Owner:</strong> {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Address:</strong> {petOwnerUsers?.address}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Your Name:</strong> {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Your Number:</strong> {ownerUsers?.contactNumber}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Your Email:</strong> {ownerUsers?.email}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Status:</strong> {appointment?.status}<br /><br /><br /></p>
                                 <h2>Question and Answer</h2><br />
                                 {ownerUsers && Object.keys(ownerUsers).filter(key => key.startsWith('q')).map((key, index) => (
                                     <p className="AppointmentDetailsText1" key={key}>

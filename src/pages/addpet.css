@@ -226,9 +226,9 @@
     width: 415px;
     left: 290px;
     top: 600px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 40px;
-    font-weight: 400px;
+    font-weight: 700;
 }
 
 .AddPet_submit1 {
@@ -238,9 +238,10 @@
     border: 1px solid;
     border-radius: 20px;
     width: 415px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 40px;
     position: relative;
+    font-weight: 700;
     top: 50px;
 }
 

@@ -197,8 +197,8 @@ const LandingPage: React.FC = () => {
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="type" value={pet.type} onChange={handleChange} required>
                   <option value="">Select Type</option>
-                  <option value="Cat">Dog</option>
-                  <option value="Dog">Cat</option>
+                  <option value="Cat">Cat</option>
+                  <option value="Dog">Dog</option>
                 </select>
               </div>
               <input className="AddPetForm_input" type="text" placeholder="Breed" name="breed" value={pet.breed} onChange={handleChange} required />
