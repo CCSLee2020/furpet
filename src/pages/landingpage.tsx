@@ -153,7 +153,7 @@ const LandingPage: React.FC = () => {
                                 <img className="adoption_image" src={pet.imageUrl} alt={pet.name} />
                                 <p className="adoption_text">{pet.name}</p>
                                 <p className="adoption_desc">{pet.breed}</p>
-                                <p className="adoption_desc">{pet.age} Years Old</p>
+                                <p className="adoption_desc">{pet.age} Months Old</p>
                                 <p className="adoption_desc">{pet.gender}</p>
                                 <p className="adoption_desc">{pet.weight} kg</p>
                                 <p className="adoption_desc">{pet.location}</p>

@@ -126,7 +126,7 @@ const UpdatePet: React.FC = () => {
             <h1 className="AddPetBoxH1">Update Pet</h1>
             <form onSubmit={handleUpdateAndSubmit} className="UpdatePetform">
             <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
-              <input type='text' className="AddPetForm_input" placeholder="Age (Years | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
+              <input type='text' className="AddPetForm_input" placeholder="Age (Months | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="gender" value={pet.gender} onChange={handleChange} required>
                   <option value="">Select Gender</option>

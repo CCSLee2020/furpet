@@ -171,7 +171,7 @@ const AdminUpdatePets: React.FC = () => {
                                 <IonCardContent className='card_pet'>
                                     <form onSubmit={(e) => handleUpdateAndSubmit(e, pet)}>
                                         Pet Name: {pet.name}<br />
-                                        Age: {pet.age}<br />
+                                        Age: {pet.age} Months Old<br />
                                         Gender: {pet.gender}<br />
                                         Neutered: {pet.neutered}<br />
                                         Type: {pet.type}<br />
