@@ -162,9 +162,9 @@ const UpdatePet: React.FC = () => {
                                 <p className="AppointmentDetailsText1"><strong>Pet Name:</strong> {appointment?.pet_name}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Owner:</strong> {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Address:</strong> {petOwnerUsers?.address}<br /></p>
-                                <p className="AppointmentDetailsText1"><strong>Your Name:</strong> {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>
-                                <p className="AppointmentDetailsText1"><strong>Your Number:</strong> {ownerUsers?.contactNumber}<br /></p>
-                                <p className="AppointmentDetailsText1"><strong>Your Email:</strong> {ownerUsers?.email}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Appointer Name:</strong> {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Appointer Number:</strong> {ownerUsers?.contactNumber}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Appointer Email:</strong> {ownerUsers?.email}<br /></p>
                                 <label>
                                     <p className="AppointmentDetailsText1"><strong>Status:</strong></p>
                                     <select name="status" value={appointment?.status} onChange={handleChange}>
@@ -174,7 +174,7 @@ const UpdatePet: React.FC = () => {
                                     </select>
                                 </label><br /><br />
                                 <button className="AppointmentSave" type="submit">Save Appointment</button><br /><br /><br />
-                                <h2>Question and Answer</h2><br />
+                                <h2>Appointer Questions and Answers</h2><br />
                                 {ownerUsers && Object.keys(ownerUsers).filter(key => key.startsWith('q')).map((key, index) => (
                                     <p className="AppointmentDetailsText1" key={key}>
                                         {index + 1}. {questionTexts[index]} <p style={{ color: 'blue' }}>{(ownerUsers as any)[key]}</p><br />

@@ -149,7 +149,7 @@ const UpdatePet: React.FC = () => {
                                 <p className="AppointmentDetailsText1"><strong>Your Number:</strong> {ownerUsers?.contactNumber}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Your Email:</strong> {ownerUsers?.email}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Status:</strong> {appointment?.status}<br /><br /><br /></p>
-                                <h2>Question and Answer</h2><br />
+                                <h2>My Questions and Answers</h2><br />
                                 {ownerUsers && Object.keys(ownerUsers).filter(key => key.startsWith('q')).map((key, index) => (
                                     <p className="AppointmentDetailsText1" key={key}>
                                         {index + 1}. {questionTexts[index]} <p style={{ color: 'blue' }}>{(ownerUsers as any)[key]}</p><br />

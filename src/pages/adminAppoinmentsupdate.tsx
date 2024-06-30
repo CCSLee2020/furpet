@@ -188,9 +188,9 @@ const AdminAppointmentsUpdate: React.FC = () => {
                                         Pet Name: {appointment?.pet_name}<br />
                                         Owner Information: {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br />
                                         Address: {petOwnerUsers?.address}<br />
-                                        Your Name: {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br />
-                                        Your Number: {ownerUsers?.contactNumber}<br />
-                                        Your Email: {ownerUsers?.email}<br />
+                                        Appointer Name: {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br />
+                                        Appointer Number: {ownerUsers?.contactNumber}<br />
+                                        Appointer Email: {ownerUsers?.email}<br />
                                         <label>
                                             Status:<br />
                                             <select name="status" value={appointment?.status} onChange={handleChange}>
