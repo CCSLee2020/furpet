@@ -10,6 +10,7 @@ type Appointment = {
     id: string;
     index: string;
     appoint_name: string;
+    appoint_time: string;
     appoint_number: string;
     appoint_email: string;
     appoint_address: string;
@@ -184,6 +185,7 @@ const AdminAppointments: React.FC = () => {
                                         <img className="document_img2   " key={i} src={appointment.imageUrl} alt={appointment.index} /><br />
                                         Pet Name: {appointment.pet_name}<br />
                                         Appointed Date: {appointment.appoint_date}<br />
+                                        Appointed Time: {appointment.appoint_time}<br />
                                         Status: {appointment.status}<br />
                                         <IonButton color="light"><Link to={`/${userID}/selectStatus/${appointment.id}`}>View and Select Status</Link></IonButton>
                                         <IonButton color="danger" onClick={() => deleteAppoint(appointment.id, appointment.index)} > Delete </IonButton>

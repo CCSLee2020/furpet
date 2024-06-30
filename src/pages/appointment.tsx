@@ -21,6 +21,7 @@ type Pet = {
 
 type Appointment = {
     appoint_date: string;
+    appoint_time: string;
     pet_name: string | null;
     pet_index: string | null;
     status: string;
@@ -82,6 +83,7 @@ const LandingPage: React.FC = () => {
         pet_index: '',
         pet_name: '',
         appoint_date: '',
+        appoint_time: '',
         index: generateUniqueFirestoreId(),
         status: 'Pending',
         imageUrl: `documents/${generateUniqueFirestoreId()}`,
@@ -165,8 +167,8 @@ const LandingPage: React.FC = () => {
     }, [pet]);
 
     const validateForm = () => {
-        const { appoint_date } = appointment;
-        if (!appoint_date || !image) {
+        const { appoint_date, appoint_time } = appointment;
+        if (!appoint_date || !appoint_time || !image) {
           return false;
         }
         return true;
@@ -268,9 +270,9 @@ const LandingPage: React.FC = () => {
                                 <div className="scheduleform">
                                     <h1 className="schedule_h1"><strong>Schedule Your Visit</strong></h1>
                                     <h2 className="schedule_h1">↓Insert ID Here <strong>|</strong> Image Only↓</h2>
-                                    <input type="file" className="schedule_file" onChange={handleImageChange} required/>
-                                    {/* <label className="schedule_file" htmlFor="file_img">Upload Your ID Here</label> */}
+                                    <input type="file" className="schedule_file1" onChange={handleImageChange} required/>
                                     <input className="schedule_input1" type="date" name="appoint_date" value={appointment.appoint_date} onChange={handleChange} required/>
+                                    <input className="schedule_input1" type="time" name="appoint_time" value={appointment.appoint_time} onChange={handleChange} required/>
                                     <input className="schedule_submit1" type="submit" />
                                 </div>
                             </div>

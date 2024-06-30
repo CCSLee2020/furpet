@@ -7,6 +7,7 @@ import 'firebase/compat/firestore';
 
 type Appointment = {
     appoint_date: string;
+    appoint_time: string;
     pet_name: string;
     pet_index: string;
     status: string;
@@ -186,6 +187,8 @@ const AdminAppointmentsUpdate: React.FC = () => {
                                 <IonCardContent className='card_appointment'>
                                     <form onSubmit={(e) => appointment && handleUpdateAndSubmit(e, appointment)}>
                                         Pet Name: {appointment?.pet_name}<br />
+                                        Appointed Date: {appointment?.appoint_date}<br />
+                                        Appointed Time: {appointment?.appoint_time}<br />
                                         Owner Information: {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br />
                                         Address: {petOwnerUsers?.address}<br />
                                         Appointer Name: {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br />

@@ -13,6 +13,7 @@ type Appointment = {
     id: string;
     index: string;
     appoint_date: string;
+    appoint_time: string;
     pet_name: string;
     pet_index: string;
     imageUrl: string;
@@ -150,6 +151,7 @@ const LandingPage: React.FC = () => {
                                 <div className="appointment_innerbox2">
                                     <h1 className="rehome_texth1">{appointment.pet_name}</h1>
                                     <h2 className="rehome_h2"><strong>Appointment Date:</strong> {appointment.appoint_date}</h2>
+                                    <h2 className="rehome_h2">Appointment Time: {appointment.appoint_time}</h2>
                                     <h2 className="rehome_h2"><strong>Status:</strong> {appointment.status}</h2>
                                 </div>
                                 <Link className="edit1" to={`/${userID}/updateAppointment/${appointment.id}`}><img className="edit" src={edit} alt="edit" /></Link>

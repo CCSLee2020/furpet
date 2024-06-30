@@ -8,6 +8,7 @@ import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 type Appointment = {
     appoint_date: string;
+    appoint_time: string;
     pet_name: string;
     pet_index: string;
     status: string;
@@ -160,6 +161,7 @@ const UpdatePet: React.FC = () => {
                             <h1 className="AppointmentDetailsH1_1">Appointment Details</h1>
                             <div className="UpdateAppointmentform1">
                                 <p className="AppointmentDetailsText1"><strong>Pet Name:</strong> {appointment?.pet_name}<br /></p>
+                                <p className="AppointmentDetailsText1"><strong>Date & Time:</strong> {appointment?.appoint_date} <strong>|</strong> {appointment?.appoint_time}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Owner:</strong> {`${petOwnerUsers?.firstname} ${petOwnerUsers?.lastname}`}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Address:</strong> {petOwnerUsers?.address}<br /></p>
                                 <p className="AppointmentDetailsText1"><strong>Appointer Name:</strong> {`${ownerUsers?.firstname} ${ownerUsers?.lastname}`}<br /></p>

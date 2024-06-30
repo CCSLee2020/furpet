@@ -161,7 +161,7 @@ nav a:hover {
     display: none;
 }
 
-.schedule_file {
+.schedule_file1 {
     display: inline-block;
     height: 70px;
     width: 279px;
@@ -328,6 +328,12 @@ hr {
 
 @media only screen and (max-width: 621px) {
 
+    .scheduleform>h2 {
+        position: relative;
+        top: -28px;
+        font-size: 16px;
+    }
+
     .scheduleform {
         width: 100%;
     }
@@ -340,12 +346,13 @@ hr {
         top: -12px;
     }
 
-    .schedule_file {
-        height: 80px;
+    .schedule_file1 {
+        height: 55px;
         width: 200px;
         font-size: 20px;
         right: 0;
-        padding-top: 0;
+        padding-top: 10px;
+        top: -5px;
     }
 
     .scheduleform>.schedule_input1 {
@@ -374,7 +381,6 @@ hr {
     .qnaform {
         top: 60px;
         width: 100%;
-        height: 250px;
         margin-left: 15px;
         margin-right: 15px;
         padding-left: 10px;
@@ -383,6 +389,7 @@ hr {
     }
 
     .schedule_submit1 {
+        height: 50px;
         top: 0px;
     }
     /* .schedule_file,
@@ -391,10 +398,6 @@ hr {
         width: 200px;
         font-size: 20px;
     } */
-
-    hr {
-        height: 2.5px;
-    }
 }
 
 @media only screen and (max-width: 375px) {

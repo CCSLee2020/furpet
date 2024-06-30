@@ -174,7 +174,7 @@ nav a:hover {
 .edit1 {
     position: relative;
     left: 400px;
-    top: -260px;
+    top: -270px;
 }
 
 .rehome_box>.delete {
@@ -186,7 +186,7 @@ nav a:hover {
 .delete1 {
     position: relative;
     left: 420px;
-    top: -250px;
+    top: -260px;
 }
 
 .rehome_container>.appointment_outerbox {
@@ -355,11 +355,11 @@ nav a:hover {
     }
 
     .edit1 {
-        left: 300px;
+        left: 310px;
     }
 
     .delete1 {
-        left: 310px;
+        left: 320px;
     }
 
     .rehome_container>.appointment_outerbox {
@@ -563,12 +563,12 @@ nav a:hover {
 
     .edit1 {
         left: 170px;
-        top: -180px;
+        top: -200px;
     }
 
     .delete1 {
         left: 180px;
-        top: -170px;
+        top: -190px;
     }
     
 }
@@ -620,16 +620,16 @@ nav a:hover {
     }
 
     .rehome_container>.appointment_outerbox {
-        height: 150px;
+        height: 190px;
     }
 
     .edit1 {
         left: 100px;
-        top: -160px;
+        top: -150px;
     }
 
     .delete1 {
         left: 100px;
-        top: -150px;
+        top: -140px;
     }
 }
