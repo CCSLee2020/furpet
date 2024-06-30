@@ -63,8 +63,21 @@ const UpdatePet: React.FC = () => {
         }
     };
 
+    const validateForm = () => {
+        const { firstname, lastname, name, contactNumber, address } = users || {};
+        if (!firstname || !lastname || !name || !contactNumber || !address) {
+          return false;
+        }
+        return true;
+      };
+
     const handleUpdateAndSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            alert('Please fill out all required fields, including selecting an image.');
+            return;
+          }
 
         if (!users) return;
 

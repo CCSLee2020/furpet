@@ -28,11 +28,12 @@
   background-color: #393C49;
 }
 
-.main {
+.main1 {
   grid-area: main;
   background-color: white;
   position: relative;
-  top: 100px;
+  top: 50px;
+  left: 0px;
 }
 
 .footer {
@@ -119,7 +120,7 @@ a {
 .card {
   position: relative;
   left: 0px;
-  top: -320px;
+  top: 0px;
 }
 
 .card2 {
@@ -146,48 +147,24 @@ a {
 .countbox {
   position: relative;
   left: 0px;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
 }
 
 .countbox1 {
   position: relative;
   top: -84px;
   left: 83px;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
 }
 
 .countbox2 {
   position: relative;
   top: -169px;
   left: 166px;
-  width: 75px;
-  height: 75px;
-}
-
-.countbox3 {
-  position: relative;
-  top: -170px;
-  left: 0px;
-  width: 75px;
-  height: 75px;
-}
-
-.countbox4 {
-  position: relative;
-  top: -255px;
-  left: 83px;
-  width: 75px;
-  height: 75px;
-}
-
-.countbox5 {
-  position: relative;
-  top: -340px;
-  left: 166px;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
 }
 
 /* responsive layout */
@@ -203,9 +180,10 @@ a {
     height: 100vh;
   }
 
-  .main {
+  .main1 {
     position: relative;
-    top: 0px
+    top: 50px;
+    left: -150px;
   }
 
   .aside {
@@ -228,49 +206,25 @@ a {
 
   .countbox {
     position: relative;
-    left: 234px;
-    width: 75px;
-    height: 75px;
+    left: 250px;
+    width: 100px;
+    height: 100px;
   }
   
   .countbox1 {
     position: relative;
-    top: -84px;
-    left: 317px;
-    width: 75px;
-    height: 75px;
+    top: -109px;
+    left: 365px;
+    width: 100px;
+    height: 100px;
   }
   
   .countbox2 {
     position: relative;
-    top: -169px;
-    left: 400px;
-    width: 75px;
-    height: 75px;
-  }
-
-  .countbox3 {
-    position: relative;
-    top: -254px;
-    left: 482px;
-    width: 75px;
-    height: 75px;
-  }
-  
-  .countbox4 {
-    position: relative;
-    top: -339px;
-    left: 563px;
-    width: 75px;
-    height: 75px;
-  }
-  
-  .countbox5 {
-    position: relative;
-    top: -424px;
-    left: 646px;
-    width: 75px;
-    height: 75px;
+    top: -218px;
+    left: 480px;
+    width: 100px;
+    height: 100px;
   }
 
   .card_pet {
@@ -286,13 +240,13 @@ a {
   .card {
     position: relative;
     left: 250px;
-    top: -400px;
+    top: 0px;
   }
   
   .card2 {
     position: relative;
     left: 250px;
-    top: -168px;
+    top: -210px;
     width: 1230px;
   }
   

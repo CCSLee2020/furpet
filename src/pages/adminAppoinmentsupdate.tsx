@@ -147,7 +147,12 @@ const AdminAppointmentsUpdate: React.FC = () => {
                             </div>
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
-                                <a href={`/${userID}/adminHome`}>
+                                <a href={`/${userID}/adminDashboard`}>
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-users fw"></i> Dashboard
+                                    </li>
+                                </a>
+                                <a href={`/${userID}/adminUsers`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>

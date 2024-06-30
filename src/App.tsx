@@ -33,6 +33,7 @@ import Explore from './pages/explore';
 import LoggedOutIdentify from './pages/loggedOut_identify';
 import ViewPet from './pages/viewPet';
 import Welcome from './pages/welcome';
+import Dashboard from './pages/adminDashboard';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -129,7 +130,10 @@ const App: React.FC = () => (
         <Route exact path="/:userID/updatepet/:id">
           <UpdateForm />
         </Route>
-        <Route exact path="/:userID/adminHome">
+        <Route exact path="/:userID/adminDashboard">
+          <Dashboard />
+        </Route>
+        <Route exact path="/:userID/adminUsers">
           <AdminHome />
         </Route>
         <Route exact path="/:userID/adminAppointments">

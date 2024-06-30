@@ -27,7 +27,7 @@ const LogIn: React.FC = () => {
                         history.push(`/${userId}/home`);
                         break;
                     case 'admin':
-                        history.push(`/${userId}/adminHome`);
+                        history.push(`/${userId}/adminDashboard`);
                         break;
                     default:
                         if (window.confirm('Wrong Username or Password')) {

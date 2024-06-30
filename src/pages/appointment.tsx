@@ -164,8 +164,21 @@ const LandingPage: React.FC = () => {
         loadImages();
     }, [pet]);
 
+    const validateForm = () => {
+        const { appoint_date } = appointment;
+        if (!appoint_date || !image) {
+          return false;
+        }
+        return true;
+      };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            alert('Please fill out all required fields, including selecting an image.');
+            return;
+          }
 
         if (userID) {
             const documentId = appointment.index; // Use the generated document ID

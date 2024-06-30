@@ -48,13 +48,13 @@ const UpdatePet: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const db = firebase.firestore();
-        const doc = await db.collection('users').doc(userID).get();
-        const user = { id: doc.id, ...doc.data() } as User;
-        setUsers(user);
+      const db = firebase.firestore();
+      const doc = await db.collection('users').doc(userID).get();
+      const user = { id: doc.id, ...doc.data() } as User;
+      setUsers(user);
     };
     fetchData();
-}, []);
+  }, []);
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -67,6 +67,15 @@ const UpdatePet: React.FC = () => {
     fetchPet();
   }, [id, userID]);
 
+  const validateForm = () => {
+    const { name, age, breed, location, about, weight, gender, neutered, type } = pet || {};
+    if (!name || !age || !breed || !location || !about || !weight || !gender || !neutered || !type) {
+      return false;
+    }
+    return true;
+  };
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (pet) {
       setPet({ ...pet, [e.target.name]: e.target.value });
@@ -75,6 +84,12 @@ const UpdatePet: React.FC = () => {
 
   const handleUpdateAndSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      alert('Please fill out all required fields, including selecting an image.');
+      return;
+    }
+
     if (pet) {
       const db = firebase.firestore();
       const batch = db.batch();
@@ -125,7 +140,7 @@ const UpdatePet: React.FC = () => {
           <div className="AddPetBox">
             <h1 className="AddPetBoxH1">Update Pet</h1>
             <form onSubmit={handleUpdateAndSubmit} className="UpdatePetform">
-            <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
+              <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Age (Months | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="gender" value={pet.gender} onChange={handleChange} required>

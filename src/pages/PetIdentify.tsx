@@ -132,7 +132,12 @@ const PetIdentifier: React.FC = () => {
                     </div>
                     <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                     <ul className="aside_list">
-                                <a href={`/${userID}/adminHome`}>
+                                <a href={`/${userID}/adminDashboard`}>
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-users fw"></i> Dashboard
+                                    </li>
+                                </a>
+                                <a href={`/${userID}/adminUsers`}>
                                     <li className="aside_list-item">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
@@ -161,7 +166,7 @@ const PetIdentifier: React.FC = () => {
                         </li>
                     </ul>
                 </aside>
-                <main className="main">
+                <main className="main1">
                     <div className="petIdentifierBody2">
                         <div className="petIdentifierDiv">
                             {showImage && <img className="petIdentifierImg" src={imageURL || undefined} alt="upload-preview" ref={imageRef} />}

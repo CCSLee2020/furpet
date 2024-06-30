@@ -36,7 +36,19 @@ const SignUp: React.FC = () => {
     const [present, dismiss] = useIonToast()
     const history = useHistory();
 
+    const validateForm = () => {
+        if (!username || !password || !firstname || !lastname || !address || !name || !contactNumber) {
+            present("Please fill in all required fields", 2000);
+            return false;
+        }
+        return true;
+    }
+
     async function register() {
+        if (!validateForm()) {
+            return;
+        }
+        
         const res = await registerUser(
             username,
             name,

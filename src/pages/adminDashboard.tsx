@@ -134,7 +134,7 @@ const AdminHome: React.FC = () => {
                         </div>
                         <header className="header">
                             <div className="header_title">
-                                <h2>Users</h2>
+                                <h2>Dashboard</h2>
                             </div>
                             <div className="header_avatar"><i className="fas fa-user-circle fw fa-xl"></i></div>
                         </header>
@@ -145,12 +145,12 @@ const AdminHome: React.FC = () => {
                             <h2 className="menu_title"><i className="fas fa-paw fw"></i> FurPet</h2>
                             <ul className="aside_list">
                                 <a href={`/${userID}/adminDashboard`}>
-                                    <li className="aside_list-item">
+                                    <li className="aside_list-item active-list">
                                         <i className="fas fa-users fw"></i> Dashboard
                                     </li>
                                 </a>
                                 <a href={`/${userID}/adminUsers`}>
-                                    <li className="aside_list-item active-list">
+                                    <li className="aside_list-item ">
                                         <i className="fas fa-users fw"></i> Users
                                     </li>
                                 </a>
@@ -179,15 +179,36 @@ const AdminHome: React.FC = () => {
                             </ul>
                         </aside>
                         <main className="main">
-                            {users.map(user => (
-                                <IonCard className='card' key={user.id}>
-                                    <IonCardContent>
-                                        Email: {user.email}<br />
-                                        Role: {user.role}<br />
-                                        <IonButton color="danger" onClick={() => deleteUser(user.id)} >Delete</IonButton>
-                                    </IonCardContent>
-                                </IonCard>
-                            ))}
+                            <IonCard className='card'>
+                                <IonCardContent>
+                                <strong>Registered Users:</strong> {userCount}
+                                </IonCardContent>
+                            </IonCard>
+                            <IonCard className='card'>
+                            <IonCardContent>
+                                <strong>Available Pets:</strong> {availableCount}
+                                </IonCardContent>
+                            </IonCard>
+                            <IonCard className='card'>
+                            <IonCardContent>
+                                <strong>Adopted Pets:</strong> {adoptedCount}
+                                </IonCardContent>
+                            </IonCard>
+                            <IonCard className='card'>
+                            <IonCardContent>
+                                <strong>Pending Appointments:</strong> {pendingCount}
+                                </IonCardContent>
+                            </IonCard>
+                            <IonCard className='card'>
+                            <IonCardContent>
+                                <strong>Confirmed Appointments:</strong> {confirmedCount}
+                                </IonCardContent>
+                            </IonCard>
+                            <IonCard className='card'>
+                            <IonCardContent>
+                                <strong>Denied Appointments:</strong> {denyCount}
+                                </IonCardContent>
+                            </IonCard>
                         </main>
                     </div>
                 </div>
