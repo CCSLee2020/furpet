@@ -111,11 +111,6 @@ const LandingPage: React.FC = () => {
                     </div>
                 </nav>
                 <div className="welcomeBanner">
-                    <p className="welcomeText">
-                        You can make a <br />
-                        difference in their <br />
-                        lives
-                    </p>
                     <a href="/Discover"><div className="AdoptAPet"><p className="AdoptAPet2">Adopt A Pet</p></div></a>
                     <img className="welcomeImg" src={welcomeImg} />
                 </div>
