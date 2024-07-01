@@ -67,9 +67,10 @@ nav a:hover {
   
   /* Styles for the dropdown menu */
   .nav-dropdown-menu {
+    font-family: 'Poppins';
     display: flex;
     flex-direction: column;
-    position    : absolute;
+    position: fixed;
     right: 0;
     background-color: rgb(0, 0, 0);
     border: 1px solid #ccc;
@@ -82,6 +83,7 @@ nav a:hover {
   .nav-dropdowntext {
     color: white;
     text-decoration: none;
+    font-size: 16px;
     display: block;
     padding: 10px;
     cursor: pointer;
@@ -511,7 +513,7 @@ nav a:hover {
         height: 160px;
         top: 129px;
         width: 209px;
-        right: 126px;
+        right: 60px;
         display: flex;
         font-size: 21px;
     }
@@ -625,6 +627,6 @@ nav a:hover {
 
 @media only screen and (max-width: 425px) {
     .nav-dropdown-menu {
-        left: 160px;
+        right: 20px;
     }
 }

@@ -84,12 +84,11 @@ const LandingPage: React.FC = () => {
                         <div className="details_textSquare2">
                             <h1 className="details_h1_1"> Profile</h1>
                             <h2 className="details_h2_1"><b>Name:</b> {users?.firstname} {users?.lastname}</h2>
-                            <h2 className="details_h2_1"><b>Nickname:</b> {users?.name}</h2>
+                            <h2 className="details_h2_1"><b>Username:</b> {users?.name}</h2>
                             <h2 className="details_h2_1"><b>Contact Number:</b> {users?.contactNumber}</h2>
                             <h2 className="details_h2_1"><b>Address:</b> {users?.address}</h2>
-                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1" onClick={() => logUserActivity('Edit Profile')}><p className="details_appointment4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
+                            <Link to={`${userID}/edit/${userID}`}><div className="edit_user" onClick={() => logUserActivity('Edit Profile')}><p className="edit_user2">Edit Profile</p></div></Link>
                         </div>
-                        <div className="space2"></div>
                     </>
                 </div>
             </IonContent>

@@ -65,7 +65,7 @@ const Rehome: React.FC = () => {
         const petSnapshot = await petCollection.get();
         const petList: Pet[] = await Promise.all(petSnapshot.docs.map(async doc => {
           const petData = doc.data();
-          const imageUrl = await storageRef.child(`images/${petData.index}_1`).getDownloadURL();
+          const imageUrl = await storageRef.child(`images/${petData.index}`).getDownloadURL();
           return { ...petData, id: doc.id, imageUrl } as Pet;
       }));
       setPets(petList);
@@ -100,11 +100,21 @@ const Rehome: React.FC = () => {
       const db = firebase.firestore();
       const petRef = db.collection('pets').doc(id); // Main collection reference
       const subPetRef = db.collection('users').doc(userID).collection('pets').doc(id); // Subcollection reference
-      const imageRef = storageRef.child(`images/${imageUrl}_1`);
+      const imageRef = storageRef.child(`images/${imageUrl}`);
+      const imageRef1 = storageRef.child(`images/${imageUrl}_1`);
+      const imageRef2 = storageRef.child(`images/${imageUrl}_2`);
+      const imageRef3 = storageRef.child(`images/${imageUrl}_3`);
+      const imageRef4 = storageRef.child(`images/${imageUrl}_4`);
+      const imageRef5 = storageRef.child(`images/${imageUrl}_5`);
 
       if (window.confirm('Are you sure you want to delete this pet?')) {
         // Delete the image from Firebase Storage
         await imageRef.delete();
+        await imageRef1.delete();
+        await imageRef2.delete();
+        await imageRef3.delete();
+        await imageRef4.delete();
+        await imageRef5.delete();
 
         // Delete the pet document from the subcollection
         await subPetRef.delete();
@@ -170,7 +180,7 @@ const Rehome: React.FC = () => {
               <div className="rehome_box" key={pet.id}>
                 <img className="rehome_img" src={pet.imageUrl} alt={pet.name} />
                 <h1 className="rehome_texth1">{pet.name}</h1>
-                <h2 className="rehome_h2"><strong>Address:</strong> {pet.location}</h2>
+                <h2 className="rehome_h2"><strong>Location:</strong> {pet.location}</h2>
                 <h2 className="rehome_h2"><strong>Neutered:</strong> {pet.neutered}</h2>
                 <h2 className="rehome_h2"><strong>Status:</strong> {pet.status}</h2>
                 <Link className="edit" to={`/${userID}/updatePet/${pet.id}`} onClick={() => logUserActivity('Edit Pet')}><img className="edit" src={edit} alt="edit" /></Link>

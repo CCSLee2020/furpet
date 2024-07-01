@@ -113,6 +113,17 @@
     left:250px;
 }
 
+.UpdatePetH1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    width: 900px;
+    top: 35px;
+    left:250px;
+}
+
 .UpdatePetform1 {
     position: relative;
     top: 130px;
@@ -156,6 +167,7 @@
     border: 1px solid;
     border-color: #393c49;
     border-radius: 20px;
+    padding: 10px;
 }
 
 .AddPetForm_input1 {
@@ -166,6 +178,7 @@
     border: 1px solid;
     border-color: #393c49;
     border-radius: 20px;
+    padding: 10px;
 }
 
 .radioMargin_user1 {
@@ -225,25 +238,28 @@
     border: 1px solid;
     border-radius: 20px;
     width: 415px;
-    left: 290px;
-    top: 600px;
+    left: 0px;
+    top: 40px;
     font-family: Poppins, sans-serif;
     font-size: 16px;
     font-weight: 700;
+    position: relative;
 }
 
 .AddPet_submit1 {
-    height: 70px;
+    height: 50px;
+    width: 276px;
     background-color: #393c49;
     color: #ffffff;
     border: 1px solid;
     border-radius: 20px;
     width: 415px;
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    position: relative;
+    left: 0px;
+    top: 40px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
     font-weight: 700;
-    top: 50px;
+    position: relative;
 }
 
 .AppointmentSave {

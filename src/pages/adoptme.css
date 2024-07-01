@@ -49,7 +49,7 @@ nav a:hover {
 
 .details {
     position: relative;
-    top: 100px;
+    top: 50px;
     background-color: white;
     width: 100%;
     height: 500px;
@@ -120,12 +120,24 @@ nav a:hover {
 
 .details_appointment {
     height: 50px;
-    width: 276px;
+    width: 285px;
     background-color: #393c49;
     border-radius: 50px;
     position: absolute;
     top: 430px;
     left: 60px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+.edit_user {
+    height: 50px;
+    width: 190px;
+    background-color: #393c49;
+    border-radius: 50px;
+    position: relative;
+    top: 100px;
 }
 
 .details_appointment_1 {
@@ -152,9 +164,8 @@ nav a:hover {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
     font-weight: 400;
-    position: absolute;
-    top: -16px;
-    left: 55px;
+    position: relative;
+    left: 10px;
 }
 
 .details_appointment4 {
@@ -165,12 +176,22 @@ nav a:hover {
     position: absolute;
     top: -25px;
     left: 0px;
-}   
+}
+
+.edit_user2 {
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    top: -13px;
+    left: 35px;
+}
 
 .details_aboutme {
     color: black;
     font-family: 'Inter', sans-serif;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 700;
     position: relative;
     top: 429px;
@@ -180,7 +201,7 @@ nav a:hover {
 .details_desc {
     color: black;
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 400;
     position: relative;
     top: 415px;
@@ -250,6 +271,30 @@ nav a:hover {
     height: 1px;
 }
 
+.details_gallery {
+    position: relative;
+    top: 500px;
+}
+
+.details_gallery>img {
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 1100px) {
+    .details {
+        position: relative;
+        top: 100px;
+        background-color: white;
+        width: 100%;
+        height: 500px;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .details_img {
         width: 400px;
@@ -316,7 +361,7 @@ nav a:hover {
 
     .details_desc {
         left: 36px;
-        top: 749px;
+        top: 770px;
     }
 
     .caretaker_h1 {
@@ -325,6 +370,10 @@ nav a:hover {
 
     .space2 {
         height: 0px;
+    }
+
+    .details_gallery {
+        top: 800px;
     }
 }
 
@@ -368,7 +417,7 @@ nav a:hover {
     }
 
     .details_desc {
-        left: 0px;
+        left: 7px;
     }
 
     .caretaker_h1 {
@@ -392,8 +441,8 @@ nav a:hover {
     }
 
     .details_appointment3 {
-        left: 50px;
-        top: -5px;
+        left: 3px;
+        top: 0px;
         display: flex;
         text-align: center;
     }

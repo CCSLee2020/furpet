@@ -4,6 +4,7 @@ import { IonContent, IonPage } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
 import navLogo from '../assets/anIOs_StartupLogo-PSC8.png';
 
 type Pet = {
@@ -40,11 +41,12 @@ const UpdatePet: React.FC = () => {
   const { id, userID } = useParams<{ id: string, userID: string }>();
   const [users, setUsers] = useState<User | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pet, setPet] = useState<Pet | null>(null);
+  const [images, setImages] = useState<FileList | null>(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  const [pet, setPet] = useState<Pet | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,7 +56,7 @@ const UpdatePet: React.FC = () => {
       setUsers(user);
     };
     fetchData();
-  }, []);
+  }, [userID]);
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -75,11 +77,14 @@ const UpdatePet: React.FC = () => {
     return true;
   };
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (pet) {
       setPet({ ...pet, [e.target.name]: e.target.value });
     }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImages(e.target.files);
   };
 
   const handleUpdateAndSubmit = async (e: React.FormEvent) => {
@@ -101,6 +106,20 @@ const UpdatePet: React.FC = () => {
       batch.set(mainPetRef, pet);
 
       await batch.commit();
+
+      if (images) {
+        const storage = firebase.storage();
+        const promises = [];
+
+        for (let i = 0; i < images.length; i++) {
+          const image = images[i];
+          const storageRef = storage.ref(`images/${pet.index}_${i + 1}`);
+          promises.push(storageRef.put(image));
+        }
+
+        await Promise.all(promises);
+      }
+
       history.push(`/${userID}/rehome`);
     }
   };
@@ -127,21 +146,20 @@ const UpdatePet: React.FC = () => {
             {users && (
               <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
             )}
-            
           </div>
         </nav>
         {menuOpen && (
-              <div className="nav-dropdown-menu">
-                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-              </div>
-            )}
+          <div className="nav-dropdown-menu">
+            <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
+            <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
+            <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
+          </div>
+        )}
         <div className="UpdatePet1">
           <div className="AddPetBox">
             <h1 className="AddPetBoxH1">Update Pet</h1>
             <form onSubmit={handleUpdateAndSubmit} className="UpdatePetform">
-            <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
+              <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Age (Months | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="gender" value={pet.gender} onChange={handleChange} required>
@@ -168,7 +186,8 @@ const UpdatePet: React.FC = () => {
               <input className="AddPetForm_input" type="text" placeholder="Weight (Kilogram [kg] | Numbers Only)" name="weight" value={pet.weight} onChange={handleChange} required />
               <input className="AddPetForm_input" type="text" placeholder="Location (Municipality/City, Province)" name="location" value={pet.location} onChange={handleChange} required />
               <input className="AddPetForm_input" type="text" placeholder="About" name="about" value={pet.about} onChange={handleChange} required />
-              <button className="AddPet_submit" type="submit">Add Pet</button>
+              <p>Add 5 Images for Your Pet</p><input type="file" multiple accept="image/*" onChange={handleFileChange} />
+              <button className="AddPet_submit" type="submit">Update Pet</button>
             </form>
           </div>
         </div>

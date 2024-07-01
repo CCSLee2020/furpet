@@ -44,6 +44,11 @@ type OwnerUser = {
 const LandingPage: React.FC = () => {
     const [pet, setPet] = useState<Pet | null>(null);
     const [imageUrl, setImageUrl] = useState<string | null>(null);
+    const [imageUrl1, setImageUrl1] = useState<string | null>(null);
+    const [imageUrl2, setImageUrl2] = useState<string | null>(null);
+    const [imageUrl3, setImageUrl3] = useState<string | null>(null);
+    const [imageUrl4, setImageUrl4] = useState<string | null>(null);
+    const [imageUrl5, setImageUrl5] = useState<string | null>(null);
     const [users, setUsers] = useState<User | null>(null);
     const [ownerUser, setOwnerUser] = useState<OwnerUser | null>(null);
     const { id } = useParams<{ id: string }>();
@@ -92,20 +97,63 @@ const LandingPage: React.FC = () => {
         const fetchImage = async () => {
             if (pet) {
                 const storageRef = firebase.storage().ref();
+                const imageRef = storageRef.child(`images/${pet.index}`);
+                const url = await imageRef.getDownloadURL();
+                setImageUrl(url);
+            }
+        };
+
+        const fetchImage1 = async () => {
+            if (pet) {
+                const storageRef = firebase.storage().ref();
                 const imageRef = storageRef.child(`images/${pet.index}_1`);
                 const url = await imageRef.getDownloadURL();
-                return url;
+                setImageUrl1(url);
             }
-            return null;
         };
 
-        const loadImages = async () => {
-            const url = await fetchImage();
-            setImageUrl(url);
-            console.log(imageUrl);
+        const fetchImage2 = async () => {
+            if (pet) {
+                const storageRef = firebase.storage().ref();
+                const imageRef = storageRef.child(`images/${pet.index}_2`);
+                const url = await imageRef.getDownloadURL();
+                setImageUrl2(url);
+            }
         };
 
-        loadImages();
+        const fetchImage3 = async () => {
+            if (pet) {
+                const storageRef = firebase.storage().ref();
+                const imageRef = storageRef.child(`images/${pet.index}_3`);
+                const url = await imageRef.getDownloadURL();
+                setImageUrl3(url);
+            }
+        };
+        
+        const fetchImage4 = async () => {
+            if (pet) {
+                const storageRef = firebase.storage().ref();
+                const imageRef = storageRef.child(`images/${pet.index}_4`);
+                const url = await imageRef.getDownloadURL();
+                setImageUrl4(url);
+            }
+        };
+
+        const fetchImage5 = async () => {
+            if (pet) {
+                const storageRef = firebase.storage().ref();
+                const imageRef = storageRef.child(`images/${pet.index}_5`);
+                const url = await imageRef.getDownloadURL();
+                setImageUrl5(url);
+            }
+        };
+
+        fetchImage();
+        fetchImage1();
+        fetchImage2();
+        fetchImage3();
+        fetchImage4();
+        fetchImage5();
     }, [pet]);
 
     if (!pet) {
@@ -130,16 +178,16 @@ const LandingPage: React.FC = () => {
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        
+
                     </div>
                 </nav>
                 {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                    <div className="nav-dropdown-menu">
+                        <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
+                        <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
+                        <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
+                    </div>
+                )}
                 <div className="details">
                     <>
                         <div className="details_textSquare">
@@ -152,19 +200,18 @@ const LandingPage: React.FC = () => {
                             <h2 className="details_h2"><b>Age &#40;months&#41;:</b> {pet.age}</h2>
                             <Link to={`${userID}/appointment/${pet.id}`}><div className="details_appointment"><p className="details_appointment3">Make an Appointment</p></div></Link>
                         </div>
-                        {imageUrl && <img className="details_img" src={imageUrl} />}
+                        {imageUrl && <img className="details_img" src={`${imageUrl}`} alt={`${pet.name}`} />}
                         <h1 className="details_aboutme">About Me</h1>
                         <p className="details_desc">{pet.about}</p>
-                        {/* <div className="caretaker_container">
-                            {ownerUser && (
-                                <div className="caretaker_box">
-                                    <h1 className="caretaker_h1">Caretaker: {ownerUser.firstname} {ownerUser.lastname}</h1>
-                                    <h2 className="caretaker_h2">Address: {ownerUser.address}</h2>
-                                    <h2>Contact Number: {ownerUser.contactNumber}</h2>
-                                </div>
-                            )}
-                        </div> */}
                         <div className="space2"></div>
+                        <h1 className="details_aboutme"><br/><br/>Gallery</h1>
+                        <div className='details_gallery'>
+                            {imageUrl1 && <img  src={`${imageUrl1}`} alt={`${pet.name}`} />}
+                            {imageUrl2 && <img  src={`${imageUrl2}`} alt={`${pet.name}`} />}
+                            {imageUrl3 && <img  src={`${imageUrl3}`} alt={`${pet.name}`} />}
+                            {imageUrl4 && <img  src={`${imageUrl4}`} alt={`${pet.name}`} />}
+                            {imageUrl5 && <img  src={`${imageUrl5}`} alt={`${pet.name}`} />}
+                        </div>
                     </>
                 </div>
             </IonContent>

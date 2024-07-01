@@ -121,7 +121,7 @@ const UpdatePet: React.FC = () => {
                         )}
                 <div className="AddPet1">
                     <div className="AddPetBox1">
-                        <h1 className="AddPetBoxH1">Update Profile</h1>
+                        <h1 className="UpdatePetH1">Update Profile</h1>
                         <form onSubmit={handleUpdateAndSubmit} className="UpdatePetform1">
                             <input type='text' className="AddPetForm_input1" placeholder="First Name" name="firstname" value={users.firstname} onChange={handleChange} />
                             <input type='text' className="AddPetForm_input1" placeholder="Last Name" name="lastname" value={users.lastname} onChange={handleChange} />
@@ -338,7 +338,7 @@ const UpdatePet: React.FC = () => {
                                 </label>
                             </div>
 
-                            <button className="AddPet_submit1" type="submit">Save</button>
+                            <button className="AddPet_submit1" type="submit">Save Changes</button>
                         </form>
                     </div>
                 </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './appointment.css';
 import { IonContent, IonPage } from '@ionic/react';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDocs, query, collection, where } from 'firebase/firestore';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -79,6 +79,7 @@ const LandingPage: React.FC = () => {
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
+
     const [appointment, setAppointment] = useState<Appointment>({
         pet_index: '',
         pet_name: '',
@@ -89,7 +90,6 @@ const LandingPage: React.FC = () => {
         imageUrl: `documents/${generateUniqueFirestoreId()}`,
         appointmentPetOwnerID: '',
         appointmentOwnerID: `${userID}`
-
     });
 
     useEffect(() => {
@@ -103,7 +103,6 @@ const LandingPage: React.FC = () => {
                 pet_name: pet.name.toString(),
                 pet_index: pet.index.toString(),
             });
-
         };
 
         fetchPet();
@@ -137,7 +136,7 @@ const LandingPage: React.FC = () => {
     }, [pet]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        setAppointment({ ...appointment, [e.target.name]: e.target.value, });
+        setAppointment({ ...appointment, [e.target.name]: e.target.value });
     };
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -150,7 +149,7 @@ const LandingPage: React.FC = () => {
         const fetchImage = async () => {
             if (pet) {
                 const storageRef = firebase.storage().ref();
-                const imageRef = storageRef.child(`images/${pet.index}_1`);
+                const imageRef = storageRef.child(`images/${pet.index}`);
                 const url = await imageRef.getDownloadURL();
                 return url;
             }
@@ -169,10 +168,21 @@ const LandingPage: React.FC = () => {
     const validateForm = () => {
         const { appoint_date, appoint_time } = appointment;
         if (!appoint_date || !appoint_time || !image) {
-          return false;
+            return false;
         }
         return true;
-      };
+    };
+
+    const checkExistingAppointment = async (date: string, time: string) => {
+        const q = query(
+            collection(db, 'appointments'),
+            where('appoint_date', '==', date),
+            where('appoint_time', '==', time)
+        );
+
+        const querySnapshot = await getDocs(q);
+        return !querySnapshot.empty;
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -180,7 +190,16 @@ const LandingPage: React.FC = () => {
         if (!validateForm()) {
             alert('Please fill out all required fields, including selecting an image.');
             return;
-          }
+        }
+
+        const { appoint_date, appoint_time } = appointment;
+
+        const existingAppointment = await checkExistingAppointment(appoint_date, appoint_time);
+
+        if (existingAppointment) {
+            alert('There is already an appointment scheduled at this date and time. Please choose a different time.');
+            return;
+        }
 
         if (userID) {
             const documentId = appointment.index; // Use the generated document ID
@@ -214,8 +233,6 @@ const LandingPage: React.FC = () => {
         }
     };
 
-
-
     if (!pet) {
         return <div>Loading...</div>;
     }
@@ -238,16 +255,15 @@ const LandingPage: React.FC = () => {
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        
                     </div>
                 </nav>
                 {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                    <div className="nav-dropdown-menu">
+                        <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
+                        <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
+                        <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
+                    </div>
+                )}
                 <div className="appointment">
                     <h1 className="appointment_h1">Make An Appointment</h1>
                     <>
@@ -265,15 +281,14 @@ const LandingPage: React.FC = () => {
                             </div>
                         </div>
 
-
                         <form onSubmit={handleSubmit}>
                             <div className="scheduleBox1">
                                 <div className="scheduleform">
                                     <h1 className="schedule_h1"><strong>Schedule Your Visit</strong></h1>
                                     <h2 className="schedule_h1">↓Insert ID Here <strong>|</strong> Image Only↓</h2>
-                                    <input type="file" className="schedule_file1" onChange={handleImageChange} required/>
-                                    <input className="schedule_input1" type="date" name="appoint_date" value={appointment.appoint_date} onChange={handleChange} required/>
-                                    <input className="schedule_input1" type="time" name="appoint_time" value={appointment.appoint_time} onChange={handleChange} required/>
+                                    <input type="file" className="schedule_file1" onChange={handleImageChange} required />
+                                    <input className="schedule_input1" type="date" name="appoint_date" value={appointment.appoint_date} onChange={handleChange} required />
+                                    <input className="schedule_input1" type="time" name="appoint_time" value={appointment.appoint_time} onChange={handleChange} required />
                                     <input className="schedule_submit1" type="submit" />
                                 </div>
                             </div>
@@ -281,7 +296,7 @@ const LandingPage: React.FC = () => {
                     </>
                 </div>
             </IonContent>
-        </IonPage >
+        </IonPage>
     );
 };
 

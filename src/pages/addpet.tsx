@@ -68,7 +68,7 @@ const LandingPage: React.FC = () => {
     status: 'Available',
     petOwnerID: `${userID}`
   });
-  const [images, setImages] = useState<File[]>([]);
+  const [image, setImage] = useState<File | null>(null);
   const [users, setUsers] = useState<User | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -92,13 +92,13 @@ const LandingPage: React.FC = () => {
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setImages(Array.from(e.target.files));
+      setImage(e.target.files[0]);
     }
   };
 
   const validateForm = () => {
     const { name, age, breed, location, about, weight, gender, neutered, type } = pet;
-    if (!name || !age || !breed || !location || !about || !weight || !gender || !neutered || !type || images.length === 0) {
+    if (!name || !age || !breed || !location || !about || !weight || !gender || !neutered || !type || !image) {
       return false;
     }
     return true;
@@ -108,48 +108,35 @@ const LandingPage: React.FC = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      alert('Please fill out all required fields, including selecting images.');
+      alert('Please fill out all required fields, including selecting an image.');
       return;
     }
 
     if (userID) {
       const documentId = pet.index; // Use the generated document ID
 
-      if (images.length > 0) {
-        const uploadPromises = images.map((image, index) => {
-          const storageRef = ref(storage, `images/${documentId}_${index + 1}`);
-          const uploadTask = uploadBytesResumable(storageRef, image);
+      if (image) {
+        const storageRef = ref(storage, `images/${documentId}`);
+        const uploadTask = uploadBytesResumable(storageRef, image);
 
-          return new Promise<string>((resolve, reject) => {
-            uploadTask.on(
-              'state_changed',
-              (snapshot) => {
-                // Handle progress
-              },
-              (error) => {
-                console.log(error);
-                reject(error);
-              },
-              () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                  resolve(downloadURL);
-                });
-              }
-            );
-          });
-        });
+        uploadTask.on('state_changed',
+          (snapshot) => {
+            // Handle progress
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+              const petWithImageUrl = { ...pet, imageUrl: downloadURL };
 
-        try {
-          const downloadURLs = await Promise.all(uploadPromises);
-          const petWithImageUrls = { ...pet, imageUrl: downloadURLs[0], additionalImages: downloadURLs };
+              await setDoc(doc(db, 'pets', documentId), petWithImageUrl); // Add to pets collection
+              await setDoc(doc(db, `users/${userID}/pets`, documentId), petWithImageUrl); // Add to user's pets subcollection
 
-          await setDoc(doc(db, 'pets', documentId), petWithImageUrls); // Add to pets collection
-          await setDoc(doc(db, `users/${userID}/pets`, documentId), petWithImageUrls); // Add to user's pets subcollection
-
-          history.push(`/${userID}/rehome`);
-        } catch (error) {
-          console.error('Error uploading images:', error);
-        }
+              history.push(`/${userID}/rehome`);
+            });
+          }
+        );
       } else {
         await setDoc(doc(db, 'pets', documentId), pet); // Add to pets collection
         await setDoc(doc(db, `users/${userID}/pets`, documentId), pet); // Add to user's pets subcollection
@@ -205,7 +192,7 @@ const LandingPage: React.FC = () => {
             <h1 className="AddPetBoxH1">Add Pet</h1>
             <img src={addPet} />
             <form onSubmit={handleSubmit} className="AddPetform">
-              <input type="file" multiple onChange={handleImageChange} required />
+              <input type="file" onChange={handleImageChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Age (Months | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">

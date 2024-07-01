@@ -105,54 +105,22 @@ a {
   text-decoration: none;
 }
 
+
 .card_dash {
   position: relative;
   left: 0;
   top: 0px;
-  width: 200px;
-  height: 230px;
+  width: 500x;
+  height: 150px;
 }
 
-.card_dash1 {
+.img_dash {
+  width: 80px;
+  height: 80px;
   position: relative;
-  top: -240px;
-  left: 220px;
-  width: 200px;
-  height: 230px;
+  top: 0px;
+  object-fit: cover;
 }
-
-.card_dash2 {
-  position: relative;
-  left: 0;
-  top: -210px;
-  width: 200px;
-  height: 230px;
-}
-
-.card_dash3 {
-  position: relative;
-  left: 220px;
-  top: -450px;
-  width: 200px;
-  height: 230px;
-}
-
-.card_dash4 {
-  position: relative;
-  left: 0;
-  top: -420px;
-  width: 200px;
-  height: 230px;
-}
-
-.card_dash5 {
-  position: relative;
-  left: 220px;
-  top: -660px;
-  width: 200px;
-  height: 230px;
-}
-
 
 .card_pet {
   position: relative;
@@ -310,52 +278,30 @@ a {
     left: 250px;
   }
 
+  .img_dash {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 0px;
+    object-fit: cover;
+  }
+
+  .dash_flexbox {
+    display: flex;
+    width: 66%;
+  }
+
   .card_dash {
     position: relative;
     left: 250px;
     top: 0px;
-    width: 200px;
-    height: 230px;
+    width: 300px;
+    height: 100px;
   }
 
-  .card_dash1 {
+  .text_dash {
     position: relative;
-    top: -240px;
-    left: 470px;
-    width: 200px;
-    height: 230px;
-  }
-
-  .card_dash2 {
-    position: relative;
-    left: 250px;
-    top: -210px;
-    width: 200px;
-    height: 230px;
-  }
-
-  .card_dash3 {
-    position: relative;
-    left: 470px;
-    top: -450px;
-    width: 200px;
-    height: 230px;
-  }
-  
-  .card_dash4 {
-    position: relative;
-    left: 250px;
-    top: -420px;
-    width: 200px;
-    height: 230px;
-  }
-
-  .card_dash5 {
-    position: relative;
-    left: 470px;
-    top: -660px;
-    width: 200px;
-    height: 230px;
+    top: 10px;
   }
 
   .card {

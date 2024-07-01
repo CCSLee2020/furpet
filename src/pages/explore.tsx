@@ -84,7 +84,7 @@ const LandingPage: React.FC = () => {
             const petSnapshot = await petCollection.get();
             const petList: Pet[] = await Promise.all(petSnapshot.docs.map(async doc => {
                 const petData = doc.data();
-                const imageUrl = await storageRef.child(`images/${petData.index}_1`).getDownloadURL();
+                const imageUrl = await storageRef.child(`images/${petData.index}`).getDownloadURL();
                 return { ...petData, id: doc.id, imageUrl } as Pet;
             }));
             setPets(petList);
@@ -131,11 +131,11 @@ const LandingPage: React.FC = () => {
                                 <img className="adoption_image" src={pet.imageUrl} alt={pet.name} />
                                 <p className="adoption_text">{pet.name}</p>
                                 <p className="adoption_desc">{pet.breed}</p>
-                                <p className="adoption_desc">Age: {pet.age} Months Old</p>
-                                <p className="adoption_desc">Gender: {pet.gender}</p>
-                                <p className="adoption_desc">Weight: {pet.weight} kg</p>
-                                <p className="adoption_desc">Address: {pet.location}</p>
-                                <p className="adoption_desc">Status: {pet.status}</p>
+                                <p className="adoption_desc">{pet.age} Months Old</p>
+                                <p className="adoption_desc">{pet.gender}</p>
+                                <p className="adoption_desc">{pet.weight} kg</p>
+                                <p className="adoption_desc">{pet.location}</p>
+                                <p className="adoption_desc">{pet.status}</p>
                                 <Link to={`/ViewPet/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>Adopt Me</p></div></Link>
                             </div>
                         ))}
