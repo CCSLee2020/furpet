@@ -4,6 +4,12 @@ import { IonContent, IonPage, IonCard, IonCardContent, IonButton } from '@ionic/
 import { useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
+import registeredusers from '../assets/registeredusers.png';
+import confirmedadoption from '../assets/confirmedappointment.png';
+import adoptpet from '../assets/adoptedpet.png';
+import availablepet from '../assets/availablepet.png';
+import appointmentpending from '../assets/appointmentpending.png';
+import deniedappointment from '../assets/deniedappointment.png';
 
 type User = {
     userID: string;
@@ -169,6 +175,11 @@ const AdminHome: React.FC = () => {
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
                                 </a>
+                                <a href={`/${userID}/userLog`}>
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-clipboard fw"></i> User Log
+                                    </li>
+                                </a>
                             </ul>
                             <ul className="aside_footer">
                                 <li className="aside_list-item">
@@ -179,34 +190,40 @@ const AdminHome: React.FC = () => {
                             </ul>
                         </aside>
                         <main className="main">
-                            <IonCard className='card'>
+                            <IonCard className='card_dash'>
                                 <IonCardContent>
-                                <strong>Registered Users:</strong> {userCount}
+                                    <img src={registeredusers} alt="" />
+                                    <strong>Registered Users:</strong> {userCount}
                                 </IonCardContent>
                             </IonCard>
-                            <IonCard className='card'>
-                            <IonCardContent>
-                                <strong>Available Pets:</strong> {availableCount}
+                            <IonCard className='card_dash1'>
+                                <IonCardContent>
+                                    <img src={availablepet} alt="" />
+                                    <strong>Available Pets:</strong> {availableCount}
                                 </IonCardContent>
                             </IonCard>
-                            <IonCard className='card'>
-                            <IonCardContent>
-                                <strong>Adopted Pets:</strong> {adoptedCount}
+                            <IonCard className='card_dash2'>
+                                <IonCardContent>
+                                    <img src={adoptpet} alt="" />
+                                    <strong>Adopted Pets:</strong> {adoptedCount}
                                 </IonCardContent>
                             </IonCard>
-                            <IonCard className='card'>
-                            <IonCardContent>
-                                <strong>Pending Appointments:</strong> {pendingCount}
+                            <IonCard className='card_dash3'>
+                                <IonCardContent>
+                                    <img src={appointmentpending} alt="" />
+                                    <strong>Pending Appointments:</strong> {pendingCount}
                                 </IonCardContent>
                             </IonCard>
-                            <IonCard className='card'>
-                            <IonCardContent>
-                                <strong>Confirmed Appointments:</strong> {confirmedCount}
+                            <IonCard className='card_dash4'>
+                                <IonCardContent>
+                                    <img src={confirmedadoption} alt="" />
+                                    <strong>Confirmed Appointments:</strong> {confirmedCount}
                                 </IonCardContent>
                             </IonCard>
-                            <IonCard className='card'>
-                            <IonCardContent>
-                                <strong>Denied Appointments:</strong> {denyCount}
+                            <IonCard className='card_dash5'>
+                                <IonCardContent>
+                                    <img src={deniedappointment} alt="" />
+                                    <strong>Denied Appointments:</strong> {denyCount}
                                 </IonCardContent>
                             </IonCard>
                         </main>

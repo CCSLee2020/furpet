@@ -68,7 +68,7 @@ const LandingPage: React.FC = () => {
     status: 'Available',
     petOwnerID: `${userID}`
   });
-  const [image, setImage] = useState<File | null>(null);
+  const [images, setImages] = useState<File[]>([]);
   const [users, setUsers] = useState<User | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -92,13 +92,13 @@ const LandingPage: React.FC = () => {
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setImage(e.target.files[0]);
+      setImages(Array.from(e.target.files));
     }
   };
 
   const validateForm = () => {
     const { name, age, breed, location, about, weight, gender, neutered, type } = pet;
-    if (!name || !age || !breed || !location || !about || !weight || !gender || !neutered || !type || !image) {
+    if (!name || !age || !breed || !location || !about || !weight || !gender || !neutered || !type || images.length === 0) {
       return false;
     }
     return true;
@@ -108,35 +108,48 @@ const LandingPage: React.FC = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      alert('Please fill out all required fields, including selecting an image.');
+      alert('Please fill out all required fields, including selecting images.');
       return;
     }
 
     if (userID) {
       const documentId = pet.index; // Use the generated document ID
 
-      if (image) {
-        const storageRef = ref(storage, `images/${documentId}`);
-        const uploadTask = uploadBytesResumable(storageRef, image);
+      if (images.length > 0) {
+        const uploadPromises = images.map((image, index) => {
+          const storageRef = ref(storage, `images/${documentId}_${index + 1}`);
+          const uploadTask = uploadBytesResumable(storageRef, image);
 
-        uploadTask.on('state_changed',
-          (snapshot) => {
-            // Handle progress
-          },
-          (error) => {
-            console.log(error);
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-              const petWithImageUrl = { ...pet, imageUrl: downloadURL };
+          return new Promise<string>((resolve, reject) => {
+            uploadTask.on(
+              'state_changed',
+              (snapshot) => {
+                // Handle progress
+              },
+              (error) => {
+                console.log(error);
+                reject(error);
+              },
+              () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                  resolve(downloadURL);
+                });
+              }
+            );
+          });
+        });
 
-              await setDoc(doc(db, 'pets', documentId), petWithImageUrl); // Add to pets collection
-              await setDoc(doc(db, `users/${userID}/pets`, documentId), petWithImageUrl); // Add to user's pets subcollection
+        try {
+          const downloadURLs = await Promise.all(uploadPromises);
+          const petWithImageUrls = { ...pet, imageUrl: downloadURLs[0], additionalImages: downloadURLs };
 
-              history.push(`/${userID}/rehome`);
-            });
-          }
-        );
+          await setDoc(doc(db, 'pets', documentId), petWithImageUrls); // Add to pets collection
+          await setDoc(doc(db, `users/${userID}/pets`, documentId), petWithImageUrls); // Add to user's pets subcollection
+
+          history.push(`/${userID}/rehome`);
+        } catch (error) {
+          console.error('Error uploading images:', error);
+        }
       } else {
         await setDoc(doc(db, 'pets', documentId), pet); // Add to pets collection
         await setDoc(doc(db, `users/${userID}/pets`, documentId), pet); // Add to user's pets subcollection
@@ -145,6 +158,19 @@ const LandingPage: React.FC = () => {
       }
     }
   };
+
+  const logUserActivity = async (activity: string) => {
+    const db = firebase.firestore();
+    await db.collection('userLogs').add({
+      userID,
+      activity,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  };
+
+  useEffect(() => {
+    logUserActivity('filterOut');
+  }, [userID]);
 
   return (
     <IonPage>
@@ -155,29 +181,31 @@ const LandingPage: React.FC = () => {
             <h1 className="h1_logo1">FurPet</h1>
           </div>
           <div className="nav-links1">
-            <a href={`/${userID}/Home`}>Home</a>
-            <a href={`/${userID}/Explore`}>Explore</a>
-            <a href={`/${userID}/appointmentlist`}>Appointments</a>
-            <a href={`/${userID}/rehome`}>Rehome</a>
-            <a href={`/${userID}/PetIdentifier`}>Identify</a>
+            <a href={`/${userID}/Home`} onClick={() => logUserActivity('Navigated to Home')}>Home</a>
+            <a href={`/${userID}/Explore`} onClick={() => logUserActivity('Navigated to Explore')}>Explore</a>
+            <a href={`/${userID}/appointmentlist`} onClick={() => logUserActivity('Navigated to Appointments')}>Appointments</a>
+            <a href={`/${userID}/rehome`} onClick={() => logUserActivity('Navigated to Rehome')}>Rehome</a>
+            <a href={`/${userID}/PetIdentifier`} onClick={() => logUserActivity('Navigated to Identify')}>Identify</a>
+            <label></label>
             {users && (
               <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
             )}
-            {menuOpen && (
-              <div className="nav-dropdown-menu">
-                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                <a href="/"><p className="nav-dropdowntext">Log Out</p></a>
-              </div>
-            )}
+            
           </div>
         </nav>
+        {menuOpen && (
+              <div className="nav-dropdown-menu">
+                <a href={`/${userID}/profile/${userID}`} onClick={() => logUserActivity('Viewed Profile')}><p className="nav-dropdowntext">View Profile</p></a>
+                <a href={`/${userID}/myAppointments`} onClick={() => logUserActivity('Viewed My Appointments')}><p className="nav-dropdowntext">My Appointments</p></a>
+                <a href="/Menu" onClick={() => logUserActivity('Logged Out')}><p className="nav-dropdowntext">Log Out</p></a>
+              </div>
+            )}
         <div className="AddPet">
           <div className="AddPetBox">
             <h1 className="AddPetBoxH1">Add Pet</h1>
             <img src={addPet} />
             <form onSubmit={handleSubmit} className="AddPetform">
-              <input type="file" onChange={handleImageChange} required />
+              <input type="file" multiple onChange={handleImageChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Age (Months | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">
@@ -205,7 +233,7 @@ const LandingPage: React.FC = () => {
               <input className="AddPetForm_input" type="text" placeholder="Weight (Kilogram [kg] | Numbers Only)" name="weight" value={pet.weight} onChange={handleChange} required />
               <input className="AddPetForm_input" type="text" placeholder="Location (Municipality/City, Province)" name="location" value={pet.location} onChange={handleChange} required />
               <input className="AddPetForm_input" type="text" placeholder="About" name="about" value={pet.about} onChange={handleChange} required />
-              <button className="AddPet_submit" type="submit">Add Pet</button>
+              <button className="AddPet_submit" type="submit" onClick={() => logUserActivity('Pet Created')}>Add Pet</button>
             </form>
           </div>
         </div>

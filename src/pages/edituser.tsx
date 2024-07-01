@@ -109,15 +109,16 @@ const UpdatePet: React.FC = () => {
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
+                        
+                    </div>
+                </nav>
+                {menuOpen && (
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
                                 <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
-                    </div>
-                </nav>
                 <div className="AddPet1">
                     <div className="AddPetBox1">
                         <h1 className="AddPetBoxH1">Update Profile</h1>
@@ -225,18 +226,6 @@ const UpdatePet: React.FC = () => {
                                 <label className="radioMargin_user1">
                                     <input type="radio" name="q9" value="No" checked={users.q9 === 'No'} onChange={handleChange} /> No
                                 </label>
-                                {/* <label className="radioMargin_user1">
-                                    <input type="radio" name="q9" value="<1 hour" checked={users.q9 === '<1 hour'} onChange={handleChange} /> Less than 1 hour
-                                </label>
-                                <label className="radioMargin_user1">
-                                    <input type="radio" name="q9" value="1-2 hours" checked={users.q9 === '1-2 hours'} onChange={handleChange} /> 1-2 hours
-                                </label>
-                                <label className="radioMargin_user1">
-                                    <input type="radio" name="q9" value="3-4 hours" checked={users.q9 === '3-4 hours'} onChange={handleChange} /> 3-4 hours
-                                </label>
-                                <label className="radioMargin_user1">
-                                    <input type="radio" name="q9" value=">4 hours" checked={users.q9 === '>4 hours'} onChange={handleChange} /> More than 4 hours
-                                </label> */}
                             </div>
 
                             <p className='QuestionUserUpdate'>10. Do you regularly take your pet to the veterinarian for check-ups?</p>

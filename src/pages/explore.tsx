@@ -84,7 +84,7 @@ const LandingPage: React.FC = () => {
             const petSnapshot = await petCollection.get();
             const petList: Pet[] = await Promise.all(petSnapshot.docs.map(async doc => {
                 const petData = doc.data();
-                const imageUrl = await storageRef.child(`images/${petData.index}`).getDownloadURL();
+                const imageUrl = await storageRef.child(`images/${petData.index}_1`).getDownloadURL();
                 return { ...petData, id: doc.id, imageUrl } as Pet;
             }));
             setPets(petList);

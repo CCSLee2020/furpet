@@ -105,6 +105,55 @@ a {
   text-decoration: none;
 }
 
+.card_dash {
+  position: relative;
+  left: 0;
+  top: 0px;
+  width: 200px;
+  height: 230px;
+}
+
+.card_dash1 {
+  position: relative;
+  top: -240px;
+  left: 220px;
+  width: 200px;
+  height: 230px;
+}
+
+.card_dash2 {
+  position: relative;
+  left: 0;
+  top: -210px;
+  width: 200px;
+  height: 230px;
+}
+
+.card_dash3 {
+  position: relative;
+  left: 220px;
+  top: -450px;
+  width: 200px;
+  height: 230px;
+}
+
+.card_dash4 {
+  position: relative;
+  left: 0;
+  top: -420px;
+  width: 200px;
+  height: 230px;
+}
+
+.card_dash5 {
+  position: relative;
+  left: 220px;
+  top: -660px;
+  width: 200px;
+  height: 230px;
+}
+
+
 .card_pet {
   position: relative;
   left: 0px;
@@ -166,6 +215,30 @@ a {
   width: 100px;
   height: 100px;
 }
+
+.user-logs-grid {
+  margin: 10px 10px 10px 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+.grid-header {
+  display: contents;
+  font-weight: bold;
+}
+
+.grid-row {
+  display: contents;
+  font-size: 6px;
+}
+
+.grid-row > div, .grid-header > div {
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
 
 /* responsive layout */
 @media only screen and (min-width: 750px) {
@@ -236,7 +309,55 @@ a {
     top: 0px;
     left: 250px;
   }
+
+  .card_dash {
+    position: relative;
+    left: 250px;
+    top: 0px;
+    width: 200px;
+    height: 230px;
+  }
+
+  .card_dash1 {
+    position: relative;
+    top: -240px;
+    left: 470px;
+    width: 200px;
+    height: 230px;
+  }
+
+  .card_dash2 {
+    position: relative;
+    left: 250px;
+    top: -210px;
+    width: 200px;
+    height: 230px;
+  }
+
+  .card_dash3 {
+    position: relative;
+    left: 470px;
+    top: -450px;
+    width: 200px;
+    height: 230px;
+  }
   
+  .card_dash4 {
+    position: relative;
+    left: 250px;
+    top: -420px;
+    width: 200px;
+    height: 230px;
+  }
+
+  .card_dash5 {
+    position: relative;
+    left: 470px;
+    top: -660px;
+    width: 200px;
+    height: 230px;
+  }
+
   .card {
     position: relative;
     left: 250px;
@@ -257,6 +378,28 @@ a {
     width: 1230px;
   }
 
+  .user-logs-grid {
+    margin: 10px 10px 10px 250px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+  }
+  
+  .grid-header {
+    display: contents;
+    font-weight: bold;
+  }
+  
+  .grid-row {
+    display: contents;
+    font-size: 16px;
+  }
+  
+  .grid-row > div, .grid-header > div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    color: black;
+  }
   
 }
 

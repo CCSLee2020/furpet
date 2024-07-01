@@ -150,7 +150,7 @@ const LandingPage: React.FC = () => {
         const fetchImage = async () => {
             if (pet) {
                 const storageRef = firebase.storage().ref();
-                const imageRef = storageRef.child(`images/${pet.index}`);
+                const imageRef = storageRef.child(`images/${pet.index}_1`);
                 const url = await imageRef.getDownloadURL();
                 return url;
             }
@@ -238,15 +238,16 @@ const LandingPage: React.FC = () => {
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
+                        
+                    </div>
+                </nav>
+                {menuOpen && (
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
                                 <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
-                    </div>
-                </nav>
                 <div className="appointment">
                     <h1 className="appointment_h1">Make An Appointment</h1>
                     <>

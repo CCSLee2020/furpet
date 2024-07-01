@@ -76,7 +76,7 @@ const LandingPage: React.FC = () => {
                 const petList: Appointment[] = appointmentSnapshot.docs
                     .map(doc => ({ ...doc.data(), id: doc.id }) as Appointment)
                     .filter(appointment => appointment.appointmentPetOwnerID === userID);
-                    
+
                 setAppointments(petList);
             } catch (error) {
                 console.error('Error fetching pets:', error);
@@ -92,21 +92,21 @@ const LandingPage: React.FC = () => {
         try {
             const db = firebase.firestore();
             const appointment = appointments.find(appointment => appointment.id === id);
-            
+
             if (!appointment) {
                 throw new Error("Appointment not found");
             }
-    
+
             const appointmentRef = db.collection('appointments').doc(id); // Main collection reference
             const imageRef = storageRef.child(`documents/${imageUrl}`);
-            
+
             if (window.confirm('Are you sure you want to delete this appointment?')) {
                 // Delete the image from Firebase Storage
                 await imageRef.delete();
-            
+
                 // Delete the pet document from the main collection
                 await appointmentRef.delete();
-            
+
                 // Update the local state to remove the pet
                 setAppointments(appointments.filter(appointment => appointment.id !== id));
             }
@@ -114,7 +114,20 @@ const LandingPage: React.FC = () => {
             console.error('Error deleting appointment:', error);
         }
     };
-    
+
+    const logUserActivity = async (activity: string) => {
+        const db = firebase.firestore();
+        await db.collection('userLogs').add({
+            userID,
+            activity,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    };
+
+    useEffect(() => {
+        logUserActivity('filterOut');
+    }, [userID]);
+
     return (
         <IonPage>
             <IonContent>
@@ -124,24 +137,25 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <a href={`/${userID}/Home`} onClick={() => logUserActivity('Navigated to Home')}>Home</a>
+                        <a href={`/${userID}/Explore`} onClick={() => logUserActivity('Navigated to Explore')}>Explore</a>
+                        <a href={`/${userID}/appointmentlist`} onClick={() => logUserActivity('Navigated to Appointments')}>Appointments</a>
+                        <a href={`/${userID}/rehome`} onClick={() => logUserActivity('Navigated to Rehome')}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`} onClick={() => logUserActivity('Navigated to Identify')}>Identify</a>
                         <label></label>
                         {user && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{user.name}</button>
                         )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        
                     </div>
                 </nav>
+                {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`} onClick={() => logUserActivity('Viewed Profile')}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`} onClick={() => logUserActivity('Viewed My Appointments')}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/Menu" onClick={() => logUserActivity('Logged Out')}><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                 <div className="rehome">
                     <h1 className="rehome_h1">Appointment List</h1>
                     <div className="rehome_container">
@@ -154,8 +168,8 @@ const LandingPage: React.FC = () => {
                                     <h2 className="rehome_h2">Appointment Time: {appointment.appoint_time}</h2>
                                     <h2 className="rehome_h2"><strong>Status:</strong> {appointment.status}</h2>
                                 </div>
-                                <Link className="edit1" to={`/${userID}/updateAppointment/${appointment.id}`}><img className="edit" src={edit} alt="edit" /></Link>
-                                <img className="delete1" src={Delete} onClick={() => deleteAppoint(appointment.id, appointment.index)} />
+                                <Link className="edit1" to={`/${userID}/updateAppointment/${appointment.id}`}><img className="edit" src={edit} alt="edit" onClick={() => logUserActivity('Edit Appointment')} /></Link>
+                                <img className="delete1" src={Delete} onClick={() => { deleteAppoint(appointment.id, appointment.index); logUserActivity('Delete Appoint') }} />
                             </div>
                         ))}
                     </div>

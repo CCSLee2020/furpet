@@ -146,15 +146,16 @@ const UpdatePet: React.FC = () => {
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
+                        
+                    </div>
+                </nav>
+                {menuOpen && (
                             <div className="nav-dropdown-menu">
                                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
                                 <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
                             </div>
                         )}
-                    </div>
-                </nav>
                 <div className="AppointmentDetails1">
                     <div className="AppointmentDetailsBox1">
                         <form onSubmit={(e) => appointment && handleUpdateAndSubmit(e, appointment)}>

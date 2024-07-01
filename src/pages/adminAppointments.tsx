@@ -160,6 +160,11 @@ const AdminAppointments: React.FC = () => {
                                         <i className="fas fa-search fw"></i> Identify Breeds
                                     </li>
                                 </a>
+                                <a href={`/${userID}/userLog`}>
+                                    <li className="aside_list-item">
+                                        <i className="fas fa-clipboard fw"></i> User Log
+                                    </li>
+                                </a>
                             </ul>
                             <ul className="aside_footer">
                                 <li className="aside_list-item">

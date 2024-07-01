@@ -84,7 +84,7 @@ const LandingPage: React.FC = () => {
             const petSnapshot = await petCollection.get();
             const petList: Pet[] = await Promise.all(petSnapshot.docs.map(async doc => {
                 const petData = doc.data();
-                const imageUrl = await storageRef.child(`images/${petData.index}`).getDownloadURL();
+                const imageUrl = await storageRef.child(`images/${petData.index}_1`).getDownloadURL();
                 return { ...petData, id: doc.id, imageUrl } as Pet;
             }));
             setPets(petList);
@@ -92,6 +92,19 @@ const LandingPage: React.FC = () => {
 
         fetchPets();
     }, []);
+
+    const logUserActivity = async (activity: string) => {
+        const db = firebase.firestore();
+        await db.collection('userLogs').add({
+            userID,
+            activity,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    };
+
+    useEffect(() => {
+        logUserActivity('filterOut');
+    }, [userID]);
 
 
     return (
@@ -103,34 +116,35 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <a href={`/${userID}/Home`} onClick={() => logUserActivity('Navigated to Home')}>Home</a>
+                        <a href={`/${userID}/Explore`} onClick={() => logUserActivity('Navigated to Explore')}>Explore</a>
+                        <a href={`/${userID}/appointmentlist`} onClick={() => logUserActivity('Navigated to Appointments')}>Appointments</a>
+                        <a href={`/${userID}/rehome`} onClick={() => logUserActivity('Navigated to Rehome')}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`} onClick={() => logUserActivity('Navigated to Identify')}>Identify</a>
                         <label></label>
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        
                     </div>
                 </nav>
+                {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`} onClick={() => logUserActivity('Viewed Profile')}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`} onClick={() => logUserActivity('Viewed My Appointments')}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/Menu" onClick={() => logUserActivity('Logged Out')}><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                 <div className="categories2">
-                    <h1 className="categories_h1">Categories</h1>
+                <h1 className="categories_h1">Categories</h1>
                     <div className="categories_container">
-                        <div className="categories_box" onClick={() => setSelectedType('all')}>
+                        <div className="categories_box" onClick={() => { setSelectedType('all'); logUserActivity('Selected All Categories'); }}>
                             <img src={footprint1} />
                         </div>
-                        <div className="categories_box" onClick={() => setSelectedType('Dog')}>
+                        <div className="categories_box" onClick={() => { setSelectedType('Dog'); logUserActivity('Selected Dog Category'); }}>
                             <img src={dog1} />
                         </div>
-                        <div className="categories_box" onClick={() => setSelectedType('Cat')}>
+                        <div className="categories_box" onClick={() => { setSelectedType('Cat'); logUserActivity('Selected Cat Category'); }}>
                             <img src={cat1} />
                         </div>
                     </div>
@@ -148,7 +162,7 @@ const LandingPage: React.FC = () => {
                                 <p className="adoption_desc">{pet.weight} kg</p>
                                 <p className="adoption_desc">{pet.location}</p>
                                 <p className="adoption_desc">{pet.status}</p>
-                                <Link to={`/${userID}/PetView/${pet.id}`}><div className="adoptMe"><p className='adoption_button'>View More</p></div></Link>
+                                <Link to={`/${userID}/PetView/${pet.id}`} onClick={() => logUserActivity(`Viewed Pet ${pet.name}`)}><div className="adoptMe"><p className='adoption_button'>View More</p></div></Link>
                             </div>
                         ))}
                     </div>

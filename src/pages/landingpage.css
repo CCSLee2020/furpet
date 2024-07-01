@@ -67,17 +67,16 @@ nav a:hover {
   
   /* Styles for the dropdown menu */
   .nav-dropdown-menu {
-    position: absolute;
-    top: 30px; /* Adjust based on your design */
+    display: flex;
+    flex-direction: column;
+    position    : absolute;
     right: 0;
-    background-color: #2c2c2c;
+    background-color: rgb(0, 0, 0);
     border: 1px solid #ccc;
-    z-index: 3;
-    padding: 24px;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    height: 42px;
-  }
+    padding: 10px;
+    top: 60px;
+    z-index: 9999;
+}
   
   /* Styles for the dropdown menu items */
   .nav-dropdowntext {
@@ -87,7 +86,7 @@ nav a:hover {
     padding: 10px;
     cursor: pointer;
     position: relative;
-    top: -53px;
+    top: 0px;
   }
   
 
@@ -509,13 +508,12 @@ nav a:hover {
     }
 
     .nav-dropdown-menu {
-        height: 40px;
-        top: -35px;
-        width: 420px;
-        right: 80px;
+        height: 160px;
+        top: 129px;
+        width: 209px;
+        right: 126px;
         display: flex;
-        font-size: 1.5vw;
-        align-items: center;
+        font-size: 21px;
     }
 
     .nav-dropdowntext {
@@ -616,24 +614,17 @@ nav a:hover {
         top: 1820px;
     }
 
-    .nav-dropdown-menu {
-        height: 40px;
-        top: -35px;
-        font-size: 1.8vw;
-        width: 220px;
+    nav-dropdown-menu {
+        left: 200px;
     }
 
     .nav-dropdowntext {
-        left: -40px;
+        left: 0px;
     }
 }
 
 @media only screen and (max-width: 425px) {
     .nav-dropdown-menu {
-        font-size: 2.3vw;
-    }
-
-    .nav-dropdowntext {
-        left: -30px;
+        left: 160px;
     }
 }

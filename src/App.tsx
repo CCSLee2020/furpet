@@ -34,6 +34,7 @@ import LoggedOutIdentify from './pages/loggedOut_identify';
 import ViewPet from './pages/viewPet';
 import Welcome from './pages/welcome';
 import Dashboard from './pages/adminDashboard';
+import UserLog from './pages/userlog'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -144,6 +145,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/:userID/adminPetList">
           <AdminPet />
+        </Route>
+        <Route exact path="/:userID/userLog">
+          <UserLog />
         </Route>
         <Route exact path="/:userID/adminUpdatePet/:id">
           <AdminUpdatePet />

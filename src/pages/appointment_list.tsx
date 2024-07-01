@@ -118,6 +118,19 @@ const LandingPage: React.FC = () => {
         }
     };
 
+    const logUserActivity = async (activity: string) => {
+        const db = firebase.firestore();
+        await db.collection('userLogs').add({
+            userID,
+            activity,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    };
+
+    useEffect(() => {
+        logUserActivity('filterOut');
+    }, [userID]);
+
     return (
         <IonPage>
             <IonContent>
@@ -127,38 +140,39 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <a href={`/${userID}/Home`} onClick={() => logUserActivity('Navigated to Home')}>Home</a>
+                        <a href={`/${userID}/Explore`} onClick={() => logUserActivity('Navigated to Explore')}>Explore</a>
+                        <a href={`/${userID}/appointmentlist`} onClick={() => logUserActivity('Navigated to Appointments')}>Appointments</a>
+                        <a href={`/${userID}/rehome`} onClick={() => logUserActivity('Navigated to Rehome')}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`} onClick={() => logUserActivity('Navigated to Identify')}>Identify</a>
                         <label></label>
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        
                     </div>
                 </nav>
+                {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`} onClick={() => logUserActivity('Viewed Profile')}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`} onClick={() => logUserActivity('Viewed My Appointments')}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/Menu" onClick={() => logUserActivity('Logged Out')}><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                 <div className="rehome">
-                    <h1 className="rehome_h1">My Appointments</h1>
+                    <h1 className="rehome_h1">Appointment List</h1>
                     <div className="rehome_container">
                         {appointments.map((appointment, i) => (
                             <div key={appointment.id} className="appointment_outerbox">
                                 <img className="document_img" key={i} src={appointment.imageUrl} alt={appointment.index} />
                                 <div className="appointment_innerbox2">
                                     <h1 className="rehome_texth1">{appointment.pet_name}</h1>
-                                    <h2 className="rehome_h2">Appointment Date: {appointment.appoint_date}</h2>
+                                    <h2 className="rehome_h2"><strong>Appointment Date:</strong> {appointment.appoint_date}</h2>
                                     <h2 className="rehome_h2">Appointment Time: {appointment.appoint_time}</h2>
-                                    <h2 className="rehome_h2">Status: {appointment.status}</h2>
+                                    <h2 className="rehome_h2"><strong>Status:</strong> {appointment.status}</h2>
                                 </div>
-                                <Link className="edit1" to={`/${userID}/viewAppointment/${appointment.id}`}><img className="edit" src={view} alt="edit" /></Link>
-                                <img className="delete1" src={Delete} onClick={() => deleteAppoint(appointment.id, appointment.index)} />
+                                <Link className="edit1" to={`/${userID}/viewAppointment/${appointment.id}`} onClick={() => logUserActivity('View Appointment')}><img className="edit" src={view} alt="edit" /></Link>
+                                <img className="delete1" src={Delete} onClick={() => { deleteAppoint(appointment.id, appointment.index); logUserActivity('Delete Appoint') }} />
                             </div>
                         ))}
                     </div>

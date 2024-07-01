@@ -10,78 +10,77 @@ import { useHistory } from "react-router-dom";
 import { loginUser } from "../firebaseConfig"; // Import loginUser function
 
 const LogIn: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const history = useHistory();
+  const signIn = async () => {
+    try {
+      const result = await loginUser(email, password); // Fetch the role and user ID of the user
 
-    const signIn = async () => {
-        try {
-            const result = await loginUser(email, password); // Fetch the role and user ID of the user
+      if (result) {
+        const { role, userId } = result;
 
-            if (result) {
-                const { role, userId } = result;
-
-                switch (role) {
-                    case 'user':
-                        history.push(`/${userId}/home`);
-                        break;
-                    case 'admin':
-                        history.push(`/${userId}/adminDashboard`);
-                        break;
-                    default:
-                        if (window.confirm('Wrong Username or Password')) {
-                            history.push('/login');
-                        }
-                }
-            } else {
-                if (window.confirm('Wrong Username or Password')) {
-                    history.push('/login');
-                }
+        switch (role) {
+          case "user":
+            history.push(`/${userId}/home`);
+            break;
+          case "admin":
+            history.push(`/${userId}/adminDashboard`);
+            break;
+          default:
+            if (window.confirm("Wrong Username or Password")) {
+              history.push("/login");
             }
-        } catch (error) {
-            console.error(error);
         }
-    };
+      } else {
+        if (window.confirm("Wrong Username or Password")) {
+          history.push("/login");
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    return (
-        <IonPage>
-            <IonContent>
-                <div className="login_box">
-                    <div className="rectangle_box">
-                        <img className="image_Logo" src={loginLogo} />
-                        <h1 className="h1_login">Login</h1>
-                        <h1 className="welcome1">Welcome to Furpet</h1>
-                        <IonGrid className="login_form">
-                            <input
-                                className="input_login"
-                                type="text"
-                                placeholder="Email"
-                                onChange={(e: any) => setEmail(e.target.value)}
-                            />
-                            <input
-                                className="input_login"
-                                type="password"
-                                placeholder="Password"
-                                onChange={(e: any) => setPassword(e.target.value)}
-                            />
-                            <a>
-                                <input
-                                    onClick={signIn}
-                                    className="submit_login"
-                                    type="submit"
-                                    value="Login"
-                                />
-                            </a>
-                            <p className="needAccount">
-                                Need Account? <a href="/signup">Signup Here</a>
-                            </p>
-                        </IonGrid>
-                    </div>
-                </div>
-            </IonContent>
-        </IonPage>
-    );
+  return (
+    <IonPage>
+      <IonContent>
+        <div className="login_box">
+          <div className="rectangle_box">
+            <img className="image_Logo" src={loginLogo} />
+            <h1 className="h1_login">Login</h1>
+            <h1 className="welcome1">Welcome to Furpet</h1>
+            <IonGrid className="login_form">
+              <input
+                className="input_login"
+                type="text"
+                placeholder="Email"
+                onChange={(e: any) => setEmail(e.target.value)}
+              />
+              <input
+                className="input_login"
+                type="password"
+                placeholder="Password"
+                onChange={(e: any) => setPassword(e.target.value)}
+              />
+              <a>
+                <input
+                  onClick={signIn}
+                  className="submit_login"
+                  type="submit"
+                  value="Login"
+                />
+              </a>
+              <p className="needAccount">
+                Don't have an account? <a href="/signup">Register</a>
+              </p>
+            </IonGrid>
+          </div>
+        </div>
+      </IonContent>
+    </IonPage>
+  );
 };
 
 export default LogIn;

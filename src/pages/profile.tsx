@@ -38,6 +38,19 @@ const LandingPage: React.FC = () => {
         fetchData();
     }, []);
 
+    const logUserActivity = async (activity: string) => {
+        const db = firebase.firestore();
+        await db.collection('userLogs').add({
+            userID,
+            activity,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    };
+
+    useEffect(() => {
+        logUserActivity('filterOut');
+    }, [userID]);
+
     return (
         <IonPage>
             <IonContent>
@@ -47,24 +60,25 @@ const LandingPage: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <a href={`/${userID}/Home`} onClick={() => logUserActivity('Navigated to Home')}>Home</a>
+                        <a href={`/${userID}/Explore`} onClick={() => logUserActivity('Navigated to Explore')}>Explore</a>
+                        <a href={`/${userID}/appointmentlist`} onClick={() => logUserActivity('Navigated to Appointments')}>Appointments</a>
+                        <a href={`/${userID}/rehome`} onClick={() => logUserActivity('Navigated to Rehome')}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`} onClick={() => logUserActivity('Navigated to Identify')}>Identify</a>
                         <label></label>
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        
                     </div>
                 </nav>
+                {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`} onClick={() => logUserActivity('Viewed Profile')}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`} onClick={() => logUserActivity('Viewed My Appointments')}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/Menu" onClick={() => logUserActivity('Logged Out')}><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                 <div className="details">
                     <>
                         <div className="details_textSquare2">
@@ -73,7 +87,7 @@ const LandingPage: React.FC = () => {
                             <h2 className="details_h2_1"><b>Nickname:</b> {users?.name}</h2>
                             <h2 className="details_h2_1"><b>Contact Number:</b> {users?.contactNumber}</h2>
                             <h2 className="details_h2_1"><b>Address:</b> {users?.address}</h2>
-                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1"><p className="details_appointment4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
+                            <Link to={`${userID}/edit/${userID}`}><div className="details_appointment_1" onClick={() => logUserActivity('Edit Profile')}><p className="details_appointment4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edit User</p></div></Link>
                         </div>
                         <div className="space2"></div>
                     </>

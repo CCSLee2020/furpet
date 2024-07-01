@@ -125,6 +125,19 @@ const PetIdentifyAdopter: React.FC = () => {
 
     const { showImage, showResults } = machine.states[appState];
 
+    const logUserActivity = async (activity: string) => {
+        const db = firebase.firestore();
+        await db.collection('userLogs').add({
+            userID,
+            activity,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    };
+
+    useEffect(() => {
+        logUserActivity('filterOut');
+    }, [userID]);
+
 
     return (
         <IonPage>
@@ -135,24 +148,25 @@ const PetIdentifyAdopter: React.FC = () => {
                         <h1 className="h1_logo1">FurPet</h1>
                     </div>
                     <div className="nav-links1">
-                        <a href={`/${userID}/Home`}>Home</a>
-                        <a href={`/${userID}/Explore`}>Explore</a>
-                        <a href={`/${userID}/appointmentlist`}>Appointments</a>
-                        <a href={`/${userID}/rehome`}>Rehome</a>
-                        <a href={`/${userID}/PetIdentifier`}>Identify</a>
+                        <a href={`/${userID}/Home`} onClick={() => logUserActivity('Navigated to Home')}>Home</a>
+                        <a href={`/${userID}/Explore`} onClick={() => logUserActivity('Navigated to Explore')}>Explore</a>
+                        <a href={`/${userID}/appointmentlist`} onClick={() => logUserActivity('Navigated to Appointments')}>Appointments</a>
+                        <a href={`/${userID}/rehome`} onClick={() => logUserActivity('Navigated to Rehome')}>Rehome</a>
+                        <a href={`/${userID}/PetIdentifier`} onClick={() => logUserActivity('Navigated to Identify')}>Identify</a>
                         <label></label>
                         {users && (
                             <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
                         )}
-                        {menuOpen && (
-                            <div className="nav-dropdown-menu">
-                                <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
-                                <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
-                                <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
-                            </div>
-                        )}
+                        
                     </div>
                 </nav>
+                {menuOpen && (
+                            <div className="nav-dropdown-menu">
+                                <a href={`/${userID}/profile/${userID}`} onClick={() => logUserActivity('Viewed Profile')}><p className="nav-dropdowntext">View Profile</p></a>
+                                <a href={`/${userID}/myAppointments`} onClick={() => logUserActivity('Viewed My Appointments')}><p className="nav-dropdowntext">My Appointments</p></a>
+                                <a href="/Menu" onClick={() => logUserActivity('Logged Out')}><p className="nav-dropdowntext">Log Out</p></a>
+                            </div>
+                        )}
                 <main className="main">
                     <div className="petIdentifierBody">
                         <div className="petIdentifierDiv">

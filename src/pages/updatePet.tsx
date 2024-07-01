@@ -127,20 +127,21 @@ const UpdatePet: React.FC = () => {
             {users && (
               <button onClick={toggleMenu} className="nav-dropdown-btn">{users.name}</button>
             )}
-            {menuOpen && (
+            
+          </div>
+        </nav>
+        {menuOpen && (
               <div className="nav-dropdown-menu">
                 <a href={`/${userID}/profile/${userID}`}><p className="nav-dropdowntext">View Profile</p></a>
                 <a href={`/${userID}/myAppointments`}><p className="nav-dropdowntext">My Appointments</p></a>
                 <a href="/Menu"><p className="nav-dropdowntext">Log Out</p></a>
               </div>
             )}
-          </div>
-        </nav>
         <div className="UpdatePet1">
           <div className="AddPetBox">
             <h1 className="AddPetBoxH1">Update Pet</h1>
             <form onSubmit={handleUpdateAndSubmit} className="UpdatePetform">
-              <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
+            <input type='text' className="AddPetForm_input" placeholder="Pet Name" name="name" value={pet.name} onChange={handleChange} required />
               <input type='text' className="AddPetForm_input" placeholder="Age (Months | Numbers Only)" name="age" value={pet.age} onChange={handleChange} required />
               <div className="AddPet_dropdown">
                 <select className="AddPet_dropbtn" name="gender" value={pet.gender} onChange={handleChange} required>
