@@ -84,28 +84,40 @@ const AdminAppointments: React.FC = () => {
         setAdoptedCount(adopted.length);
     }, [pets]);
 
-    const deletePet = async (id: string, index: string ) => {
-        const db = firebase.firestore();
-        const petRef = db.collection('pets').doc(id);
-        const storage = firebase.storage();
-        const imageRef = storage.ref().child(`images/${index}`);
-
-        // Show a warning before deleting the pet
-        if (window.confirm('Are you sure you want to delete this pet?')) {
+    const deletePet = async (id: string, imageUrl: string) => {
+        try {
+          const db = firebase.firestore();
+          const petRef = db.collection('pets').doc(id); // Main collection reference
+          const subPetRef = db.collection('users').doc(userID).collection('pets').doc(id); // Subcollection reference
+          const imageRef = storageRef.child(`images/${imageUrl}`);
+          const imageRef1 = storageRef.child(`images/${imageUrl}_1`);
+          const imageRef2 = storageRef.child(`images/${imageUrl}_2`);
+          const imageRef3 = storageRef.child(`images/${imageUrl}_3`);
+          const imageRef4 = storageRef.child(`images/${imageUrl}_4`);
+          const imageRef5 = storageRef.child(`images/${imageUrl}_5`);
+    
+          if (window.confirm('Are you sure you want to delete this pet?')) {
             // Delete the image from Firebase Storage
-            imageRef.delete().then(() => {
-                console.log('Image deleted from Firebase Storage.');
-            }).catch((error) => {
-                console.error('Error deleting image from Firebase Storage:', error);
-            });
-
-            // Delete the pet document from Firestore
+            await imageRef.delete();
+            await imageRef1.delete();
+            await imageRef2.delete();
+            await imageRef3.delete();
+            await imageRef4.delete();
+            await imageRef5.delete();
+    
+            // Delete the pet document from the subcollection
+            await subPetRef.delete();
+    
+            // Delete the pet document from the main collection
             await petRef.delete();
-
-            // Remove the deleted pet from the local state
+    
+            // Update the local state to remove the pet
             setPets(pets.filter(pet => pet.id !== id));
+          }
+        } catch (error) {
+          console.error('Error deleting pet:', error);
         }
-    };
+      };
 
     const toggleActive = () => {
         setIsActive(!isActive);
