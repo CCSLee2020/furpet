@@ -191,8 +191,6 @@ const AdminHome: React.FC = () => {
                         </aside>
                         <main className="main">
                             <div className='dash_flexbox'>
-
-
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={registeredusers} alt="" />

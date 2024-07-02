@@ -143,14 +143,14 @@ a {
 .card2 {
   position: relative;
   left: 0px;
-  top: -168px;
+  top: 0px;
   width: 1230px;
 }
 
 .card3 {
   position: relative;
   left: 0px;
-  top: -84px;
+  top: 0px;
   width: 1230px;
 }
 
@@ -313,14 +313,14 @@ a {
   .card2 {
     position: relative;
     left: 250px;
-    top: -210px;
+    top: 0px;
     width: 1230px;
   }
   
   .card3 {
     position: relative;
     left: 250px;
-    top: -84px;
+    top: 0px;
     width: 1230px;
   }
 

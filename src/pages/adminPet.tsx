@@ -5,6 +5,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { Link, useParams } from 'react-router-dom';
 import 'firebase/compat/storage';
+import adoptpet from '../assets/adoptedpet.png';
+import availablepet from '../assets/availablepet.png';
 
 type Pet = {
     id: string;
@@ -169,12 +171,20 @@ const AdminAppointments: React.FC = () => {
                             </ul>
                         </aside>
                         <main className="main">
-                            <IonCard className="countbox">
-                                <strong>Available:</strong> {availableCount}
-                            </IonCard>
-                            <IonCard className="countbox1">
-                                <strong>Adopted:</strong> {adoptedCount}
-                            </IonCard>
+                            <div className='dash_flexbox'>
+                                <IonCard className='card_dash'>
+                                    <IonCardContent>
+                                        <img className='img_dash' src={availablepet} alt="" />
+                                        <p className='.text_dash'><strong>Available Pets:</strong> {availableCount}</p>
+                                    </IonCardContent>
+                                </IonCard>
+                                <IonCard className='card_dash'>
+                                    <IonCardContent>
+                                        <img className='img_dash' src={adoptpet} alt="" />
+                                        <p className='.text_dash'><strong>Adopted Pets:</strong> {adoptedCount}</p>
+                                    </IonCardContent>
+                                </IonCard>
+                            </div>
                             {pets.map((pet, i) => (
                                 <IonCard className='card3'>
                                     <IonCardContent>

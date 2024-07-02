@@ -5,6 +5,9 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { Link, useParams } from 'react-router-dom';
 import 'firebase/compat/storage';
+import confirmedadoption from '../assets/confirmedappointment.png';
+import appointmentpending from '../assets/appointmentpending.png';
+import deniedappointment from '../assets/deniedappointment.png';
 
 type Appointment = {
     id: string;
@@ -175,15 +178,26 @@ const AdminAppointments: React.FC = () => {
                             </ul>
                         </aside>
                         <main className="main">
-                            <IonCard className="countbox">
-                                <strong>Pending Appointments:</strong> {pendingCount}
-                            </IonCard>
-                            <IonCard className="countbox1">
-                                <strong>Confirmed Appointments:</strong> {confirmedCount}
-                            </IonCard>
-                            <IonCard className="countbox2">
-                                <strong>Denied Appointments:</strong> {denyCount}
-                            </IonCard>
+                            <div className='dash_flexbox'>
+                                <IonCard className='card_dash'>
+                                    <IonCardContent>
+                                        <img className='img_dash' src={appointmentpending} alt="" />
+                                        <p className='.text_dash'><strong>Pending Appointments:</strong> {pendingCount}</p>
+                                    </IonCardContent>
+                                </IonCard>
+                                <IonCard className='card_dash'>
+                                    <IonCardContent>
+                                        <img className='img_dash' src={confirmedadoption} alt="" />
+                                        <p className='.text_dash'><strong>Confirmed Appointments:</strong> {confirmedCount}</p>
+                                    </IonCardContent>
+                                </IonCard>
+                                <IonCard className='card_dash'>
+                                    <IonCardContent>
+                                        <img className='img_dash' src={deniedappointment} alt="" />
+                                        <p className='.text_dash'><strong>Denied Appointments:</strong> {denyCount}</p>
+                                    </IonCardContent>
+                                </IonCard>
+                            </div>
                             {appointments.map((appointment, i) => (
                                 <IonCard className='card2'>
                                     <IonCardContent>
