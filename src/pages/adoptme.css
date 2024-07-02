@@ -112,10 +112,10 @@ nav a:hover {
 .details_img {
     position: absolute;
     object-fit: cover;
-    width: 500px;
-    height: 500px;
-    top: 100px;
-    left: 150px;
+    width: 300px;
+    height: 300px;
+    top: 144px;
+    left: 230px;
 }
 
 .details_appointment {
@@ -198,6 +198,16 @@ nav a:hover {
     left: 150px;
 }
 
+.details_aboutme1 {
+    color: black;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: relative;
+    top: 335px;
+    left: 150px;
+}
+
 .details_desc {
     color: black;
     font-family: 'Poppins', sans-serif;
@@ -273,15 +283,15 @@ nav a:hover {
 
 .details_gallery {
     position: relative;
-    top: 500px;
+    top: 350px;
 }
 
 .details_gallery>img {
-    margin-left: 30px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-bottom: 30px;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -310,6 +320,10 @@ nav a:hover {
         left: 100px;
     }
 
+    .details_aboutme1 {
+        left: 100px;
+    }
+
     .details_desc {
         left: 100px;
     }
@@ -325,6 +339,7 @@ nav a:hover {
         width: 350px;
         height: 350px;
         left: 213px;
+        top: 100px;
     }
 
     .details_textSquare {
@@ -355,6 +370,11 @@ nav a:hover {
     }
 
     .details_aboutme {
+        left: 37px;
+        top: 777px;
+    }
+
+    .details_aboutme1 {
         left: 37px;
         top: 777px;
     }
@@ -413,6 +433,10 @@ nav a:hover {
     }
 
     .details_aboutme {
+        left: 37px;
+    }
+
+    .details_aboutme1 {
         left: 37px;
     }
 

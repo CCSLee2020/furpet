@@ -302,6 +302,11 @@ a {
   .text_dash {
     position: relative;
     top: 10px;
+    font-size: 1px;
+  }
+
+  .fontsize_dash {
+    font-size: 9px;
   }
 
   .card {

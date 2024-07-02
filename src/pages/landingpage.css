@@ -54,6 +54,10 @@ nav a:hover {
     color: rgb(0, 213, 255);
 }
 
+.nav-dropdowntext:hover {
+    color: rgb(0, 213, 255);
+}
+
 /* Styles for the dropdown button */
 .nav-dropdown-btn {
     font-family: 'Poppins';
@@ -89,6 +93,7 @@ nav a:hover {
     cursor: pointer;
     position: relative;
     top: 0px;
+    margin: 0px;
   }
   
 

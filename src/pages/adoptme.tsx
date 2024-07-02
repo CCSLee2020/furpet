@@ -204,7 +204,7 @@ const LandingPage: React.FC = () => {
                         <h1 className="details_aboutme">About Me</h1>
                         <p className="details_desc">{pet.about}</p>
                         <div className="space2"></div>
-                        <h1 className="details_aboutme"><br/><br/>Gallery</h1>
+                        <h1 className="details_aboutme1"><br/><br/>Gallery</h1>
                         <div className='details_gallery'>
                             {imageUrl1 && <img  src={`${imageUrl1}`} alt={`${pet.name}`} />}
                             {imageUrl2 && <img  src={`${imageUrl2}`} alt={`${pet.name}`} />}

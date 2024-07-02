@@ -194,37 +194,37 @@ const AdminHome: React.FC = () => {
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={registeredusers} alt="" />
-                                        <p className='.text_dash'><strong>Registered Users:</strong> {userCount}</p>
+                                        <p className='.text_dash'><strong className='fontsize_dash'>Registered Users: {userCount}</strong></p>
                                     </IonCardContent>
                                 </IonCard>
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={availablepet} alt="" />
-                                        <p className='.text_dash'><strong>Available Pets:</strong> {availableCount}</p>
+                                        <p className='.text_dash'><strong className='fontsize_dash'>Available Pets: {availableCount}</strong> </p>
                                     </IonCardContent>
                                 </IonCard>
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={adoptpet} alt="" />
-                                        <p className='.text_dash'><strong>Adopted Pets:</strong> {adoptedCount}</p>
+                                        <p className='.text_dash'><strong className='fontsize_dash'>Adopted Pets: {adoptedCount}</strong> </p>
                                     </IonCardContent>
                                 </IonCard>
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={appointmentpending} alt="" />
-                                        <p className='.text_dash'><strong>Pending Appointments:</strong> {pendingCount}</p>
+                                        <p className='.text_dash'><strong className='fontsize_dash'>Pending Appointments: {pendingCount}</strong> </p>
                                     </IonCardContent>
                                 </IonCard>
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={confirmedadoption} alt="" />
-                                        <p className='.text_dash'><strong>Confirmed Appointments:</strong> {confirmedCount}</p>
+                                        <p className='.text_dash'><strong className='fontsize_dash'>Confirmed Appointments: {confirmedCount}</strong> </p>
                                     </IonCardContent>
                                 </IonCard>
                                 <IonCard className='card_dash'>
                                     <IonCardContent>
                                         <img className='img_dash' src={deniedappointment} alt="" />
-                                        <p className='.text_dash'><strong>Denied Appointments:</strong> {denyCount}</p>
+                                        <p className='.text_dash'><strong className='fontsize_dash'>Denied Appointments: {denyCount}</strong> </p>
                                     </IonCardContent>
                                 </IonCard>
                             </div>
