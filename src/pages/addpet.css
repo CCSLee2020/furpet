@@ -1,359 +1,151 @@
-.AddPet {
+/* Add Pet Section */
+.AddPet,
+.AppointmentDetails1 {
     position: relative;
-    top: 150px;
+    top: 75px;
     background-color: white;
-    width: 100%;
-    height: 1120px;
     display: flex;
     justify-content: center;
+    padding: 40px 20px;
+}
+
+.AddPetBox,
+.AppointmentDetailsBox1 {
+    background-color: #f8f8f8;
+    border: 1px solid #393c49;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 800px;
+    padding: 40px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    /* Ensure elements stack vertically */
+    justify-content: center;
+    /* Center elements vertically */
+    align-items: center;
+    /* Center elements horizontally */
+    min-height: 100vh;
 }
 
 .UpdatePet1 {
-    position: relative;
-    top: 150px;
-    background-color: white;
-    width: 100%;
-    height: 940px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Ensures the element is centered vertically */
+    margin: 0;
+    background-color: #e0e0e0;
+    /* Optional background color for the page */
 }
 
-.AddPetBox {
-    display: flex;
-    justify-content: center;
-    border: 1px solid;
-    border-color: #393c49;
-    border-radius: 20px;
-    width: 720px;
-    position: relative;
-    left: 0px;
-}
 
-.AddPetBox>h1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 27px;
-    font-weight: 700;
-    text-align: center;
-    position: relative;
-    width: 900px;
-    top: 54px;
-    left: 279px;
-}
-
+.AddPetBox h1,
 .AppointmentDetailsH1_1 {
     font-family: 'Inter', sans-serif;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
     text-align: center;
-    position: relative;
-    width: 900px;
-    top: 0px;
-    left:0px;
+    margin-bottom: 30px;
+    color: #393c49;
 }
 
-.AppointmentDetailsText1 {
-    font-family: 'Poppins';
-}
-
-.AppointmentDetailsBox1 {
-    display: flex;
-    justify-content: center;
-    border: 1px solid;
-    border-color: #393c49;
-    border-radius: 20px;
-    width: 720px;
-    position: relative;
-    left: 0px;
-}
-
+.AddPetform,
+.UpdatePetform,
 .UpdateAppointmentform1 {
-    position: relative;
-    left: 100px;
-}
-
-.AppointmentDetails1 {
-    position: relative;
-    top: 150px;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 2850px;
-    display: flex;
-    justify-content: center;
 }
 
-.AddPet1 {
-    position: relative;
-    top: 150px;
-    background-color: white;
-    width: 100%;
-    height: 2450px;
-    display: flex;
-    justify-content: center;
-}
-
-.AddPetBox1 {
-    display: flex;
-    justify-content: center;
-    border: 1px solid;
-    border-color: #393c49;
-    border-radius: 20px;
-    width: 720px;
-    position: relative;
-    left: 0px;
-}
-
-.AddPetBoxH1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    position: relative;
-    width: 900px;
-    top: 0px;
-    left:250px;
-}
-
-.UpdatePetH1 {
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    text-align: center;
-    position: relative;
-    width: 900px;
-    top: 35px;
-    left:250px;
-}
-
-.UpdatePetform1 {
-    position: relative;
-    top: 130px;
-    right: 60px;
-    height: 10px;
-    font-family: 'Poppins';
-}
-
-.AddPetBox>img {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    top: 170px;
-    right: -175px;
-    object-fit: contain;
-}
-
-.AddPetform {
-    position: relative;
-    top: 300px;
-    right: 70px;
-    height: 10px;
-    font-family: 'Poppins';
-}
-
-.UpdatePetform {
-    position: relative;
-    top: 140px;
-    right: -10px;
-    height: 10px;
-    font-family: 'Poppins';
-    font-size: 16px;
-}
-
-.AddPetForm_input {
-    height: 45px;
-    padding-left: 17px;
-    width: 415px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border: 1px solid;
-    border-color: #393c49;
-    border-radius: 20px;
-    padding: 10px;
-}
-
+.AddPetForm_input,
 .AddPetForm_input1 {
-    height: 42px;
-    width: 415px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border: 1px solid;
-    border-color: #393c49;
-    border-radius: 20px;
+    height: 45px;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #393c49;
+    border-radius: 10px;
     padding: 10px;
-}
-
-.radioMargin_user1 {
-    margin-left: 5px;
-    margin-right: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 .AddPet_dropbtn {
     background-color: #767a8e;
-    color: rgb(255, 255, 255);
+    color: white;
     border-radius: 50px;
     padding: 16px;
     font-size: 16px;
-    width: 410px;
+    ;
+    min-width: fit-content;
     border: none;
     cursor: pointer;
-    position: relative;
-    left: 0px;
-    top: 0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.AddPet_dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.AddPet_dropdown-content {
-    display: none;
-    position: relative;
-    left: 0px;
-    top: 0px;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.AddPet_dropdown-content a:hover {
-    background-color: #f1f1f1
-}
-
-.AddPet_dropdown:hover .AddPet_dropdown-content {
-    display: block;
-}
-
-.AddPet_dropdown:hover .AddPet_dropbtn {
-    background-color: #888888;
-}
-
-.AddPet_submit {
-    height: 50px;
-    width: 276px;
-    background-color: #393c49;
-    color: #ffffff;
-    border: 1px solid;
-    border-radius: 20px;
-    width: 415px;
-    left: 0px;
-    top: 40px;
-    font-family: Poppins, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    position: relative;
-}
-
-.AddPet_submit1 {
-    height: 50px;
-    width: 276px;
-    background-color: #393c49;
-    color: #ffffff;
-    border: 1px solid;
-    border-radius: 20px;
-    width: 415px;
-    left: 0px;
-    top: 40px;
-    font-family: Poppins, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    position: relative;
-}
-
+.AddPet_submit,
 .AppointmentSave {
-    height: 50px;
     background-color: #393c49;
-    color: #ffffff;
-    border: 1px solid;
+    color: white;
     border-radius: 20px;
-    width: 200px;
-    left: 290px;
-    top: 600px;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    margin-top: 30px;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
 }
 
-.space4 {
-    background-color: #ffffff;
-    position: relative;
-    top: 1200px;
-    width: 100%;
-    height: 50px;
+.photo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 50px;
 }
 
-@media only screen and (max-width: 720px) {
+.UpdateAppointmentform1 {
+    color: #393c49;
+    display: flex;
+    flex-direction: column;
+    /* Stack elements vertically */
+    justify-content: flex-start;
+    /* Align elements vertically at the top */
+    align-items: flex-start;
+    /* Align elements horizontally to the start (left) */
+}
 
-    .UpdatePetform {
-        right: -43px;
+
+.AddPet_submit:hover,
+.AppointmentSave:hover {
+    background-color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 720px) {
+
+    .AddPetBox,
+    .AppointmentDetailsBox1 {
+        width: 100%;
+        padding: 20px;
     }
 
-    .AddPetform {
-        right: 22px;
-    }
-
-    .AddPetForm_input {
-        width: 310px;
-    }
-
-    .AddPet_dropbtn {
-        width: 310px;
-    }
-
-    .AddPet_submit {
-        width: 310px;
-    }
-
-    .AddPet1 {
-        height: 2600px;
-    }
-    .AppointmentDetails1 {
-        height: 3480px;
-    }
-
-    .AppointmentDetailsBox1, .AddPetBox1 {
-        width: 320px;
-    }
-
-    .AddPetBoxH1 {
-        left: 150px;
-        font-size: large;
-    }
-
-    .AppointmentDetailsH1_1 {
-        font-size: large;
-    }
-
-    .UpdateAppointmentform1 {
-        left: 300px;
-        width: 300px;
-    }
-
-    .AddPetForm_input1 {
-        height: 50px;
-        width: 300px;
-    }
-
-    .UpdatePetform1 {
-        top: 100px;
-        position: relative;
-        right: 36px;
-    }
-
-    .QuestionUserUpdate {
-        font-size: 16px;
-    }
-
-    .AddPet_submit1 {
-        height: 50px;
-        width: 290px;
-    }
-
+    .AddPetForm_input,
+    .AddPet_dropbtn,
+    .AddPet_submit,
     .AppointmentSave {
-        height: 30px;
-        width: 100px;
-        font-size: 8px;
+        width: 90%;
     }
-};
+}

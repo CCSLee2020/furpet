@@ -1,0 +1,146 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Odor Mean Chey', serif;
+    background: #f0f0f0;
+}
+
+.login_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(45deg, #6a89cc, #b8e994);
+}
+
+.rectangle_box {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+
+.h1_login {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.image_Logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+}
+
+.login_form {
+    width: 100%;
+}
+
+.input_login {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    border-color: #393c49;
+    font-size: 1em;
+    background-color: whitesmoke;
+    color: black;
+}
+
+.submit_login {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #1856dd;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit_login:hover {
+    background-color: #6a89cc;
+}
+
+.login_form > a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #393c49;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.login_form > a:hover {
+    color: #6a89cc;
+}
+
+.image_Login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.welcome1{
+    color:#6a89cc;
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+}
+.needAccount{
+    color: #393c49;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 1025px) {
+    .rectangle_box {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .image_Login {
+        width: 100%;
+    }
+
+    .login_box {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .rectangle_box {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 516px) {
+    .h1_login {
+        font-size: 1.5em;
+    }
+
+    .input_login {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .submit_login {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    .login_form > a {
+        font-size: 0.8em;
+    }
+}

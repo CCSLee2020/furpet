@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './addpet.css';
+import './edituser.css';
 import { IonContent, IonPage } from '@ionic/react';
 import { useHistory, useParams } from 'react-router-dom';
 import firebase from 'firebase/compat/app';

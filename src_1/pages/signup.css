@@ -1,0 +1,143 @@
+/* Page container styles */
+.signup_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #6a89cc, #b8e994);
+  padding: 20px;
+}
+
+/* Form container styles */
+.rectangle_box {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Header styles */
+.h1_signUp {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input field styles */
+.signup_form label {
+  display: block;
+  text-align: left;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.signup_form input[type="text"],
+.signup_form input[type="email"],
+.signup_form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.survey{
+  color: black;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+/* Radio button container styles */
+.AddUser_radio {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Radio button label styles */
+.radioMargin_user {
+  margin: 0 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Radio button styles */
+.AddUser_radio input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Submit button styles */
+.submit_signUp {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit_signUp:hover {
+  background-color: #0056b3;
+}
+
+/* Link to login styles */
+.rectangle_box p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.rectangle_box a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.rectangle_box a:hover {
+  text-decoration: underline;
+}
+
+/* Image styles */
+.image_SignUp {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .rectangle_box {
+      padding: 20px;
+  }
+
+  .h1_signUp {
+      font-size: 20px;
+  }
+
+  .signup_form input[type="text"],
+  .signup_form input[type="email"],
+  .signup_form input[type="password"] {
+      font-size: 14px;
+  }
+
+  .radioMargin_user {
+      font-size: 14px;
+  }
+
+  .submit_signUp {
+      font-size: 16px;
+  }
+
+  .rectangle_box p {
+      font-size: 14px;
+  }
+}

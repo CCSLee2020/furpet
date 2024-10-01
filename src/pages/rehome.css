@@ -1,3 +1,34 @@
+/* Default Light Theme */
+:root {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+    --ion-primary-color: #3880ff;
+    --ion-secondary-color: #3dc2ff;
+    --ion-toolbar-background: #f9f9f9;
+    --ion-toolbar-text-color: #333333;
+    --ion-card-background: #ffffff;
+    --ion-card-text-color: #000000;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ion-background-color: #121212;
+        --ion-text-color: #f9f9f9;
+        --ion-primary-color: #bb86fc;
+        --ion-secondary-color: #03dac5;
+        --ion-toolbar-background: #1e1e1e;
+        --ion-toolbar-text-color: #ffffff;
+        --ion-card-background: #1e1e1e;
+        --ion-card-text-color: #f9f9f9;
+    }
+}
+
+ion-content {
+    background-color: var(--ion-background-color);
+    color: var(--ion-text-color);
+}
+
 nav {
     background-color: #393c49;
     overflow: hidden;
@@ -580,7 +611,7 @@ nav a:hover {
         left: 180px;
         top: -190px;
     }
-    
+
 }
 
 @media only screen and (max-width: 426px) {
@@ -619,7 +650,8 @@ nav a:hover {
         max-width: 150px;
     }
 
-    .rehome_box>.edit, .rehome_box>.delete {
+    .rehome_box>.edit,
+    .rehome_box>.delete {
         left: 0px;
         top: -150px;
     }

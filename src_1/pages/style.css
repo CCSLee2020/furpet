@@ -1,0 +1,380 @@
+.adminHome {
+  margin: 0;
+  padding: 0;
+  color: white;
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 15px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr 50px;
+
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background-color: whitesmoke;
+}
+
+.aside {
+  grid-area: aside;
+  background-color: #393C49;
+}
+
+.main1 {
+  grid-area: main;
+  background-color: white;
+  position: relative;
+  top: 50px;
+  left: 0px;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: whitesmoke;
+}
+
+.document_img2 {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+
+/* flexing header and footer*/
+.header,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #393C49;
+  padding: 0 15px;
+}
+
+/* flexing aside */
+.aside {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  overflow-y: auto;
+  z-index: 2;
+  transform: translateX(-245px);
+}
+
+.aside.active {
+  transform: translateX(0);
+}
+
+.menu_title {
+  padding: 20px 20px 20px 40px
+}
+
+.aside_list {
+  padding: 0;
+  margin-top: 50px;
+  list-style-type: none;
+}
+.aside_footer {
+  padding: 0;
+  margin-top: auto;
+  list-style-type: none;
+}
+
+.aside_list-item {
+  padding: 20px 20px 20px 40px;
+  color: #ddd;
+} 
+
+.active-list, .aside_list-item:hover {
+  background-color: gainsboro;
+  cursor: pointer;
+  color: #393C49;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+
+.card_dash {
+  position: relative;
+  left: 0;
+  top: 0px;
+  width: 500x;
+  height: 150px;
+}
+
+.img_dash {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  top: 0px;
+  object-fit: cover;
+}
+
+.card_pet {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+.card_appointment {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+.card {
+  position: relative;
+  left: 0px;
+  top: 0px;
+}
+
+.card2 {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  width: 1230px;
+}
+
+.card3 {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  width: 1230px;
+}
+
+.countbox {
+  position: relative;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+}
+
+.countbox {
+  position: relative;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+}
+
+.countbox1 {
+  position: relative;
+  top: -84px;
+  left: 83px;
+  width: 100px;
+  height: 100px;
+}
+
+.countbox2 {
+  position: relative;
+  top: -169px;
+  left: 166px;
+  width: 100px;
+  height: 100px;
+}
+
+.user-logs-grid {
+  margin: 10px 10px 10px 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+.grid-header {
+  display: contents;
+  font-weight: bold;
+}
+
+.grid-row {
+  display: contents;
+  font-size: 6px;
+}
+
+.grid-row > div, .grid-header > div {
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: black;
+}
+
+
+/* responsive layout */
+@media only screen and (min-width: 750px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas:
+      'aside header'
+      'aside main'
+      'aside footer';
+    height: 100vh;
+  }
+
+  .main1 {
+    position: relative;
+    top: 50px;
+    left: -150px;
+  }
+
+  .aside {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    transform: translateX(0);
+  }
+
+  .main_cards {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 200px 300px;
+    grid-template-areas:
+      'card1 card2'
+      'card1 card3';
+    grid-gap: 10px;
+  }
+
+  .countbox {
+    position: relative;
+    left: 250px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .countbox1 {
+    position: relative;
+    top: -109px;
+    left: 365px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .countbox2 {
+    position: relative;
+    top: -218px;
+    left: 480px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .card_pet {
+    top: 0px;
+    left: 250px;
+  }
+
+  .card_appointment {
+    top: 0px;
+    left: 250px;
+  }
+
+  .img_dash {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 0px;
+    object-fit: cover;
+  }
+
+  .dash_flexbox {
+    display: flex;
+    width: 66%;
+  }
+
+  .card_dash {
+    position: relative;
+    left: 250px;
+    top: 0px;
+    width: 300px;
+    height: 100px;
+  }
+
+  .text_dash {
+    position: relative;
+    top: 10px;
+  }
+
+  .card {
+    position: relative;
+    left: 250px;
+    top: 0px;
+  }
+  
+  .card2 {
+    position: relative;
+    left: 250px;
+    top: 0px;
+    width: 1230px;
+  }
+  
+  .card3 {
+    position: relative;
+    left: 250px;
+    top: 0px;
+    width: 1230px;
+  }
+
+  .user-logs-grid {
+    margin: 10px 10px 10px 250px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+  }
+  
+  .grid-header {
+    display: contents;
+    font-weight: bold;
+  }
+  
+  .grid-row {
+    display: contents;
+    font-size: 16px;
+  }
+  
+  .grid-row > div, .grid-header > div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    color: black;
+  }
+  
+}
+
+.menu-icon {
+  position: fixed;
+  display: flex;
+  top: 2px;
+  left: 8px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  cursor: pointer;
+  padding: 12px;
+  color: black;
+}
+
+.header_title {
+  margin-left: 35px;
+}
+
+.aside_close-icon {
+  position: absolute;
+  visibility: visible;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+@media only screen and (min-width: 750px) {
+  .aside_close-icon {
+    display: none;
+  }
+}

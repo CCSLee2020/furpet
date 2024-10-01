@@ -1,474 +1,439 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Color Scheme Variables */
+:root {
+    --primary-bg: #393c49;
+    --primary-text: white;
+    --secondary-bg: #f9f9f9;
+    --secondary-text: black;
+    --accent-color: #505464;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-bg: #121212;
+        --primary-text: #f9f9f9;
+        --secondary-bg: #1e1e1e;
+        --secondary-text: #ffffff;
+        --accent-color: #ff5722;
+    }
+}
+
+/* Navigation */
 nav {
-    background-color: #393c49;
-    overflow: hidden;
-    color: white;
-    padding: 10px;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 25px;
+    font-size: 20px;
     position: fixed;
     width: 100%;
     z-index: 2;
+    transition: background-color 0.3s;
+}
+
+nav a {
+    color: var(--primary-text);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
 }
 
 nav a:hover {
-    color: rgb(0, 0, 0);
+    color: #f0f0f0;
 }
 
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
 }
 
 .h1_logo {
-    color: white;
-    font-size: 48px;
+    color: var(--primary-text);
+    font-size: 32px;
     font-weight: 400;
     font-family: 'Aclonica', sans-serif;
 }
 
+/* Navigation Links */
 .nav-links {
     display: flex;
     align-items: center;
-    margin-right: 100px;
 }
 
 .nav-links a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    padding: 14px 16px;
-    display: inline-block;
+    padding: 10px 15px;
     margin: 0 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
+.nav-links a:hover {
+    background-color: var(--accent-color);
+}
+
+/* Welcome Banner */
 .welcomeBanner {
     width: 100%;
-    height: 567px;
+    height: 60vh;
+    background: url('your-banner-image.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text);
+    text-align: center;
+    font-size: 2rem;
 }
 
+/* Details Section */
 .details {
-    position: relative;
-    top: 50px;
-    background-color: white;
-    width: 100%;
-    height: 500px;
-}
-
-.details_textSquare {
-    position: relative;
-    left: 610px;
-    top: 75px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 50px 20px;
+    background-color: var(--secondary-bg);
+    text-align: center;
+    color: var(--secondary-text);
+    margin: 0 auto;
+    /* Center it */
+    text-align: center;
+    /* Optional: center text inside */
+    justify-content: space-between;
+    /* Ensure spacing between children divs */
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 50px 20px;
 }
 
 .details_textSquare2 {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    height: 300px;
-    position: relative;
-    top: 20px;
-}
-
-.details_h1 {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    position: absolute;
-    top: 30px;
-    left: 70px;
-}
-
-.details_h1_1 {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    position: relative;
-    top: 30px;
-}
-
-.details_h2 {
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    position: relative;
-    top: 150px;
-    left: 70px;
-}
-
-.details_h2_1 {
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    margin: 0 auto;
+    /* Center it */
     text-align: center;
-    position: relative;
-    top: 20px;
+    margin-top: 50px;
+    justify-content: space-between;
+    /* Ensure spacing between children divs */
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 50px 20px;
 }
 
-.details_img {
-    position: absolute;
-    object-fit: cover;
-    width: 300px;
-    height: 300px;
-    top: 144px;
-    left: 230px;
+.titleGallery {
+    text-align: center;
+}
+
+.details h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.details p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    position: relative;
+    top: 15px;
+}
+
+.details img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 100px 0;
+    border-radius: 10px;
+}
+
+/* Buttons */
+.edit_user,
+.details_appointment_1 {
+    padding: 15px 30px;
+    background-color: var(--primary-bg);
+    border-radius: 50px;
+    color: var(--primary-text);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.details_appointment:hover,
+.edit_user:hover,
+.details_appointment_1:hover {
+    background-color: var(--accent-color);
 }
 
 .details_appointment {
-    height: 50px;
-    width: 285px;
-    background-color: #393c49;
-    border-radius: 50px;
-    position: absolute;
-    top: 430px;
-    left: 60px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    /* Gradient background */
+    border: none;
+    /* Remove border for a clean look */
+    border-radius: 12px;
+    /* Rounded corners for a button-like appearance */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Soft shadow to add depth */
+    padding: 15px 30px;
+    /* Button-like padding */
+    color: white;
+    /* Button text color */
+    font-family: 'Poppins', sans-serif;
+    /* Modern font */
+    font-size: 16px;
+    /* Appropriate font size for buttons */
+    font-weight: 600;
+    /* Make text bold */
+    text-transform: uppercase;
+    /* Uppercase for emphasis */
+    cursor: pointer;
+    /* Pointer cursor to indicate it's clickable */
     text-align: center;
-    align-items: center;
-    display: flex;
+    /* Center text inside the button */
+    display: inline-block;
+    /* Keep it inline, like a button */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effects */
+    margin: 20px 0;
+    /* Margin to create space around the button */
 }
 
-.edit_user {
-    height: 50px;
-    width: 190px;
-    background-color: #393c49;
-    border-radius: 50px;
-    position: relative;
-    top: 100px;
+/* Hover effect for button */
+.details_appointment:hover {
+    transform: translateY(-3px);
+    /* Slight lift effect on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    /* Enhanced shadow */
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    /* Reverse gradient on hover */
 }
 
-.details_appointment_1 {
-    height: 82px;
-    width: 308px;
-    background-color: #393c49;
-    border-radius: 50px;
-    position: relative;
-    top: 100px;
+/* Focus and active states for better accessibility */
+.details_appointment:focus,
+.details_appointment:active {
+    outline: none;
+    /* Remove default outline */
+    transform: translateY(-2px);
+    /* Slight lift on focus */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    /* Focused shadow effect */
 }
 
-.details_appointment2 {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    position: absolute;
-    top: -17px;
-    left: 53px;
-}   
 
-.details_appointment3 {
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    position: relative;
-    left: 10px;
-}
-
-.details_appointment4 {
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    font-weight: 400;
-    position: absolute;
-    top: -25px;
-    left: 0px;
-}
-
-.edit_user2 {
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    position: absolute;
-    top: -13px;
-    left: 35px;
-}
-
-.details_aboutme {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    position: relative;
-    top: 429px;
-    left: 150px;
-}
-
-.details_aboutme1 {
-    color: black;
-    font-family: 'Inter', sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    position: relative;
-    top: 335px;
-    left: 150px;
-}
-
-.details_desc {
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    position: relative;
-    top: 415px;
-    left: 150px;
-}
-
-.details_caretaker {
-    color: black;
-    font-family: 'Aclonica', sans-serif;
-    font-size: 48px;
-    font-weight: 400;
-    position: relative;
-    top: 634px;
-    left: 150px;
-}
-
+/* Caretaker Section */
 .caretaker_container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgb(255, 255, 255);
-    position: relative;
-    top: 613px;
+    background-color: var(--secondary-bg);
+    padding: 50px 20px;
 }
 
-.caretaker_container>.caretaker_box {
-    border: 1px solid;
-    border-color: #393c49;
+.caretaker_box {
+    border: 1px solid var(--primary-bg);
     border-radius: 20px;
-    height: 200px;
-    width: 1000px;
-    margin-top: 10px;
-    margin-top: 10px;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding-top: 10px;
-    padding-left: 20px;
-    padding-right: 0px;
+    padding: 20px;
+    margin: 20px;
     text-align: left;
-    line-height: 75px;
-}
-
-.caretaker_h1,
-.caretaker_h2 {
-    position: relative;
+    max-width: 1000px;
+    width: 100%;
 }
 
 .caretaker_h1 {
-    color: black;
     font-family: 'Aclonica', sans-serif;
-    font-size: 48px;
-    font-weight: 400;
+    font-size: 36px;
+    color: var(--secondary-text);
+    margin-bottom: 10px;
 }
 
 .caretaker_h2 {
-    color: black;
     font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 20px;
+    color: var(--secondary-text);
 }
 
-.space2 {
-    background-color: #ffffff;
-    position: relative;
-    top: 662px;
-    width: 100%;
-    height: 1px;
-}
-
+/* Gallery */
 .details_gallery {
-    position: relative;
-    top: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 0;
 }
 
-.details_gallery>img {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 30px;
-    width: 200px;
-    height: 200px;
+.details_gallery img {
+    margin: 10px;
+    width: calc(25% - 20px);
+    height: auto;
+    border-radius: 10px;
     object-fit: cover;
 }
 
-@media only screen and (max-width: 1100px) {
-    .details {
-        position: relative;
-        top: 100px;
-        background-color: white;
-        width: 100%;
-        height: 500px;
-    }
+/************ Responsive Flexbox Layout ************/
+.details_textSquare {
+    order: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: var(--background-color, #f9f9f9);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.petImg {
+    order: 1;
+    flex: 1;
+    max-width: 50%;
+    border-radius: 10px;
+    object-fit: cover;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    /* Adds space to the right of petImg */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centers vertically */
+    align-items: center;
+    /* Centers horizontally */
+    text-align: center;
+}
+
+.details_img {
+    width: calc(25% - 20px);
+}
+
+.details_appointment {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 300px;
+    margin-top: 20px;
+    position: relative;
+    bottom: 60px;
+}
+
+/* Media Queries */
 @media only screen and (max-width: 1024px) {
-    .details_img {
-        width: 400px;
-        height: 400px;
-        left: 30px;
+    .nav-links {
+        display: none;
     }
 
-    .details_textSquare {
-        left: 410px;
+    .details {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .details_aboutme {
-        left: 100px;
+    .petImg {
+        order: 1;
+        flex: 1;
+        max-width: 45%;
+        border-radius: 12px;
+        /* Slightly larger, smoother corners */
+        object-fit: cover;
+        object-position: center;
+        /* Ensures the image stays centered */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        /* Soft shadow for depth */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Smooth animations */
+        overflow: hidden;
+        /* Ensures the image fits nicely inside its container */
     }
 
-    .details_aboutme1 {
-        left: 100px;
+    .details img {
+        max-width: 300px;
     }
 
-    .details_desc {
-        left: 100px;
+    .details_gallery img {
+        width: calc(33.333% - 20px);
     }
 
-    .details_caretaker {
-        left: 100px;
+    .caretaker_box {
+        max-width: 80%;
     }
 }
 
 @media only screen and (max-width: 768px) {
+    .welcomeBanner {
+        height: 50vh;
+        font-size: 1.5rem;
+    }
 
-    .details_img {
-        width: 350px;
-        height: 350px;
-        left: 213px;
-        top: 100px;
+    .details img {
+        max-width: 250px;
+    }
+
+    .details_gallery img {
+        width: calc(50% - 20px);
+    }
+
+    .caretaker_box {
+        max-width: 90%;
     }
 
     .details_textSquare {
-        position: relative;
-        left: 142px;
-        top: 421px;
-    }
-
-    .details_appointment {
-        top: 430px;
-        left: 60px;
-        z-index: 1;
-    }
-
-    .details_caretaker {
-        top: 964px;
-        left: 38px;
-    }
-
-    .caretaker_container {
-        top: 954px;
-    }
-
-    .caretaker_container>.caretaker_box {
-        height: 207px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
-
-    .details_aboutme {
-        left: 37px;
-        top: 777px;
-    }
-
-    .details_aboutme1 {
-        left: 37px;
-        top: 777px;
-    }
-
-    .details_desc {
-        left: 36px;
-        top: 770px;
-    }
-
-    .caretaker_h1 {
-        font-size: 32px;
-    }
-
-    .space2 {
-        height: 0px;
-    }
-
-    .details_gallery {
-        top: 800px;
-    }
-}
-
-@media only screen and (max-width: 620px) {
-
-    .details_img {
-        width: 350px;
-        height: 350px;
-        left: 30px;
-    }
-
-    .details_textSquare {
-        position: relative;
-        left: -65px;
-        top: 421px;
-    }
-
-    .details_appointment {
-        top: 460px;
-        left: 70px;
-        z-index: 1;
-    }
-
-    .details_caretaker {
-        top: 964px;
-        left: 38px;
-    }
-
-    .caretaker_container {
-        top: 954px;
-    }
-
-    .caretaker_container>.caretaker_box {
-        height: 335px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
-
-    .details_aboutme {
-        left: 37px;
-    }
-
-    .details_aboutme1 {
-        left: 37px;
-    }
-
-    .details_desc {
-        left: 7px;
-    }
-
-    .caretaker_h1 {
-        font-size: 32px;
-    }
-
-    .space2 {
-        height: 0px;
-    }
-}
-
-@media only screen and (max-width: 376px) {
-    .details_img {
-        width: 300px;
-        height: 300px;
-        left: 40px;
-    }
-
-    .details_appointment {
-        left: 72px;
+        padding: 10px;
     }
 
     .details_appointment3 {
-        left: 3px;
-        top: 0px;
-        display: flex;
-        text-align: center;
+        font-size: 16px;
+        position: absolute;
+
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .h1_logo {
+        font-size: 24px;
     }
 
+    .welcomeBanner {
+        height: 40vh;
+        font-size: 1.2rem;
+    }
+
+    .details h1 {
+        font-size: 28px;
+    }
+
+    .details img {
+        max-width: 200px;
+    }
+
+    .details_gallery img {
+        width: calc(100% - 20px);
+    }
+
+    .caretaker_box {
+        max-width: 100%;
+    }
+
+    .details_textSquare {
+        padding: 5px;
+    }
+
+    .details_appointment3 {
+        font-size: 14px;
+    }
 }

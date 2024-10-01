@@ -1,0 +1,428 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+
+.page_body {
+    margin: 0;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.welcome {
+    width: 100%;
+    height: 560px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 40px;
+}
+
+.welcome>h1 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 100px;
+    margin: 0px;
+    position: relative;
+    bottom: -100px;
+}
+
+.welcome>p {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0px;
+    position: relative;
+    bottom: -150px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.welcome a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.login {
+    display: inline-block;
+    font-family: 'Poppins';
+    background-color: #393c49;
+    border-radius: 50px;
+    text-align: center;
+    padding-top: 18px;
+    position: relative;
+    width: 230px;
+    height: 56px;
+    top: 210px;
+}
+
+.avp {
+    position: relative;
+    bottom: -100px;
+}
+
+.avp>p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+    position: relative;
+    right: -60px;
+}
+
+.avp>.avpvideo {
+    position: absolute;
+    top: 0px;
+    right: 100px;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: 0px 10px 8px #888888;
+}
+
+.service {
+    position: relative;
+    bottom: -100px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.service>h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.box>img {
+    width: 100px;
+    height: 100px;
+}
+
+.box>h2 {
+    margin: 20px 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.box>p {
+    text-align: justify;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+
+.about {
+    position: relative;
+    bottom: -150px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.container2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-container {
+    width: 50%;
+    position: relative;
+    right: -200px;
+}
+
+.image-container>img {
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0px 10px 8px #888888;
+}
+
+.info-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.info-container>h1 {
+    font-family: "Inter";
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+}
+
+.info-container>p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.team {
+    position: relative;
+    bottom: -150px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.team>h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.container2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box2 {
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 10px;
+}
+
+.box2>img {
+    width: 100px;
+    height: 100px;
+}
+
+.box2>h2 {
+    margin: 20px 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+}
+
+.box2>p {
+    text-align: justify;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+}
+
+footer {
+    position: relative;
+    bottom: -300px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #393c49;
+    padding: 20px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+footer>div {
+    flex: 1;
+    margin-right: 15px;
+}
+
+footer>div:last-child {
+    margin-right: 0;
+}
+
+footer>a {
+    color: white;
+    text-decoration: none;
+}
+
+footer>a:hover {
+    color: #ddd;
+}
+
+@media only screen and (max-width: 1024px) {
+    .welcome>h1 {
+        font-size: 100px;
+        position: relative;
+        top: 170px;
+    }
+
+    .welcome>p,
+    .avp>p,
+    .service>h1,
+    .info-container>h1,
+    .team>h1,
+    .box>h2,
+    .box>p,
+    .info-container>p {
+        font-size: 15px;
+    }
+
+    .welcome>p {
+        position: relative;
+        top: 170px;
+    }
+
+    .login {
+        padding-top: 10px;
+        width: 180px;
+        height: 45px;
+        top: 200px;
+    }
+
+    .avp>p {
+        top: 220px;
+        right: -200px;
+    }
+
+    .avp>.avpvideo {
+        right: 200px;
+        top: -70px;
+    }
+
+    .service,
+    .about,
+    .team {
+        top: 400px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .container,
+    .container2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box,
+    .box2,
+    .image-container,
+    .info-container {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        width: 60%;
+
+    }
+
+    .image-container>img {
+        width: 100%;
+        position: relative;
+        right: 170px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        top: 452px;
+    }
+
+    footer>div {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .welcome>h1 {
+        font-size: 65px;
+        position: relative;
+        top: 105px;
+    }
+
+    .welcome>p,
+    .avp>p,
+    .service>h1,
+    .info-container>h1,
+    .team>h1,
+    .box>h2,
+    .box>p,
+    .info-container>p {
+        font-size: 14px;
+    }
+
+    .welcome>p {
+        position: relative;
+        top: 115px;
+    }
+
+    .login {
+        width: 160px;
+        height: 40px;
+        top: 125px;
+    }
+
+    .avp>p {
+        font-size: 10px;
+        top: 100px;
+        right: -20px;
+    }
+
+    .avp>.avpvideo {
+        right: 12px;
+        top: -100px;
+        width: 300px;
+        height: 169px;
+    }
+
+    .service,
+    .about,
+    .team {
+        top: 200px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .container,
+    .container2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box,
+    .box2,
+    .image-container,
+    .info-container {
+        width: 95%;
+        margin-bottom: 15px;
+    }
+
+    .image-container {
+        width: 70%;
+    }
+
+    .image-container>img {
+        width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        top: 260px;
+    }
+
+    footer>div {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}

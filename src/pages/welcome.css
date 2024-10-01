@@ -1,428 +1,493 @@
 @import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+/*********** FOR THEME **************/
+:root {
+    /* Light Theme */
+    --background-color: #f5f5f5;
+    --text-color: #333333;
+    --primary-color: #3880ff;
+    --secondary-color: #e0e0e0;
+
+    /* Dark Theme */
+    --dark-background-color: #1e1e1e;
+    --dark-text-color: #ffffff;
+    --dark-primary-color: #bb86fc;
+    --dark-secondary-color: #333333;
+}
+
+/* Use media query to auto-switch theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: var(--dark-background-color);
+        --text-color: var(--dark-text-color);
+        --primary-color: var(--dark-primary-color);
+        --secondary-color: var(--dark-secondary-color);
+    }
+}
+
+/*********** FOR THEME **************/
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
 
 .page_body {
     margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-.welcome {
-    text-align: center;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #6a89cc, #b8e994);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.welcome {
-    width: 100%;
-    height: 560px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    top: 40px;
+.logo1 {
+    display: flex;
+    align-items: center;
 }
 
-.welcome>h1 {
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 100px;
-    margin: 0px;
-    position: relative;
-    bottom: -100px;
+.navLogo1 {
+    height: 40px;
+    margin-right: 10px;
 }
 
-.welcome>p {
-    text-align: center;
-    color: rgb(0, 0, 0);
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0px;
-    position: relative;
-    bottom: -150px;
-    margin-left: 50px;
-    margin-right: 50px;
+.h1_logo1 {
+    font-family: 'Aclonica', sans-serif;
+    font-size: 24px;
+    color: #ffffff;
 }
 
-.welcome a {
-    color: #fff;
+.nav-links2 a {
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 500;
 }
 
+/*welcome div*/
+/* Fullscreen Section with Centered Content */
+.welcome {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    /* Full height of the viewport */
+    overflow: hidden;
+    /* Prevent content overflow */
+    z-index: 1;
+}
+
+/* Image Container */
+.imgContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.HomeIMG {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensure the image covers the entire section */
+    object-position: center;
+    /* Center the image focus */
+    filter: brightness(60%);
+    /* Darken the image to make the text readable */
+}
+
+/* Text Overlay */
+.overlayComponent {
+    position: relative;
+    z-index: 2;
+    /* Ensures the text appears over the image */
+    color: white;
+    padding: 20px;
+}
+
+.welText {
+    font-size: 4rem;
+    /* Responsive font size */
+    margin-bottom: 20px;
+}
+
+.together,
+.and {
+    font-size: 1.5rem;
+    /* Adjust font size for paragraphs */
+    margin: 5px 0;
+}
+
+/* Button Styling */
 .login {
     display: inline-block;
-    font-family: 'Poppins';
-    background-color: #393c49;
-    border-radius: 50px;
-    text-align: center;
-    padding-top: 18px;
-    position: relative;
-    width: 230px;
-    height: 56px;
-    top: 210px;
+    background-color: #007bff;
+    /* Primary button color */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
+
+.login:hover {
+    background-color: #0056b3;
+    /* Button hover color */
+}
+
+/* MEDIA QUERIES */
+
+/* For tablet screens */
+@media (max-width: 768px) {
+    .welText {
+        font-size: 3rem;
+        /* Adjust heading size */
+    }
+
+    .together,
+    .and {
+        font-size: 1.2rem;
+        /* Adjust paragraph size */
+    }
+
+    .login {
+        font-size: 1rem;
+        /* Adjust button size */
+        padding: 8px 16px;
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    .welText {
+        font-size: 2rem;
+        /* Further adjust heading size for small screens */
+    }
+
+    .together,
+    .and {
+        font-size: 1rem;
+        /* Adjust paragraph size */
+    }
+
+    .login {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}
+
 
 .avp {
+    display: flex;
+    text-align: center;
+    margin: 60px 0;
+}
+
+.avp p {
+    flex: 1;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.avp video {
+    flex: 1;
+    max-width: 50%;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     position: relative;
-    bottom: -100px;
+    left: 100px;
 }
 
-.avp>p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 25px;
-    position: relative;
-    right: -60px;
-}
-
-.avp>.avpvideo {
-    position: absolute;
-    top: 0px;
-    right: 100px;
-    padding: 0px;
-    margin: 0px;
-    box-shadow: 0px 10px 8px #888888;
-}
-
+/* Services Section */
 .service {
-    position: relative;
-    bottom: -100px;
-    margin-left: 60px;
-    margin-right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centers the content horizontally */
+    justify-content: flex-start;
+    /* Positions content at the top */
+    padding-top: 20px;
+    /* Optional padding */
 }
 
-.service>h1 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 30px;
+.service h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    padding-bottom: 20px;
+
+
 }
 
 .container {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+
 }
 
 .box {
-    width: 30%;
-    border: 1px solid black;
-    border-radius: 10%;
+    width: 300px;
     padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.box>img {
+.box:hover {
+    transform: translateY(-10px);
+}
+
+.box img {
     width: 100px;
     height: 100px;
+    margin-bottom: 20px;
 }
 
-.box>h2 {
-    margin: 20px 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.box h2 {
     font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 
-.box>p {
+.box p {
+    font-size: 16px;
+    line-height: 1.6;
     text-align: justify;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 15px;
 }
 
+/* About Section */
 .about {
-    position: relative;
-    bottom: -150px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
 }
 
 .container2 {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
 }
 
-.image-container {
-    width: 50%;
-    position: relative;
-    right: -200px;
-}
-
-.image-container>img {
-    width: 70%;
-    height: 100%;
-    object-fit: cover;
-    box-shadow: 0px 10px 8px #888888;
+.image-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .info-container {
-    width: 100%;
-    padding: 20px;
+    max-width: 600px;
+
+
 }
 
-.info-container>h1 {
-    font-family: "Inter";
+.info-container h1 {
+    font-size: 32px;
     font-weight: 700;
-    font-style: normal;
-    font-size: 50px;
+    margin-bottom: 20px;
 }
 
-.info-container>p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 15px;
+.info-container p {
+    font-size: 16px;
+    line-height: 1.6;
     text-align: justify;
 }
 
+/* Team Section */
 .team {
-    position: relative;
-    bottom: -150px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin: 40px 0;
+    text-align: center;
 }
 
-.team>h1 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 30px;
+.team h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
 }
 
 .container2 {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    color: #1e1e1e;
 }
 
 .box2 {
-    width: 30%;
-    border: 1px solid black;
-    border-radius: 10%;
+    width: 300px;
     padding: 20px;
-    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.box2:hover {
+    transform: translateY(-10px);
+}
+
+.box2 img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.box2 h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.box2 p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Footer */
+
+
+/* Responsive Design */
+
+/*footer*/
+
+.footer-container_welcome {
+    background-color: #333;
+    /* Dark background for a modern look */
+    color: white;
+    padding: 40px 20px;
     text-align: center;
+}
+
+.footer-content_welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-brand_welcome h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f9a825;
+    /* Accent color for the brand name */
+}
+
+.footer-brand_welcome p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.footer-links ul li {
+    margin: 0;
+}
+
+.footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #f9a825;
+    /* Hover color for the links */
+}
+
+.footer-social_welcome {
+    margin-top: 20px;
+}
+
+.footer-social_welcome a {
+    margin: 0 10px;
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social_welcome a:hover {
+    color: #f9a825;
+    /* Hover color for social icons */
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.footer-bottom img {
+    height: 50px;
     margin: 10px;
 }
 
-.box2>img {
-    width: 100px;
-    height: 100px;
+.footerLogo1 {
+    margin-right: 10px;
 }
 
-.box2>h2 {
-    margin: 20px 0;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 20px;
+.footerLogo2 {
+    margin-left: 10px;
 }
 
-.box2>p {
-    text-align: justify;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 15px;
-}
-
-footer {
-    position: relative;
-    bottom: -300px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #393c49;
-    padding: 20px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-}
-
-footer>div {
-    flex: 1;
-    margin-right: 15px;
-}
-
-footer>div:last-child {
-    margin-right: 0;
-}
-
-footer>a {
-    color: white;
-    text-decoration: none;
-}
-
-footer>a:hover {
-    color: #ddd;
-}
-
-@media only screen and (max-width: 1024px) {
-    .welcome>h1 {
-        font-size: 100px;
-        position: relative;
-        top: 170px;
+@media (min-width: 768px) {
+    .footer-content_welcome {
+        flex-direction: row;
+        text-align: left;
     }
 
-    .welcome>p,
-    .avp>p,
-    .service>h1,
-    .info-container>h1,
-    .team>h1,
-    .box>h2,
-    .box>p,
-    .info-container>p {
-        font-size: 15px;
+    .footer-brand_welcome,
+    .footer-links,
+    .footer-social_welcome {
+        flex: 1;
+        margin: 0 20px;
     }
 
-    .welcome>p {
-        position: relative;
-        top: 170px;
-    }
-
-    .login {
-        padding-top: 10px;
-        width: 180px;
-        height: 45px;
-        top: 200px;
-    }
-
-    .avp>p {
-        top: 220px;
-        right: -200px;
-    }
-
-    .avp>.avpvideo {
-        right: 200px;
-        top: -70px;
-    }
-
-    .service,
-    .about,
-    .team {
-        top: 400px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .container,
-    .container2 {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .box,
-    .box2,
-    .image-container,
-    .info-container {
-        width: 90%;
-        margin-bottom: 20px;
-    }
-
-    .image-container {
-        width: 60%;
-
-    }
-
-    .image-container>img {
-        width: 100%;
-        position: relative;
-        right: 170px;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        top: 452px;
-    }
-
-    footer>div {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .welcome>h1 {
-        font-size: 65px;
-        position: relative;
-        top: 105px;
-    }
-
-    .welcome>p,
-    .avp>p,
-    .service>h1,
-    .info-container>h1,
-    .team>h1,
-    .box>h2,
-    .box>p,
-    .info-container>p {
-        font-size: 14px;
-    }
-
-    .welcome>p {
-        position: relative;
-        top: 115px;
-    }
-
-    .login {
-        width: 160px;
-        height: 40px;
-        top: 125px;
-    }
-
-    .avp>p {
-        font-size: 10px;
-        top: 100px;
-        right: -20px;
-    }
-
-    .avp>.avpvideo {
-        right: 12px;
-        top: -100px;
-        width: 300px;
-        height: 169px;
-    }
-
-    .service,
-    .about,
-    .team {
-        top: 200px;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    .container,
-    .container2 {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .box,
-    .box2,
-    .image-container,
-    .info-container {
-        width: 95%;
-        margin-bottom: 15px;
-    }
-
-    .image-container {
-        width: 70%;
-    }
-
-    .image-container>img {
-        width: 100%;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: center;
-        top: 260px;
-    }
-
-    footer>div {
-        margin-right: 0;
-        margin-bottom: 5px;
+    .footer-bottom {
+        flex-direction: row;
     }
 }

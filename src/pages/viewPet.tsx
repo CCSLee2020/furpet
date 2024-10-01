@@ -176,30 +176,55 @@ const LandingPage: React.FC = () => {
                     </div>
                 </nav>
                 <div className="details">
-                    <>
-                        <div className="details_textSquare">
-                            <h1 className="details_h1">{pet.name}</h1>
-                            <h2 className="details_h2"><b>Type:</b> {pet.type}</h2>
-                            <h2 className="details_h2"><b>Gender:</b> {pet.gender}</h2>
-                            <h2 className="details_h2"><b>Breed:</b> {pet.breed}</h2>
-                            <h2 className="details_h2"><b>Neutered:</b> {pet.neutered}</h2>
-                            <h2 className="details_h2"><b>Location:</b> {pet.location}</h2>
-                            <h2 className="details_h2"><b>Age &#40;months&#41;:</b> {pet.age}</h2>
-                            <Link to="/login"><div className="details_appointment"><p className="details_appointment2">&nbsp;Please Log In to make<br />&nbsp;&nbsp;&nbsp;&nbsp;an Appointment</p></div></Link>
-                        </div>
-                        {imageUrl && <img className="details_img" src={imageUrl} />}
-                        <h1 className="details_aboutme">About Me</h1>
-                        <p className="details_desc">{pet.about}</p>
-                        <h1 className="details_aboutme"><br/><br/>Gallery</h1>
-                        <div className='details_gallery'>
-                            {imageUrl1 && <img  src={`${imageUrl1}`} alt={`${pet.name}`} />}
-                            {imageUrl2 && <img  src={`${imageUrl2}`} alt={`${pet.name}`} />}
-                            {imageUrl3 && <img  src={`${imageUrl3}`} alt={`${pet.name}`} />}
-                            {imageUrl4 && <img  src={`${imageUrl4}`} alt={`${pet.name}`} />}
-                            {imageUrl5 && <img  src={`${imageUrl5}`} alt={`${pet.name}`} />}
-                        </div>
-                    </>
-                </div>
+          <div className="details_textSquare">
+            <h1 className="details_h1">{pet.name}</h1>
+            <h2 className="details_h2">
+              <b>Type:</b> {pet.type}
+            </h2>
+            <h2 className="details_h2">
+              <b>Gender:</b> {pet.gender}
+            </h2>
+            <h2 className="details_h2">
+              <b>Breed:</b> {pet.breed}
+            </h2>
+            <h2 className="details_h2">
+              <b>Neutered:</b> {pet.neutered}
+            </h2>
+            <h2 className="details_h2">
+              <b>Location:</b> {pet.location}
+            </h2>
+            <h2 className="details_h2">
+              <b>Age &#40;months&#41;:</b> {pet.age}
+            </h2>
+            <h1 className="details_h2">About Me</h1>
+            <p className="details_desc">{pet.about}</p>
+          </div>
+          <div className="petImg">
+            {" "}
+            {imageUrl && (
+              <img
+                className="details_img"
+                src={`${imageUrl}`}
+                alt={`${pet.name}`}
+              />
+            )}
+           <Link to="/login"><div className="details_appointment"><p className="details_appointment2">&nbsp;Please Log In to make<br />&nbsp;&nbsp;&nbsp;&nbsp;an Appointment</p></div></Link>
+          </div>
+        </div>
+
+        <div className="space2"></div>
+        <h1 className="titleGallery">
+          <br />
+          <br />
+          Gallery
+        </h1>
+        <div className="details_gallery">
+          {imageUrl1 && <img src={`${imageUrl1}`} alt={`${pet.name}`} />}
+          {imageUrl2 && <img src={`${imageUrl2}`} alt={`${pet.name}`} />}
+          {imageUrl3 && <img src={`${imageUrl3}`} alt={`${pet.name}`} />}
+          {imageUrl4 && <img src={`${imageUrl4}`} alt={`${pet.name}`} />}
+          {imageUrl5 && <img src={`${imageUrl5}`} alt={`${pet.name}`} />}
+        </div>
             </IonContent>
         </IonPage>
     );
