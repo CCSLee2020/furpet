@@ -29,48 +29,16 @@ ion-content {
     color: var(--ion-text-color);
 }
 
-nav {
-    background-color: #393c49;
-    overflow: hidden;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 25px;
-    position: fixed;
-    width: 100%;
-    z-index: 2;
+.overflow-visible {
+    overflow: visible !important;
+    /* Use !important to ensure it overrides any Bootstrap styles */
 }
 
-nav a:hover {
-    color: rgb(0, 0, 0);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.h1_logo {
-    color: white;
-    font-size: 48px;
-    font-weight: 400;
+/*NAV_BRAND*/
+.ms-2 {
     font-family: 'Aclonica', sans-serif;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    margin-right: 100px;
-}
-
-.nav-links a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    padding: 14px 16px;
-    display: inline-block;
-    margin: 0 10px;
+    font-size: 24px;
+    color: #ffffff;
 }
 
 .welcomeBanner {
@@ -138,7 +106,7 @@ nav a:hover {
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;
-    padding-top: 10px;
+    padding-top: 35px;
     padding-left: 20px;
     padding-right: 0px;
     text-align: left;
@@ -200,7 +168,7 @@ nav a:hover {
     display: inline-block;
     position: relative;
     left: 800px;
-    top: -325px;
+    top: -260px;
     width: 40px;
     height: 40px;
 }
@@ -209,15 +177,15 @@ nav a:hover {
     display: inline-block;
     position: relative;
     left: 400px;
-    top: -262px;
+    top: -400px;
     width: 40px;
     height: 40px;
 }
 
 .rehome_box>.delete {
     position: relative;
-    left: 800px;
-    top: -320px;
+    left: 815px;
+    top: -260px;
     width: 50px;
     height: 50px;
 }
@@ -225,7 +193,7 @@ nav a:hover {
 .delete1 {
     position: relative;
     left: 420px;
-    top: -260px;
+    top: -400px;
     width: 40px;
     height: 40px;
 }
@@ -234,13 +202,13 @@ nav a:hover {
     border: 1px solid;
     border-color: #393c49;
     border-radius: 20px;
-    height: 410px;
+    height: 371px;
     width: 1100px;
     margin-top: 10px;
     margin-top: 10px;
     margin-left: 30px;
     margin-right: 30px;
-    padding-top: 10px;
+    padding-top: 35px;
     padding-left: 20px;
     padding-right: 0px;
     text-align: left;
@@ -249,6 +217,8 @@ nav a:hover {
 }
 
 .document_img {
+    position: relative;
+    top: -20px;
     width: 350px;
     height: 350px;
     object-fit: cover;
@@ -397,10 +367,12 @@ nav a:hover {
 
     .edit1 {
         left: 310px;
+        top: -340px;
     }
 
     .delete1 {
         left: 320px;
+        top: -340px;
     }
 
     .rehome_container>.appointment_outerbox {
@@ -540,8 +512,11 @@ nav a:hover {
 
     .rehome_box>.edit,
     .rehome_box>.delete {
-        left: 0px;
-        top: -164px;
+        left: 100px;
+        top: -130px;
+        width: 20px;
+        height: 20px;
+
     }
 
     .rehome_container>.appointment_outerbox {
@@ -605,11 +580,15 @@ nav a:hover {
     .edit1 {
         left: 170px;
         top: -190px;
+        width: 25px;
+        height: 25px;
     }
 
     .delete1 {
         left: 180px;
         top: -190px;
+        width: 25px;
+        height: 25px;
     }
 
 }

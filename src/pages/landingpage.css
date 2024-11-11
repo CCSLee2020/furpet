@@ -617,7 +617,10 @@ nav a:hover {
     color: var(--text-color);
     font-family: var(--font-family-secondary);
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
+    position: relative;
+    top: 61px;
+    left: 64px;
 }
 
 .categories_container {
@@ -645,6 +648,9 @@ nav a:hover {
     color: var(--secondary-color);
 }
 
+.adoption_desc {
+    margin-bottom: 0;
+}
 
 /* Adoption Section */
 .adoption1 {

@@ -6,6 +6,8 @@ import { useParams, Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/storage";
 import "firebase/compat/firestore";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 type Pet = {
   id: string;
@@ -163,38 +165,85 @@ const LandingPage: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <nav>
-          <div className="logo1">
-            <img className="navLogo1" src={navLogo} alt="" />
-            <h1 className="h1_logo1">FurPet</h1>
-          </div>
-          <div className="nav-links1">
-            <a href={`/${userID}/Home`}>Home</a>
-            <a href={`/${userID}/Explore`}>Explore</a>
-            <a href={`/${userID}/appointmentlist`}>Appointments</a>
-            <a href={`/${userID}/rehome`}>Rehome</a>
-            <a href={`/${userID}/PetIdentifier`}>Identify</a>
-            <label></label>
-            {users && (
-              <button onClick={toggleMenu} className="nav-dropdown-btn">
-                {users.name}
-              </button>
-            )}
-          </div>
-        </nav>
-        {menuOpen && (
-          <div className="nav-dropdown-menu">
-            <a href={`/${userID}/profile/${userID}`}>
-              <p className="nav-dropdowntext">View Profile</p>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top overflow-visible">
+      <div className="container-fluid">
+        {/* Logo and Name */}
+        <a className="navbar-brand d-flex align-items-center" href="#">
+          <img src={navLogo} alt="Logo" width="30" height="30" className="d-inline-block align-text-top" />
+          <span className="ms-2">FurPet</span>
+        </a>
+
+        {/* Toggler for mobile view */}
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Navbar Links and Dropdown */}
+        <div className="collapse navbar-collapse" id="navbarNav">
+          {/* Left-aligned links */}
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+            <a
+              href={`/${userID}/Home`}
+              onClick={() => ("Navigated to Home")}
+            >
+              Home
             </a>
-            <a href={`/${userID}/myAppointments`}>
-              <p className="nav-dropdowntext">My Appointments</p>
+            </li>
+            <li className="nav-item">
+            <a
+              href={`/${userID}/Explore`}
+              onClick={() => ("Navigated to Explore")}
+            >
+              Explore
             </a>
-            <a href="/Menu">
-              <p className="nav-dropdowntext">Log Out</p>
+            </li>
+            <li className="nav-item">
+            <a
+              href={`/${userID}/appointmentlist`}
+              onClick={() => ("Navigated to Appointments")}
+            >
+              Appointments
             </a>
-          </div>
-        )}
+            </li>
+            <li className="nav-item">
+            <a
+              href={`/${userID}/rehome`}
+              onClick={() => ("Navigated to Rehome")}
+            >
+              Rehome
+            </a>
+            </li>
+            <li className="nav-item">
+            <a
+              href={`/${userID}/PetIdentifier`}
+              onClick={() => ("Navigated to Identify")}
+            >
+              Identify
+            </a>
+            </li>
+          </ul>
+
+          {/* Right-aligned dropdown */}
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+              </a>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a className="dropdown-item" href={`/${userID}/profile/${userID}`}
+              onClick={() => ("Viewed Profile")}>Profile</a></li>
+                <li><a className="dropdown-item" href={`/${userID}/myAppointments`}
+              onClick={() => ("Viewed My Appointments")}>My Appointment</a></li>
+                <li><hr className="dropdown-divider" /></li>
+                <li><a className="dropdown-item" href="/Welcome" onClick={() => ("Logged Out")}>Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
         <div className="details">
           <div className="details_textSquare">
             <h1 className="details_h1">{pet.name}</h1>

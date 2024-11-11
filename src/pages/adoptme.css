@@ -25,59 +25,16 @@
 }
 
 /* Navigation */
-nav {
-    background-color: var(--primary-bg);
-    color: var(--primary-text);
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 20px;
-    position: fixed;
-    width: 100%;
-    z-index: 2;
-    transition: background-color 0.3s;
+.overflow-visible {
+    overflow: visible !important;
+    /* Use !important to ensure it overrides any Bootstrap styles */
 }
 
-nav a {
-    color: var(--primary-text);
-    text-decoration: none;
-    margin: 0 15px;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #f0f0f0;
-}
-
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.h1_logo {
-    color: var(--primary-text);
-    font-size: 32px;
-    font-weight: 400;
+/*NAV_BRAND*/
+.ms-2 {
     font-family: 'Aclonica', sans-serif;
-}
-
-/* Navigation Links */
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.nav-links a {
-    padding: 10px 15px;
-    margin: 0 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.nav-links a:hover {
-    background-color: var(--accent-color);
+    font-size: 24px;
+    color: #ffffff;
 }
 
 /* Welcome Banner */

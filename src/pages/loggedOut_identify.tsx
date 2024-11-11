@@ -129,18 +129,56 @@ const PetIdentifyAdopter: React.FC = () => {
     return (
         <IonPage>
             <IonContent>
-                <nav>
-                    <div className="logo1">
-                        <img className='navLogo1' src={navLogo} alt="" />
-                        <h1 className="h1_logo1">FurPet</h1>
-                    </div>
-                    <div className="nav-links2">
-                        <a href="/Menu">Home</a>
-                        <a href="/Discover">Explore</a>
-                        <a href="/IdentifyPets">Identify</a>
-                        <a href="/login">Login</a>
-                    </div>
-                </nav>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top overflow-visible">
+          <div className="container-fluid">
+            {/* Logo and Name */}
+            <a className="navbar-brand d-flex align-items-center" href="#">
+              <img src={navLogo} alt="Logo" width="30" height="30" className="d-inline-block align-text-top" />
+              <span className="ms-2">FurPet</span>
+            </a>
+
+            {/* Toggler for mobile view */}
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            {/* Navbar Links and Dropdown */}
+            <div className="collapse navbar-collapse" id="navbarNav">
+              {/* Left-aligned links */}
+              <ul className="navbar-nav me-auto">
+                <li className="nav-item">
+                  <a
+                    href={`/Menu`}
+                    onClick={() => ("Navigated to Home")}
+                  >
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    href={`/Discover`}
+                    onClick={() => ("Navigated to Explore")}
+                  >
+                    Explore
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    href={`/IdentifyPets`}
+                    onClick={() => ("Navigated to Identify")}
+                  >
+                    Identify
+                  </a>
+                </li>
+              </ul>
+
+              {/* Right-aligned dropdown */}
+              <a className="nav-link text-light" href="/login" aria-expanded="false">
+                Log In
+              </a>
+            </div>
+          </div>
+        </nav>
                 <main className="main">
                     <div className="petIdentifierBody">
                         <div className="petIdentifierDiv">

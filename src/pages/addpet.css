@@ -1,3 +1,15 @@
+.overflow-visible {
+    overflow: visible !important;
+    /* Use !important to ensure it overrides any Bootstrap styles */
+}
+
+/*NAV_BRAND*/
+.ms-2 {
+    font-family: 'Aclonica', sans-serif;
+    font-size: 24px;
+    color: #ffffff;
+}
+
 /* Add Pet Section */
 .AddPet,
 .AppointmentDetails1 {

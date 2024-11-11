@@ -26,6 +26,7 @@ import Profile from "./pages/profile";
 import UpdateProfile from "./pages/edituser";
 import LoggedOutHome from "./pages/home";
 import Explore from "./pages/explore";
+import Discover from "./pages/discover";
 import LoggedOutIdentify from "./pages/loggedOut_identify";
 import ViewPet from "./pages/viewPet";
 import Welcome from "./pages/welcome";
@@ -115,7 +116,7 @@ const App: React.FC = () => (
           <Adopt />
         </Route>
         <Route exact path="/Discover">  {/* DESIGN RETAIN */}
-          <Explore />
+          <Discover />
         </Route>
         <Route exact path="/:userID/PetView/:id"> {/* DESIGN RETAIN */}
           <AdoptMe />

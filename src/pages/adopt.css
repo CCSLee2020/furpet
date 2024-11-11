@@ -1,45 +1,13 @@
-nav {
-    background-color: #393c49;
-    overflow: hidden;
-    color: white;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 25px;
-    position: fixed;
-    width: 100%;
-    z-index: 2;
+.overflow-visible {
+    overflow: visible !important;
+    /* Use !important to ensure it overrides any Bootstrap styles */
 }
 
-nav a:hover {
-    color: rgb(0, 0, 0);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.h1_logo {
-    color: white;
-    font-size: 48px;
-    font-weight: 400;
+/*NAV_BRAND*/
+.ms-2 {
     font-family: 'Aclonica', sans-serif;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    margin-right: 100px;
-}
-
-.nav-links a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    padding: 14px 16px;
-    display: inline-block;
-    margin: 0 10px;
+    font-size: 24px;
+    color: #ffffff;
 }
 
 .welcomeBanner .welcomeImg {
